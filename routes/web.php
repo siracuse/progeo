@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('magasin', 'MagasinController@getForm');
+Route::post('magasin', ['uses' => 'MagasinController@postForm', 'as' => 'ajoutMagasin']);
