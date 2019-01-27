@@ -19,7 +19,8 @@ class CreateManagersTable extends Migration
             $table->string('firstname', 30);
             $table->string('phone', 10);
             $table->string('email', 50);
-            $table->string('password', 30);
+            $table->string('password', 255);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
