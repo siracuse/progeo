@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SubcategoriesTableSeeder extends Seeder
+class example extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,7 @@ class SubcategoriesTableSeeder extends Seeder
 
     }
     private function getRandomUserId() {
-        $cat = \App\Categorie::inRandomOrder()->first();
+        $cat = \App\Category::inRandomOrder()->first();
         return $cat->id;
     }
 }

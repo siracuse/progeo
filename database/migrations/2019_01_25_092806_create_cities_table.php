@@ -15,10 +15,11 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('insee', 5);
-            $table->string('postalCode', 5);
-            $table->float('latitude', 10, 7);
-            $table->float('longitude', 10, 7);
+            $table->string('insee', 255);
+            $table->string('postalCode', 255);
+            $table->string('name', 50);
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
         });
     }
