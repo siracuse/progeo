@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/stores/{city}', 'StoreController@printStoresByCities')->name('storesByCities');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
