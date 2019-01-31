@@ -14,8 +14,8 @@ $factory->define(App\Store::class, function (Faker $faker) {
         'latitude' => $faker->latitude,
         'longitude' => $faker->longitude,
 
-        'cityId' => rand(1, 36700),
-        'categoryId' => rand(1, 4),
-        'managerId' => rand(1, 10),
+        'city_id' => rand(1, 36700),
+        'category_id' => rand(1, 4),
+        'manager_id' => rand(1, 10),
     ];
 });

@@ -24,8 +24,8 @@ class CreatePromotionsTable extends Migration
             $table->string('photo1', 50);
             $table->string('photo2', 50);
 
-            $table->integer('storeId')->unsigned();
-            $table->foreign('storeId')->references('id')->on('stores');
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('stores');
 
             $table->timestamps();
         });

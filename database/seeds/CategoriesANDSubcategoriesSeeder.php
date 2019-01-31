@@ -15,15 +15,15 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
             'name' => 'Restaurant'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catRestaurant,
+            'category_id' => $catRestaurant,
             'name' => 'Indien'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catRestaurant,
+            'category_id' => $catRestaurant,
             'name' => 'Italien'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catRestaurant,
+            'category_id' => $catRestaurant,
             'name' => 'Gastronomique'
         ]);
 
@@ -31,11 +31,11 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
             'name' => 'Boulangerie',
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catBoulangerie,
+            'category_id' => $catBoulangerie,
             'name' => 'Blé'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catBoulangerie,
+            'category_id' => $catBoulangerie,
             'name' => 'Seigle'
         ]);
 
@@ -43,15 +43,15 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
             'name' => 'Chocolatier',
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catChocolatier,
+            'category_id' => $catChocolatier,
             'name' => 'Chocolat noir'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catChocolatier,
+            'category_id' => $catChocolatier,
             'name' => 'Chocolat au lait'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catChocolatier,
+            'category_id' => $catChocolatier,
             'name' => 'Chocolat blanc'
         ]);
 
@@ -59,15 +59,15 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
             'name' => 'Hôtel',
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catHotel,
+            'category_id' => $catHotel,
             'name' => 'Entrée de gamme'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catHotel,
+            'category_id' => $catHotel,
             'name' => 'Moyenne gamme'
         ]);
         DB::table('subcategories')->insert ([
-            'categoryId' => $catHotel,
+            'category_id' => $catHotel,
             'name' => 'Haute gamme'
         ]);
     }

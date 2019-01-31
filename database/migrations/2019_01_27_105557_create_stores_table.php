@@ -25,14 +25,14 @@ class CreateStoresTable extends Migration
             $table->float('latitude', 10, 7);
             $table->float('longitude', 10, 7);
 
-            $table->integer('cityId')->unsigned();
-            $table->foreign('cityId')->references('id')->on('cities');
+            $table->integer('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('cities');
 
-            $table->integer('categoryId')->unsigned();
-            $table->foreign('categoryId')->references('id')->on('categories');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
 
-            $table->integer('managerId')->unsigned();
-            $table->foreign('managerId')->references('id')->on('managers');
+            $table->integer('manager_id')->unsigned();
+            $table->foreign('manager_id')->references('id')->on('managers');
 
             $table->timestamps();
         });
