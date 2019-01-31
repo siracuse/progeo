@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Subcategory extends Model
 {
     public function stores() {
         return $this->hasMany(Store::class);
     }
-    public function subCategories() {
-        return $this->hasMany(Subcategory::class);
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }
