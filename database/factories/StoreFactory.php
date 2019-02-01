@@ -13,7 +13,6 @@ $factory->define(App\Store::class, function (Faker $faker) {
         'photoOutside' => str_random(10),
         'latitude' => $faker->latitude,
         'longitude' => $faker->longitude,
-
         'city_id' => rand(1, 36700),
         'category_id' => rand(1, 4),
         'manager_id' => rand(1, 10),
