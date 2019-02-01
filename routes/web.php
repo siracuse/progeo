@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+
+
+//Page d'accueil avec la carte
+Route::get('/home', 'HomeController@index')->name('home');

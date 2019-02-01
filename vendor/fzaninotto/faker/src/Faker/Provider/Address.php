@@ -109,7 +109,7 @@ class Address extends Base
      * @param float|int $max
      * @return float Uses signed degrees format (returns a float number between -90 and 90)
      */
-    public static function latitude($min = 44, $max = 48)
+    public static function latitude($min = 44, $max = 48.8)
     {
         return static::randomFloat(6, $min, $max);
     }

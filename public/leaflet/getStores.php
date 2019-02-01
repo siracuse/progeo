@@ -1,5 +1,5 @@
 <?php
-require './config/bdd.php';
+require 'bdd.php';
 
 
 $req = $bdd->prepare('select * from stores where (latitude > ? AND longitude > ?) AND (latitude < ? AND longitude < ?)');

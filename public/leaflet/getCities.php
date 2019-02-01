@@ -1,5 +1,5 @@
 <?php
-require './config/bdd.php';
+require 'bdd.php';
 
 $city = $_GET['city'];
 $req = $bdd->prepare('SELECT * from cities where name like :city LIMIT 10');

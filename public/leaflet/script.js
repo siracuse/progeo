@@ -18,7 +18,7 @@ function createList(){
     input.onkeyup = () => {
         if(input.value.length >= 3){
             console.log(input.value);
-            $get('./data/getCities.php', {"city": document.getElementById('city').value}, generateCities, error);
+            $get('leaflet/getCities.php', {"city": document.getElementById('city').value}, generateCities, error);
         }
 
     };
@@ -65,7 +65,7 @@ function centerOnCity(latitude, longitude){
         console.log("Sud-Ouest : lat->" + latMin);
         console.log("Sud-Ouest : long->" + longMin);
 
-        $get('./data/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
+        $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
     });
 }
 
@@ -82,20 +82,6 @@ function printStores(){
             "<li>" + json[i]['email'] + "</li>" +
             "<li>" + json[i]['phone'] + "</li>" +
             "<button id='storeInfo'>En savoir plus</button>").openPopup();
-
-        /* document.getElementById('infoMag').onclick = () => {
-             let modal = document.createElement('div');
-             modal.setAttribute("class", "modal");
-
-             let modal_content = document.createElement('div');
-             modal.setAttribute("class", "modal-content");
-             modal.textContent = "TEST...";
-
-             modal_content.appendChild(close);
-             modal.appendChild(modal_content);
-             document.getElementsByTagName("body")[0].appendChild(modal);
-         }*/
-
 
     }
 }
