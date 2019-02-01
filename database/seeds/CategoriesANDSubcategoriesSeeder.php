@@ -16,7 +16,7 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
         ]);
         DB::table('subcategories')->insert ([
             'category_id' => $catRestaurant,
-            'name' => 'Indiens'
+            'name' => 'Indien'
         ]);
         DB::table('subcategories')->insert ([
             'category_id' => $catRestaurant,
