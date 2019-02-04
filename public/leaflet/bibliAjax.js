@@ -26,7 +26,8 @@ $get=(url,data,done,error)=> {
 
     xhttp.onreadystatechange = function(){
         if (this.readyState == 4 ){
-            if (this.status == 200) done(xhttp)
+            if (this.status == 200)
+                done(xhttp);
             else error(xhttp)
         }
     }

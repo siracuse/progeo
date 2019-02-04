@@ -17,27 +17,29 @@ function createList(){
 
     input.onkeyup = () => {
         if(input.value.length >= 3){
-            console.log(input.value);
-            $get('leaflet/getCities.php', {"city": document.getElementById('city').value}, generateCities, error);
+           $get('leaflet/getCities.php', {"city": document.getElementById('city').value}, generateCities, error);
         }
 
     };
     input.onchange = () => {
-        let latitude, longitude;
+         let latitude, longitude;
         for (let i=0 ; i < cities.options.length ; i++) {
             if (cities.options[i].value === input.value) {
                 latitude = cities.options[i].getAttribute("data-latitude");
                 longitude = cities.options[i].getAttribute("data-longitude");
+
                 break;
             }
         }
         centerOnCity(latitude, longitude);
+        setTimeout(function() {
+            $get('leaflet/getCategories.php', {"city": document.getElementById('city').value}, generateCategories, error);
+        }, 100)
     };
 }
 
-function generateCities(){
-    let res = JSON.parse(xhttp.responseText);
-    console.log(res);
+function generateCities(cities){
+    let res = JSON.parse(cities.responseText);
 
     let datalist = document.getElementById('cities');
     datalist.innerHTML="";
@@ -45,13 +47,14 @@ function generateCities(){
     for(let i = 0; i < res.length ; i++){
         let option = document.createElement("option");
         option.setAttribute("value", res[i].name);
+        option.setAttribute("cityId", res[i].id);
         option.setAttribute("data-latitude", res[i].latitude);
         option.setAttribute("data-longitude", res[i].longitude);
         datalist.appendChild(option);
     }
 }
 
-function centerOnCity(latitude, longitude){
+function centerOnCity(latitude, longitude, category, subcategory){
     map.setView([latitude, longitude], 13);
 
     map.on('dragend', function() {
@@ -60,29 +63,58 @@ function centerOnCity(latitude, longitude){
         let longMin = ext_pos.getSouthWest().lng;
         let latMax = ext_pos.getNorthEast().lat;
         let longMax = ext_pos.getNorthEast().lng;
-        console.log("Nord-Est :  lat->" + latMax);
-        console.log("Nord-Est : long->" + longMax);
-        console.log("Sud-Ouest : lat->" + latMin);
-        console.log("Sud-Ouest : long->" + longMin);
 
         $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
+        setTimeout(function() {
+            $get('leaflet/getCategories.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, generateCategories, error);
+        }, 10)
+
+
     });
 }
 
-function printStores(){
-    console.log('coucou');
-    let json = JSON.parse(xhttp.responseText);
-    console.log(json);
+function printStores(stores){
+    let res = JSON.parse(stores.responseText);
 
     //pour chaque magasin on créé un marker
-    for(let i in json){
-        var marker = L.marker([json[i]['latitude'], json[i]['longitude']]).addTo(map);
-        marker.bindPopup("<h4>"+json[i]['name']+"</h4>" +
-            "<li>" + json[i]['address']+"</li>" +
-            "<li>" + json[i]['email'] + "</li>" +
-            "<li>" + json[i]['phone'] + "</li>" +
+    for(let i in res){
+        var marker = L.marker([res[i]['latitude'], res[i]['longitude']]).addTo(map);
+        marker.bindPopup("<h4>"+res[i]['name']+"</h4>" +
+            "<li>" + res[i]['address']+"</li>" +
+            "<li>" + res[i]['email'] + "</li>" +
+            "<li>" + res[i]['phone'] + "</li>" +
             "<button id='storeInfo'>En savoir plus</button>").openPopup();
 
+    }
+}
+
+function generateCategories(categories){
+    let res = JSON.parse(categories.responseText);
+    document.getElementById("category").innerHTML = "";
+
+        for(let i in res){
+            let option = document.createElement('option');
+
+            option.textContent = res[i]['name'];
+            option.setAttribute('value', res[i]['name']);
+
+            document.getElementById("category").appendChild(option);
+        }
+
+    document.getElementById("category").onchange = () => {
+        console.log('A FAIRE...');
+    }
+}
+
+function generateSubCategories(subCategories){
+    let res = JSON.parse(subCategories.responseText);
+
+    for(let i in res){
+        let option = document.createElement('option');
+        option.textContent = res[i]['name'];
+        option.setAttribute('value', res[i]['name']);
+
+        document.getElementById("subCategory").appendChild(option);
     }
 }
 

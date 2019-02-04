@@ -13,6 +13,17 @@
     <input id="city" list="cities">
     <datalist id="cities"></datalist>
 
+    <select id="category" onchange="getSubCategories()">
+        <option value="choisir" selected="selected">Choisir...</option>;
+    </select>
+
+    <select id="subCategory">
+        <option value="choisir" selected="selected">Choisir...</option>;
+    </select>
+
+
+
+
     <div id="map"></div>
 
     <script type="text/javascript">
