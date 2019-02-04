@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     }
 
     public function getNew (Request $request) {
-        if ($request->input('name') !== null) {
+        if ($request->input('name')) {
             $this->validate($request, ['name' => 'required']);
             $category = new Category ();
             $category->name = $request->input('name');
