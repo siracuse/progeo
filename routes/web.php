@@ -53,3 +53,19 @@ Route::post ('/admin/city/edit', 'Admin\CitiesController@postEdit')->name('city_
 //Suppression ville
 Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
 
+
+
+
+//Liste subcategorie
+Route::get ('/admin/subcategory/list', 'Admin\SubcategoriesController@getAll')->name('subcategory_list');
+
+//Ajout subcategorie
+Route::get ('/admin/subcategory/new', 'Admin\SubcategoriesController@getNew')->name('subcategory_new');
+Route::post ('/admin/subcategory/new', 'Admin\SubcategoriesController@getNew')->name('subcategory_new_post');
+
+//Modification subcategorie
+Route::get ('/admin/subcategory/edit/{category_id}', 'Admin\SubcategoriesController@getEdit')->name('subcategory_edit');
+Route::post ('/admin/subcategory/edit', 'Admin\SubcategoriesController@postEdit')->name('subcategory_edit_post');
+
+//Suppression subcategorie
+Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
