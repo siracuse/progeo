@@ -38,3 +38,18 @@ Route::post ('/admin/category/edit', 'Admin\CategoriesController@postEdit')->nam
 //Suppression categorie
 Route::get ('/admin/category/delete/{category_id}', 'Admin\CategoriesController@getDelete')->name('category_delete');
 
+
+//Liste ville
+Route::get ('/admin/city/list', 'Admin\CitiesController@getAll')->name('city_list');
+
+//Ajout ville
+Route::get ('/admin/city/new', 'Admin\Citiescontroller@getNew')->name('city_new');
+Route::post ('/admin/city/new', 'Admin\CitiesController@getNew')->name('city_new_post');
+
+//Modification ville
+Route::get ('/admin/city/edit/{city_id}', 'Admin\CitiesController@getEdit')->name('city_edit');
+Route::post ('/admin/city/edit', 'Admin\CitiesController@postEdit')->name('city_edit_post');
+
+//Suppression ville
+Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
+

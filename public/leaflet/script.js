@@ -67,7 +67,7 @@ function centerOnCity(latitude, longitude, category, subcategory){
         $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
         setTimeout(function() {
             $get('leaflet/getCategories.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, generateCategories, error);
-        }, 10)
+        }, 100)
 
 
     });
