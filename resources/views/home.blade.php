@@ -4,7 +4,7 @@
     <style>
         #map {
             margin-top: 50px;
-            height: 800px;
+            height: 500px;
         }
     </style>
 @endsection

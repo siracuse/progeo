@@ -32,9 +32,9 @@ function createList(){
             }
         }
         centerOnCity(latitude, longitude);
-        setTimeout(function() {
+      /*  setTimeout(function() {
             $get('leaflet/getCategories.php', {"city": document.getElementById('city').value}, generateCategories, error);
-        }, 100)
+        }, 100) */
     };
 }
 
@@ -65,9 +65,9 @@ function centerOnCity(latitude, longitude, category, subcategory){
         let longMax = ext_pos.getNorthEast().lng;
 
         $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
-        setTimeout(function() {
+        /*setTimeout(function() {
             $get('leaflet/getCategories.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, generateCategories, error);
-        }, 100)
+        }, 100) */
 
 
     });
@@ -75,6 +75,8 @@ function centerOnCity(latitude, longitude, category, subcategory){
 
 function printStores(stores){
     let res = JSON.parse(stores.responseText);
+    console.log('coucou');
+    generateCategoriesBis(res);
 
     //pour chaque magasin on créé un marker
     for(let i in res){
@@ -88,7 +90,7 @@ function printStores(stores){
     }
 }
 
-function generateCategories(categories){
+/*function generateCategories(categories){
     let res = JSON.parse(categories.responseText);
     document.getElementById("category").innerHTML = "";
 
@@ -104,7 +106,26 @@ function generateCategories(categories){
     document.getElementById("category").onchange = () => {
         console.log('A FAIRE...');
     }
+}*/
+
+function generateCategoriesBis(res){
+    console.log(res);
+
+    for(let i in res){
+        let option = document.createElement('option');
+
+        option.textContent = res[i]['name'];
+        option.setAttribute('value', res[i]['name']);
+
+        document.getElementById("category").appendChild(option);
+    }
+
+    document.getElementById("category").onchange = () => {
+        console.log('A FAIRE...');
+    }
 }
+
+
 
 function generateSubCategories(subCategories){
     let res = JSON.parse(subCategories.responseText);
