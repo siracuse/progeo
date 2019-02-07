@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Store;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -47,13 +49,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'name' => 'required|string|max:30',
             'first_name'=> 'required|string|max:30',
             'email' => 'required|string|email|max:50|unique:users',
             'phone'=>'required|string|max:10',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ];
+
+        if(\Request::filled('is_resp')){
+            $rules['store_name'] ='required';
+            $rules['siret']='required';
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -64,13 +73,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'firstname' => $data['first_name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => bcrypt($data['password'])
+//        dd($data);
+            $u = User::create([
+                'name' => $data['name'],
+                'firstname' => $data['first_name'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'password' => bcrypt($data['password']),
+                'is_resp' => isset($data['is_resp'])
+            ]);
 
-        ]);
+            if (isset($data['is_resp'])) {
+
+                Store::create([
+                    'name' => $data['store_name'],
+                    'siret' => $data['siret'],
+                    'manager_id' => $u->id
+                ]);
+
+            }
+
+            return $u;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(App\Store::class, function (Faker $faker) {
@@ -16,6 +17,7 @@ $factory->define(App\Store::class, function (Faker $faker) {
         'city_id' => rand(1, 36700),
         'category_id' => rand(1, 4),
         'subcategory_id' => rand(1, 11),
-        'manager_id' => rand(1, 10)
+        'manager_id' => User::where('is_resp', true)->inRandomOrder()->first()->id
+
     ];
 });

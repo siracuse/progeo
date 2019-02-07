@@ -16,26 +16,26 @@ class CreateStoresTable extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->string('address', 100);
-            $table->string('phone', 10);
-            $table->string('email', 50);
+            $table->string('address', 100)->nullable();
+            $table->string('phone', 10)->nullable();
+            $table->string('email', 50)->nullable();
             $table->string('siret', 14);
-            $table->string('photoInside', 50);
-            $table->string('photoOutside', 50);
-            $table->float('latitude', 10, 7);
-            $table->float('longitude', 10, 7);
+            $table->string('photoInside', 50)->nullable();
+            $table->string('photoOutside', 50)->nullable();
+            $table->float('latitude', 10, 7)->nullable();
+            $table->float('longitude', 10, 7)->nullable();
 
-            $table->integer('city_id')->unsigned();
+            $table->integer('city_id')->unsigned()->nullable();
             $table->foreign('city_id')->references('id')->on('cities');
 
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
-            $table->integer('subcategory_id')->unsigned();
+            $table->integer('subcategory_id')->unsigned()->nullable();
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
 
             $table->integer('manager_id')->unsigned();
-            $table->foreign('manager_id')->references('id')->on('managers');
+            $table->foreign('manager_id')->references('id')->on('users');
 
             $table->timestamps();
         });
