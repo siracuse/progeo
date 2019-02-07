@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class SubcategoriesController extends Controller
 {
     public function getAll () {
-        $categories = Category::with('subcategories')->get();
-        return view ('admin.subcategory_list',['categories' => $categories]);
+        $subcategories = Subcategory::with('category')->get();
+        return view ('admin.subcategory_list',['subcategories' => $subcategories]);
     }
 
     public function getNew (Request $request) {
