@@ -22,7 +22,11 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-
+/*
+|--------------------------------------------------------------------------
+| CATEGORIE
+|--------------------------------------------------------------------------
+*/
 
 //Liste categorie
 Route::get ('/admin/category/list', 'Admin\CategoriesController@getAll')->name('category_list');
@@ -38,6 +42,11 @@ Route::post ('/admin/category/edit', 'Admin\CategoriesController@postEdit')->nam
 //Suppression categorie
 Route::get ('/admin/category/delete/{category_id}', 'Admin\CategoriesController@getDelete')->name('category_delete');
 
+/*
+|--------------------------------------------------------------------------
+| VILLE
+|--------------------------------------------------------------------------
+*/
 
 //Liste ville
 Route::get ('/admin/city/list', 'Admin\CitiesController@getAll')->name('city_list');
@@ -53,8 +62,11 @@ Route::post ('/admin/city/edit', 'Admin\CitiesController@postEdit')->name('city_
 //Suppression ville
 Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
 
-
-
+/*
+|--------------------------------------------------------------------------
+| SOUS-CATEGORIE
+|--------------------------------------------------------------------------
+*/
 
 //Liste subcategorie
 Route::get ('/admin/subcategory/list', 'Admin\SubcategoriesController@getAll')->name('subcategory_list');
@@ -69,3 +81,8 @@ Route::post ('/admin/subcategory/edit', 'Admin\SubcategoriesController@postEdit'
 
 //Suppression subcategorie
 Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
+
+
+
+
+

@@ -322,6 +322,8 @@ class ComposerStaticInit2e16727907b3f3eb0d9c6747be724d97
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoriesController.php',
+        'App\\Http\\Controllers\\Admin\\CitiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CitiesController.php',
+        'App\\Http\\Controllers\\Admin\\SubcategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubcategoriesController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
