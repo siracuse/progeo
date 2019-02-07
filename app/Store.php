@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+    protected $fillable = [
+        'name', 'address', 'phone','email', 'siret', 'photoInside', 'photoOutside', 'latitude', 'longitude','city_id','category_id','subcategory_id','manager_id'
+    ];
+
     public function manager() {
-        return $this->belongsTo(Manager::class);
+        return $this->belongsTo(User::class);
     }
 
     public function city() {
