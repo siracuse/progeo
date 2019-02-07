@@ -31,6 +31,9 @@ class CreateStoresTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
 
+            $table->integer('subcategory_id')->unsigned();
+            $table->foreign('subcategory_id')->references('id')->on('subcategories');
+
             $table->integer('manager_id')->unsigned();
             $table->foreign('manager_id')->references('id')->on('managers');
 

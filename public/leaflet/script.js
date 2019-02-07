@@ -58,11 +58,11 @@ function centerOnCity(latitude, longitude, category, subcategory){
     map.setView([latitude, longitude], 13);
 
     map.on('dragend', function() {
-        let ext_pos = map.getBounds();
-        let latMin = ext_pos.getSouthWest().lat
-        let longMin = ext_pos.getSouthWest().lng;
-        let latMax = ext_pos.getNorthEast().lat;
-        let longMax = ext_pos.getNorthEast().lng;
+         ext_pos = map.getBounds();
+         latMin = ext_pos.getSouthWest().lat
+         longMin = ext_pos.getSouthWest().lng;
+         latMax = ext_pos.getNorthEast().lat;
+         longMax = ext_pos.getNorthEast().lng;
 
         $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
         /*setTimeout(function() {
@@ -75,7 +75,6 @@ function centerOnCity(latitude, longitude, category, subcategory){
 
 function printStores(stores){
     let res = JSON.parse(stores.responseText);
-    console.log('coucou');
     generateCategoriesBis(res);
 
     //pour chaque magasin on créé un marker
@@ -109,26 +108,36 @@ function printStores(stores){
 }*/
 
 function generateCategoriesBis(res){
+    document.getElementById("category").innerHTML = "";
     console.log(res);
-
     for(let i in res){
         let option = document.createElement('option');
 
-        option.textContent = res[i]['name'];
-        option.setAttribute('value', res[i]['name']);
+        option.textContent = res[i]['category_name'];
+        option.setAttribute('value', res[i]['category_name']);
 
         document.getElementById("category").appendChild(option);
     }
 
     document.getElementById("category").onchange = () => {
-        console.log('A FAIRE...');
+
+        $get('leaflet/getSubCategories.php', {
+            "category":document.getElementById('category').value,
+            "latMin":latMin,
+            "longMin":longMin,
+            "latMax":latMax,
+            "longMax":longMax
+
+        }, generateSubCategories, error);
     }
 }
 
 
 
 function generateSubCategories(subCategories){
+    //document.getElementById("subcategory").innerHTML = "";
     let res = JSON.parse(subCategories.responseText);
+    console.log(res);
 
     for(let i in res){
         let option = document.createElement('option');
@@ -137,6 +146,11 @@ function generateSubCategories(subCategories){
 
         document.getElementById("subCategory").appendChild(option);
     }
+
+    document.getElementById("subcategory").onchange = () => {
+        console.log('AFFICHER LES MAGS SELON LA SOUS CAT...');
+    }
+
 }
 
 function error(){
