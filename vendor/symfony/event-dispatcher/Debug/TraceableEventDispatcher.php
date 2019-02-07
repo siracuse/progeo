@@ -32,15 +32,13 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
     private $callStack;
     private $dispatcher;
     private $wrappedListeners;
-    private $orphanedEvents;
 
     public function __construct(EventDispatcherInterface $dispatcher, Stopwatch $stopwatch, LoggerInterface $logger = null)
     {
         $this->dispatcher = $dispatcher;
         $this->stopwatch = $stopwatch;
         $this->logger = $logger;
-        $this->wrappedListeners = array();
-        $this->orphanedEvents = array();
+        $this->wrappedListeners = [];
     }
 
     /**
@@ -164,10 +162,10 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
     public function getCalledListeners()
     {
         if (null === $this->callStack) {
-            return array();
+            return [];
         }
 
-        $called = array();
+        $called = [];
         foreach ($this->callStack as $listener) {
             list($eventName) = $this->callStack->getInfo();
 
@@ -186,14 +184,14 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
             $allListeners = $this->getListeners();
         } catch (\Exception $e) {
             if (null !== $this->logger) {
-                $this->logger->info('An exception was thrown while getting the uncalled listeners.', array('exception' => $e));
+                $this->logger->info('An exception was thrown while getting the uncalled listeners.', ['exception' => $e]);
             }
 
             // unable to retrieve the uncalled listeners
-            return array();
+            return [];
         }
 
-        $notCalled = array();
+        $notCalled = [];
         foreach ($allListeners as $eventName => $listeners) {
             foreach ($listeners as $listener) {
                 $called = false;
@@ -216,20 +214,14 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
             }
         }
 
-        uasort($notCalled, array($this, 'sortNotCalledListeners'));
+        uasort($notCalled, [$this, 'sortNotCalledListeners']);
 
         return $notCalled;
-    }
-
-    public function getOrphanedEvents(): array
-    {
-        return $this->orphanedEvents;
     }
 
     public function reset()
     {
         $this->callStack = null;
-        $this->orphanedEvents = array();
     }
 
     /**
@@ -242,7 +234,7 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      */
     public function __call($method, $arguments)
     {
-        return $this->dispatcher->{$method}(...$arguments);
+        return \call_user_func_array([$this->dispatcher, $method], $arguments);
     }
 
     /**
@@ -267,19 +259,13 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
 
     private function preProcess($eventName)
     {
-        if (!$this->dispatcher->hasListeners($eventName)) {
-            $this->orphanedEvents[] = $eventName;
-
-            return;
-        }
-
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
             $priority = $this->getListenerPriority($eventName, $listener);
             $wrappedListener = new WrappedListener($listener instanceof WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
             $this->wrappedListeners[$eventName][] = $wrappedListener;
             $this->dispatcher->removeListener($eventName, $listener);
             $this->dispatcher->addListener($eventName, $wrappedListener, $priority);
-            $this->callStack->attach($wrappedListener, array($eventName));
+            $this->callStack->attach($wrappedListener, [$eventName]);
         }
     }
 
@@ -297,7 +283,7 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
             $this->dispatcher->addListener($eventName, $listener->getWrappedListener(), $priority);
 
             if (null !== $this->logger) {
-                $context = array('event' => $eventName, 'listener' => $listener->getPretty());
+                $context = ['event' => $eventName, 'listener' => $listener->getPretty()];
             }
 
             if ($listener->wasCalled()) {
