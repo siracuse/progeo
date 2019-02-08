@@ -26,7 +26,7 @@ class StoresTableSeeder extends Seeder
             'city_id' => '1819',
             'category_id' => '1',
             'subcategory_id' => '3',
-            'manager_id' => '1'
+            'user_id' => '1'
         ]);
 
         DB::table('stores')->insert ([
@@ -42,7 +42,7 @@ class StoresTableSeeder extends Seeder
             'city_id' => '1819',
             'category_id' => '4',
             'subcategory_id' => '9',
-            'manager_id' => '1'
+            'user_id' => '1'
         ]);
 
         DB::table('stores')->insert ([
@@ -58,7 +58,7 @@ class StoresTableSeeder extends Seeder
             'city_id' => '1819',
             'category_id' => '4',
             'subcategory_id' => '10',
-            'manager_id' => '1'
+            'user_id' => '1'
         ]);
 
     }

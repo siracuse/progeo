@@ -17,6 +17,6 @@ $factory->define(App\Promotion::class, function (Faker $faker) {
         'photo1' => str_random(10),
         'photo2' => str_random(10),
 
-        'store_id' => rand(1,10),
+        'store_id' => rand(5,10),
     ];
 });

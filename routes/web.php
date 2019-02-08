@@ -83,6 +83,26 @@ Route::post ('/admin/subcategory/edit', 'Admin\SubcategoriesController@postEdit'
 Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
 
 
+/*
+|--------------------------------------------------------------------------
+| MAGASIN
+|--------------------------------------------------------------------------
+*/
+
+//Liste store
+Route::get ('/admin/store/list', 'Admin\StoresController@getAll')->name('store_list');
+
+//Ajout store
+Route::get ('/admin/store/new', 'Admin\StoresController@getNew')->name('store_new');
+Route::post ('/admin/store/new', 'Admin\StoresController@getNew')->name('store_new_post');
+
+//Modification store
+Route::get ('/admin/store/edit/{store_id}', 'Admin\StoresController@getEdit')->name('store_edit');
+Route::post ('/admin/store/edit', 'Admin\StoresController@postEdit')->name('store_edit_post');
+
+//Suppression store
+Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete')->name('store_delete');
+
 
 
 
