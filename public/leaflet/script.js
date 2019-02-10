@@ -17,12 +17,20 @@ function createList(){
 
     input.onkeyup = () => {
         if(input.value.length >= 3){
-           $get('leaflet/getCities.php', {"city": document.getElementById('city').value}, generateCities, error);
+
+            axios.post(rt_search_cities, {
+                _token : token,
+                city: document.getElementById('city').value
+            })
+                .then(generateCities)
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
 
     };
     input.onchange = () => {
-         let latitude, longitude;
+        let latitude, longitude;
         for (let i=0 ; i < cities.options.length ; i++) {
             if (cities.options[i].value === input.value) {
                 latitude = cities.options[i].getAttribute("data-latitude");
@@ -32,126 +40,95 @@ function createList(){
             }
         }
         centerOnCity(latitude, longitude);
-      /*  setTimeout(function() {
-            $get('leaflet/getCategories.php', {"city": document.getElementById('city').value}, generateCategories, error);
-        }, 100) */
     };
 }
 
 function generateCities(cities){
-    let res = JSON.parse(cities.responseText);
-
+    let res = cities.data
     let datalist = document.getElementById('cities');
     datalist.innerHTML="";
 
-    for(let i = 0; i < res.length ; i++){
+    for(let i = 0; i < res['cities'].length ; i++){
         let option = document.createElement("option");
-        option.setAttribute("value", res[i].name);
-        option.setAttribute("cityId", res[i].id);
-        option.setAttribute("data-latitude", res[i].latitude);
-        option.setAttribute("data-longitude", res[i].longitude);
+        option.setAttribute("value", res['cities'][i].name);
+        option.setAttribute("cityId", res['cities'][i].id);
+        option.setAttribute("data-latitude", res['cities'][i].latitude);
+        option.setAttribute("data-longitude", res['cities'][i].longitude);
         datalist.appendChild(option);
     }
 }
 
-function centerOnCity(latitude, longitude, category, subcategory){
+function centerOnCity(latitude, longitude){
     map.setView([latitude, longitude], 13);
 
     map.on('dragend', function() {
-         ext_pos = map.getBounds();
-         latMin = ext_pos.getSouthWest().lat
-         longMin = ext_pos.getSouthWest().lng;
-         latMax = ext_pos.getNorthEast().lat;
-         longMax = ext_pos.getNorthEast().lng;
+        ext_pos = map.getBounds();
+        latMin = ext_pos.getSouthWest().lat
+        longMin = ext_pos.getSouthWest().lng;
+        latMax = ext_pos.getNorthEast().lat;
+        longMax = ext_pos.getNorthEast().lng;
 
-        $get('leaflet/getStores.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, printStores, error);
-        /*setTimeout(function() {
-            $get('leaflet/getCategories.php', {latMin:latMin, longMin:longMin, latMax:latMax, longMax:longMax}, generateCategories, error);
-        }, 100) */
-
+        axios.post(rt_search_stores, {
+            _token : token,
+            latMin: latMin,
+            longMin : longMin,
+            latMax : latMax,
+            longMax : longMax
+        })
+            .then(printStores)
+            .catch(function (error) {
+                console.log(error);
+            });
 
     });
 }
 
 function printStores(stores){
-    let res = JSON.parse(stores.responseText);
-    generateCategoriesBis(res);
+    let res = stores.data
 
-    //pour chaque magasin on créé un marker
-    for(let i in res){
-        var marker = L.marker([res[i]['latitude'], res[i]['longitude']]).addTo(map);
-        marker.bindPopup("<h4>"+res[i]['name']+"</h4>" +
-            "<li>" + res[i]['address']+"</li>" +
-            "<li>" + res[i]['email'] + "</li>" +
-            "<li>" + res[i]['phone'] + "</li>" +
+    for(let i = 0; i < res['stores'].length ; i++){
+       let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude]).addTo(map);
+        marker.bindPopup("<h4>"+res['stores'][i].name+"</h4>" +
+            "<li>" + res['stores'][i].address+"</li>" +
+            "<li>" + res['stores'][i].email + "</li>" +
+            "<li>" + res['stores'][i].phone + "</li>" +
             "<button id='storeInfo'>En savoir plus</button>").openPopup();
-
+        markers.addLayer(marker);
     }
+
+    generateCategories(res);
 }
 
-/*function generateCategories(categories){
-    let res = JSON.parse(categories.responseText);
-    document.getElementById("category").innerHTML = "";
 
-        for(let i in res){
-            let option = document.createElement('option');
+function generateCategories(categories){
+    document.getElementById('category').options.length = 0;
+    marker.clearLayers();
 
-            option.textContent = res[i]['name'];
-            option.setAttribute('value', res[i]['name']);
-
-            document.getElementById("category").appendChild(option);
-        }
-
-    document.getElementById("category").onchange = () => {
-        console.log('A FAIRE...');
-    }
-}*/
-
-function generateCategoriesBis(res){
-    document.getElementById("category").innerHTML = "";
-    console.log(res);
-    for(let i in res){
+    for(let i = 0; i < categories['stores'].length; i++){
         let option = document.createElement('option');
+        option.textContent = categories['stores'][i]['category'].name;
+        option.setAttribute('value', categories['stores'][i].category_id)
 
-        option.textContent = res[i]['category_name'];
-        option.setAttribute('value', res[i]['category_name']);
-
-        document.getElementById("category").appendChild(option);
+        document.getElementById('category').appendChild(option);
     }
 
     document.getElementById("category").onchange = () => {
+        axios.post(rt_search_stores, {
+            _token : token,
+            latMin: latMin,
+            longMin : longMin,
+            latMax : latMax,
+            longMax : longMax,
+            category : document.getElementById('category').value
+        })
+            .then(printStores)
+            .catch(function (error) {
+                console.log(error);
+            });
 
-        $get('leaflet/getSubCategories.php', {
-            "category":document.getElementById('category').value,
-            "latMin":latMin,
-            "longMin":longMin,
-            "latMax":latMax,
-            "longMax":longMax
-
-        }, generateSubCategories, error);
     }
 }
 
-
-
-function generateSubCategories(subCategories){
-    //document.getElementById("subcategory").innerHTML = "";
-    let res = JSON.parse(subCategories.responseText);
-    console.log(res);
-
-    for(let i in res){
-        let option = document.createElement('option');
-        option.textContent = res[i]['name'];
-        option.setAttribute('value', res[i]['name']);
-
-        document.getElementById("subCategory").appendChild(option);
-    }
-
-    document.getElementById("subcategory").onchange = () => {
-        console.log('AFFICHER LES MAGS SELON LA SOUS CAT...');
-    }
-
-}
 
 function error(){
     console.log('ERROR !');

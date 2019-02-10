@@ -46,4 +46,14 @@ class CitiesController extends Controller
         $city->delete();
         return redirect()->route('city_list');
     }
+
+    public function postSearchCities(Request $request){
+        //ajouter route fichier web.php
+
+        $cities = City::Where('name', 'like', '%' . $request->input('city') . '%')
+            ->limit(10)
+            ->get();
+
+        return ['cities' => $cities];
+    }
 }

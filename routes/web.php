@@ -62,6 +62,8 @@ Route::post ('/admin/city/edit', 'Admin\CitiesController@postEdit')->name('city_
 //Suppression ville
 Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
 
+Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
+
 /*
 |--------------------------------------------------------------------------
 | SOUS-CATEGORIE
@@ -103,6 +105,6 @@ Route::post ('/admin/store/edit', 'Admin\StoresController@postEdit')->name('stor
 //Suppression store
 Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete')->name('store_delete');
 
-
+Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
 
 

@@ -10,6 +10,7 @@ use App\Subcategory;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class StoresController extends Controller
 {
@@ -103,4 +104,29 @@ class StoresController extends Controller
         $store->delete();
         return redirect()->route('store_list');
     }
+
+    public function postSearchStores(Request $request){
+     /*   $stores = DB::table('stores')
+            ->join('categories', 'stores.category_id', '=', 'stores.id')
+            ->where('latitude', '>', $request->input('latMin'))
+            ->where('longitude', '>', $request->input('longMin'))
+            ->where('latitude', '<', $request->input('latMax'))
+            ->where('longitude', '<', $request->input('latMax')); */
+
+     $stores = Store::with('category')
+         ->where('latitude', '>', $request->input('latMin'))
+         ->where('longitude', '>', $request->input('longMin'))
+         ->where('latitude', '<', $request->input('latMax'))
+         ->where('longitude', '<', $request->input('latMax'))
+         ->when($request->input('category'), function($query) use ($request){
+             return $query->where('category_id', $request->input('category'));
+         })
+         -> get();
+
+        return ['stores' => $stores];
+    }
+
+
+
+
 }
