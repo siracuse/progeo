@@ -93,7 +93,6 @@ function printStores(stores){
             "<li>" + res['stores'][i].email + "</li>" +
             "<li>" + res['stores'][i].phone + "</li>" +
             "<button id='storeInfo'>En savoir plus</button>").openPopup();
-        markers.addLayer(marker);
     }
 
     generateCategories(res);
@@ -102,7 +101,6 @@ function printStores(stores){
 
 function generateCategories(categories){
     document.getElementById('category').options.length = 0;
-    marker.clearLayers();
 
     for(let i = 0; i < categories['stores'].length; i++){
         let option = document.createElement('option');
