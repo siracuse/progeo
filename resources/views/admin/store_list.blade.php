@@ -1,17 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-    {{--{{$stores}}--}}
-
-    {{--@for ($i = 0; $i < 4; $i++)--}}
-        {{--{{$manager[$i]}}--}}
-    {{--@endfor--}}
-    {{--@for()--}}
-    {{--{{$stores}}--}}
-    {{--@foreach($stores as $store )--}}
-        {{---------{{$store->user->name}}<br><br><br>--}}
-    {{--@endforeach--}}
-
     <h2> Liste des Magasins </h2>
     <a href="{{url ('admin\store\new')}}">Ajouter un magasin +</a><br><br>
     <table>
