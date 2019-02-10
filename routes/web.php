@@ -108,3 +108,21 @@ Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete'
 Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
 
 
+/*
+|--------------------------------------------------------------------------
+| USER
+|--------------------------------------------------------------------------
+*/
+//Liste user
+Route::get ('/admin/user/list', 'Admin\UsersController@getAll')->name('user_list');
+
+//Ajout user
+Route::get ('/admin/user/new', 'Admin\UsersController@getNew')->name('user_new');
+Route::post ('/admin/user/new', 'Admin\UsersController@getNew')->name('user_new_post');
+
+//Modification user
+Route::get ('/admin/user/edit/{store_id}', 'Admin\UsersController@getEdit')->name('user_edit');
+Route::post ('/admin/user/edit', 'Admin\UsersController@postEdit')->name('user_edit_post');
+
+//Suppression user
+Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->name('user_delete');
