@@ -126,3 +126,12 @@ Route::post ('/admin/user/edit', 'Admin\UsersController@postEdit')->name('user_e
 
 //Suppression user
 Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->name('user_delete');
+
+
+/*
+|--------------------------------------------------------------------------
+| ACCUEIL ADMIN
+|--------------------------------------------------------------------------
+*/
+//Page d'accueil
+Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');

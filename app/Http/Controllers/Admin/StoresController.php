@@ -35,21 +35,25 @@ class StoresController extends Controller
             $store->latitude = $request->input('latitude');
             $store->longitude = $request->input('longitude');
 
-            $store->city_id = $request->input('city_id');;
+            $villeID = DB::table('cities')->where('name', '=', $request->input('city_name'))->get();
+            foreach ($villeID as $key => $value) {$id = $value->id;}
+
+            $store->city_id = $id;
             $store->category_id = $request->input('category_id');
             $store->subcategory_id = $request->input('subcategory_id');
-            $store->user_id = $request->input('user_id');;
+            $store->user_id = $request->input('user_id');
 
             $store->save();
             return redirect()->route('store_list');
         }
         $categories = Category::get();
-//        $cities = City::get();
         $subcategories = Subcategory::get();
+        $users =  User::get(['id', 'name']);
+
         return view('admin.store_new', [
             'categories' => $categories,
-//            'cities' => $cities,
-            'subcategories' => $subcategories
+            'subcategories' => $subcategories,
+            'users' => $users
         ]);
     }
 
