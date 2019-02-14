@@ -26,7 +26,8 @@ class Store extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
-//    public function opinions(){
-//        return $this->hasMany(Opinion::class);
-//    }
+    public function promotions(){
+        return $this->hasMany(Promotion::class);
+    }
+
 }

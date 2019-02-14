@@ -130,8 +130,30 @@ Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->
 
 /*
 |--------------------------------------------------------------------------
+| PROMOTION
+|--------------------------------------------------------------------------
+*/
+//Liste promotions
+Route::get ('/admin/promotion/list', 'Admin\PromotionsController@getAll')->name('promotion_list');
+
+//Ajout promotion
+Route::get ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new');
+Route::post ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new_post');
+
+//Modification user
+Route::get ('/admin/promotion/edit/{promotion_id}', 'Admin\PromotionsController@getEdit')->name('promotion_edit');
+Route::post ('/admin/promotion/edit', 'Admin\PromotionsController@postEdit')->name('promotion_edit_post');
+
+//Suppression user
+Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsController@getDelete')->name('promotion_delete');
+
+
+/*
+|--------------------------------------------------------------------------
 | ACCUEIL ADMIN
 |--------------------------------------------------------------------------
 */
 //Page d'accueil
 Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
+
+
