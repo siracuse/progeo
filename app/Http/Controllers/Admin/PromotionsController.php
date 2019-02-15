@@ -19,8 +19,8 @@ class PromotionsController extends Controller
 
     public function getNew (Request $request)
     {
-        if (Promotion::where('activated', '=', '1')->count() === 3) {
-            return redirect()->route('promotion_list')->with('error', 'full');
+        if (Promotion::where('activated', '=', '1')->count() === 999) {
+            return redirect()->route('promotion_list')->with('error', 'Vous ne pouvez plus rajouter des promotions pour ce magasin');
         }
         if ($request->filled('name')) {
             $random = str_pad(rand(1, 999),  3, "0" , STR_PAD_LEFT);
