@@ -47,7 +47,7 @@ class SocialAuthFacebookController extends Controller
             'email' => $driver['email'],
             'firstname' => $driver['first_name'],
             'name' => $driver['last_name'],
-            'phone' => null,
+            'phone' => 'default',
             'password' => md5($this->genererChaineAleatoire(20)),
             'is_resp' => 0
             //'facebook_id' => $driver['id']
