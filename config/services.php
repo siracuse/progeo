@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '400327850722682',
+        'client_secret' => '76ba200c52485184dc8d87f038236ab1',
+        'redirect' => 'https://samuelplace.tk/public/index.php/callback',
+    ],
 ];
