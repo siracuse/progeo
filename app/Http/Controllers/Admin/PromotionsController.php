@@ -12,7 +12,6 @@ class PromotionsController extends Controller
 {
 
     public function getAll () {
-
         $promotions = Promotion::with('store')->get();
         return view ('admin.promotion_list',[ 'promotions' => $promotions]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Promotion;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Controller;
 class UsersController extends Controller
 {
     public function getAll () {
-        $users = User::get(['id', 'name', 'firstname', 'phone', 'email', 'is_resp']);
+        $users = User::with('promotions')->get();
         return view ('admin.user_list',[ 'users' => $users]);
     }
 
