@@ -84,6 +84,14 @@ Route::post ('/admin/subcategory/edit', 'Admin\SubcategoriesController@postEdit'
 //Suppression subcategorie
 Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
 
+/*
+|--------------------------------------------------------------------------
+| FACEBOOK
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 /*
 |--------------------------------------------------------------------------
