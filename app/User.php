@@ -32,4 +32,8 @@ class User extends Authenticatable
     public function promotions() {
         return $this->belongsToMany(Promotion::class);
     }
+
+    public function stores() {
+        return $this->hasMany(Store::class);
+    }
 }

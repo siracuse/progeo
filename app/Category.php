@@ -9,7 +9,7 @@ class Category extends Model
     public function stores() {
         return $this->hasMany(Store::class);
     }
-    public function subCategories() {
+    public function subcategories() {
         return $this->hasMany(Subcategory::class);
     }
 }

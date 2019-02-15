@@ -62,6 +62,8 @@ Route::post ('/admin/city/edit', 'Admin\CitiesController@postEdit')->name('city_
 //Suppression ville
 Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
 
+Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
+
 /*
 |--------------------------------------------------------------------------
 | SOUS-CATEGORIE
@@ -91,5 +93,75 @@ Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesContr
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
+/*
+|--------------------------------------------------------------------------
+| MAGASIN
+|--------------------------------------------------------------------------
+*/
+
+//Liste store
+Route::get ('/admin/store/list', 'Admin\StoresController@getAll')->name('store_list');
+
+//Ajout store
+Route::get ('/admin/store/new', 'Admin\StoresController@getNew')->name('store_new');
+Route::post ('/admin/store/new', 'Admin\StoresController@getNew')->name('store_new_post');
+
+//Modification store
+Route::get ('/admin/store/edit/{store_id}', 'Admin\StoresController@getEdit')->name('store_edit');
+Route::post ('/admin/store/edit', 'Admin\StoresController@postEdit')->name('store_edit_post');
+
+//Suppression store
+Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete')->name('store_delete');
+
+Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
+
+
+/*
+|--------------------------------------------------------------------------
+| USER
+|--------------------------------------------------------------------------
+*/
+//Liste user
+Route::get ('/admin/user/list', 'Admin\UsersController@getAll')->name('user_list');
+
+//Ajout user
+Route::get ('/admin/user/new', 'Admin\UsersController@getNew')->name('user_new');
+Route::post ('/admin/user/new', 'Admin\UsersController@getNew')->name('user_new_post');
+
+//Modification user
+Route::get ('/admin/user/edit/{store_id}', 'Admin\UsersController@getEdit')->name('user_edit');
+Route::post ('/admin/user/edit', 'Admin\UsersController@postEdit')->name('user_edit_post');
+
+//Suppression user
+Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->name('user_delete');
+
+
+/*
+|--------------------------------------------------------------------------
+| PROMOTION
+|--------------------------------------------------------------------------
+*/
+//Liste promotions
+Route::get ('/admin/promotion/list', 'Admin\PromotionsController@getAll')->name('promotion_list');
+
+//Ajout promotion
+Route::get ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new');
+Route::post ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new_post');
+
+//Modification user
+Route::get ('/admin/promotion/edit/{promotion_id}', 'Admin\PromotionsController@getEdit')->name('promotion_edit');
+Route::post ('/admin/promotion/edit', 'Admin\PromotionsController@postEdit')->name('promotion_edit_post');
+
+//Suppression user
+Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsController@getDelete')->name('promotion_delete');
+
+
+/*
+|--------------------------------------------------------------------------
+| ACCUEIL ADMIN
+|--------------------------------------------------------------------------
+*/
+//Page d'accueil
+Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
 
 

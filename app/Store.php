@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     protected $fillable = [
-        'name', 'address', 'phone','email', 'siret', 'photoInside', 'photoOutside', 'latitude', 'longitude','city_id','category_id','subcategory_id','manager_id'
+        'name', 'address', 'phone','email', 'siret', 'photoInside', 'photoOutside', 'latitude', 'longitude','city_id','category_id','subcategory_id','user_id'
     ];
 
-    public function manager() {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
@@ -22,11 +22,12 @@ class Store extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function subCategory(){
+    public function subcategory(){
         return $this->belongsTo(Subcategory::class);
     }
 
-    public function opinions(){
-        return $this->hasMany(Opinion::class);
+    public function promotions(){
+        return $this->hasMany(Promotion::class);
     }
+
 }
