@@ -61,7 +61,7 @@ function generateCities(cities){
 function centerOnCity(latitude, longitude){
     map.setView([latitude, longitude], 13);
 
-    map.on('dragend', function() {
+    map.on('moveend', function() {
         ext_pos = map.getBounds();
         latMin = ext_pos.getSouthWest().lat
         longMin = ext_pos.getSouthWest().lng;

@@ -157,3 +157,26 @@ Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsControlle
 Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
 
 
+/*
+|--------------------------------------------------------------------------
+| ACCUEIL MANAGER
+|--------------------------------------------------------------------------
+*/
+//STORES
+Route::get('/manager/', 'ManagerController@getStores')->name('manager_home');
+
+Route::get('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store');
+Route::post('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store_post');
+
+Route::get('/manager/edit_store/{store_id}', 'ManagerController@getEditStore')->name('manager_edit_store');
+Route::post('/manager/edit_store', 'ManagerController@postEditStore')->name('manager_edit_store_post');
+
+Route::get ('/manager/delete_store/{store_id}', 'ManagerController@deleteStore')->name('manager_delete_store');
+
+//PROMOS
+Route::get('/manager/get_promos', 'ManagerController@getAllPromos')->name('manager_get_promos');
+
+Route::get('/manager/refresh_promos/{promo_id}', 'ManagerController@refreshPromo')->name('manager_refresh_promo');
+
+Route::get('/manager/add_promo/{store_id}', 'ManagerController@addPromo')->name('manager_add_promo');
+Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');

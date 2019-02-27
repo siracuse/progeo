@@ -1,12 +1,13 @@
-@extends ('layout.app')
+@extends('layouts.app')
 
-@section ('content')
+@section('content')
 
-    <a href="{{url ('admin\promotion\list')}}">Retour</a><br><br>
-    <h2>Ajout d'une promotion</h2>
+    <a href="{{url ('manager')}}">Retour</a><br><br>
+    <h2>Ajout d'une promotion pour {{$store->name}}</h2>
 
-    <form method="post" action="{{ route ('promotion_new') }}">
+    <form method="post" action="{{ route ('manager_add_promo_post', ['store_id' => $store->id]) }}">
         {{ csrf_field() }}
+
         <label for="name">Nom :</label>
         <input type="text" class="form-control" id="name" name="name" value="bob">
 
@@ -22,15 +23,17 @@
         <label for="photo2">Photo 2 :</label>
         <input type="text" class="form-control" id="photo2" name="photo2" value="bob">
 
-        <label for="storeName">Nom du magasin :</label>
-        <input type="text" class="form-control" id="storeName" name="storeName" value="Hotel F1">
-
         <p>Activer directement la promotion ? :</p>
+
         <input type="radio" id="oui" name="activated" value="1" checked>
         <label for="oui">Oui</label>
+
         <input type="radio" id="non" name="activated" value="0" >
         <label for="non">Non</label>
 
+        <input type="hidden" name="store_id" value="{{$store->id}}">
+
         <br><br><input type="submit" value="Ajouter"><br><br><br><br><br><br>
     </form>
+
 @endsection

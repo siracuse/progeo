@@ -91,6 +91,8 @@ class RegisterController extends Controller
                     'manager_id' => $u->id
                 ]);
 
+                return redirect()->route('manager_home');
+
             }
 
             return $u;
