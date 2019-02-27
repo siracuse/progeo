@@ -104,6 +104,8 @@ class ManagerController extends Controller
         $subcategory = Subcategory::findOrFail($store->subcategory_id);
         $subcategories = Subcategory::get();
 
+        $city = City::findOrFail($store->city_id);
+
         $user = User::findOrFail($store->user_id);
 
         return view('manager.manager_edit_store', [
@@ -112,11 +114,13 @@ class ManagerController extends Controller
             'categories' => $categories,
             'subcategory' => $subcategory,
             'subcategories' => $subcategories,
-            'user' => $user,
+            'city' => $city,
+            'user' => $user
         ]);
     }
 
     public function postEditStore (Request $request) {
+
         $this->validate($request, ['name' => 'required']);
 
         $store = Store::findOrFail($request->input('store_id'));
@@ -125,11 +129,16 @@ class ManagerController extends Controller
         $store->phone = $request->input('phone');
         $store->email = $request->input('email');
         $store->siret = $request->input('siret');
-        $store->photoInside = $request->input('photoInside');
-        $store->photoOutside = $request->input('photoOutside');
         $store->latitude = $request->input('latitude');
         $store->longitude = $request->input('longitude');
-        $store->city_id = $request->input('city_id');
+
+
+        $city = DB::table('cities') ->where('name', '=', $request->input('city_name'))
+            ->get();;
+        foreach ($city as $key => $value)
+            $city_id = $value->id;
+
+        $store->city_id = $city_id;
         $store->category_id = $request->input('category_id');
         $store->subcategory_id = $request->input('subcategory_id');
         $store->user_id = $request->input('user_id');
@@ -137,10 +146,32 @@ class ManagerController extends Controller
         //Si l'utilisateur renseigne les champs image
         //->supprimer les anciennes
         //->ajouter les nouvelles
+        $user = DB::table('users') ->where('id', '=', Auth::user()->id)
+            ->get();
+        foreach ($user as $key => $value)
+            $user_id = $value->id; $user_name = $value->name;
+        $directory_path = public_path().'/Images/stores/'.$user_id . '_' . $user_name;
 
+        if(!file_exists($directory_path))
+            File::makeDirectory($directory_path, $mode = 0777, true, true);
 
-        $store->save();
-        return redirect()->route('manager_home');
+        if( $request->file('photoInside')){
+            File::delete($directory_path.'/'.$store->photoInside);
+            $file1 = $request->file('photoInside');
+            $file1_name = str_replace(' ','',$request->input('name')).'Inside'.rand(10, 10000).'.'.$file1->getClientOriginalExtension();
+            $file1->move($directory_path, $file1_name);
+            $store->photoInside = $file1_name;
+        }
+        if( $request->file('photoOutside')){
+            File::delete($directory_path.'/'.$store->photoOutside);
+            $file2 = $request->file('photoOutside');
+            $file2_name = str_replace(' ','',$request->input('name')).'Outside'.rand(10, 10000).'.'.$file2->getClientOriginalExtension();
+            $file2->move($directory_path, $file2_name);
+            $store->photoOutside = $file2_name;
+        }
+
+       $store->save();
+       return redirect()->route('manager_home');
     }
 
     public function deleteStore($store_id)
@@ -182,8 +213,21 @@ class ManagerController extends Controller
             $promotion->startDate = date('Y-m-d', strtotime($request->input('dateStart')));
             $promotion->endDate = date('Y-m-d', strtotime($request->input('dateStart')));
 
-            $promotion->photo1 = $request->file('photoInside');
-            $promotion->photo2 = $request->file('photoOutside');
+            $user = DB::table('users') ->where('id', '=', Auth::user()->id)
+                ->get();
+            foreach ($user as $key => $value)
+                $user_id = $value->id; $user_name = $value->name;
+            $directory_path = public_path().'/Images/stores/'.$user_id . '_' . $user_name;
+
+            if(!file_exists($directory_path))
+                File::makeDirectory($directory_path, $mode = 0777, true, true);
+
+            if( $request->file('photo')){
+                $file = $request->file('photo');
+                $file_name = 'promo_'.$request->input('store_id').'_'.rand(10, 10000).'.'.$file->getClientOriginalExtension();
+                $file->move($directory_path, $file_name);
+                $promotion->photo1 = $file_name;
+            }
 
             $promotion->activated = $request->input('activated');
             $promotion->promotionCode = $random;
@@ -192,8 +236,8 @@ class ManagerController extends Controller
 
             $promotion->store_id = $request->input('store_id');
 
-            $promotion->save();
-            return redirect()->route('manager_home');
+           // $promotion->save();
+           // return redirect()->route('manager_home');
         }
 
         $store = Store::findOrFail($store_id);

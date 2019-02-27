@@ -5,7 +5,7 @@
     <a href="{{url ('manager')}}">Retour</a><br><br>
     <h2> Edition du Magasin:  {{ $store->name}}</h2>
 
-    <form method="post" action="{{ route ('manager_edit_store_post') }}">
+    <form method="post" action="{{ route ('manager_edit_store_post') }}" enctype="multipart/form-data">
 
         <input type="hidden" name="store_id" value="{{$store->id}}">
         {{ csrf_field() }}
@@ -30,11 +30,11 @@
                value="{{old('name', $store->siret)}}">
 
         <label for="photoInside">Photo 1:</label>
-        <input type="text" class="form-control" id="photoInside" name="photoInside"
+        <input type="file" class="form-control" id="photoInside" name="photoInside"
                value="{{old('name', $store->photoInside)}}">
 
         <label for="photoOutside">Photo 2:</label>
-        <input type="text" class="form-control" id="photoOutside" name="photoOutside"
+        <input type="file" class="form-control" id="photoOutside" name="photoOutside"
                value="{{old('name', $store->photoOutside)}}">
 
         <label for="latitude">Latitude:</label>
@@ -46,8 +46,8 @@
                value="{{old('name', $store->longitude)}}">
 
         <label for="city_id">Ville:</label>
-        <input type="text" class="form-control" id="city_id" name="city_id"
-               value="{{old('name', $store->city_id)}}">
+        <input type="text" class="form-control" id="city_name" name="city_name"
+               value="{{old('name', $city->name)}}">
 
         <br><br><label for="category_id">Catégorie :</label>
         <select id="category_id" name="category_id">

@@ -5,7 +5,7 @@
     <a href="{{url ('manager')}}">Retour</a><br><br>
     <h2>Ajout d'une promotion pour {{$store->name}}</h2>
 
-    <form method="post" action="{{ route ('manager_add_promo_post', ['store_id' => $store->id]) }}">
+    <form method="post" action="{{ route ('manager_add_promo_post', ['store_id' => $store->id]) }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <label for="name">Nom :</label>
@@ -17,11 +17,8 @@
         <label for="dateEnd">Date fin :</label>
         <input type="text" class="form-control" id="dateEnd" name="dateEnd" value="2005-02-07 07:46:21">
 
-        <label for="photo1">Photo 1 :</label>
-        <input type="text" class="form-control" id="photo1" name="photo1" value="bob">
-
-        <label for="photo2">Photo 2 :</label>
-        <input type="text" class="form-control" id="photo2" name="photo2" value="bob">
+        <label for="photo1">Photo :</label>
+        <input type="file" class="form-control" id="photo" name="photo" >
 
         <p>Activer directement la promotion ? :</p>
 
