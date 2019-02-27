@@ -36,8 +36,8 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '400327850722682',
-        'client_secret' => '76ba200c52485184dc8d87f038236ab1',
-        'redirect' => 'https://samuelplace.tk/public/index.php/callback',
+        'client_id' => '388066218420505',
+        'client_secret' => '111cd15c01318c8665394e9bd6e35dda',
+        'redirect' => 'http://localhost:8080/progeo/public/callback',
     ],
 ];
