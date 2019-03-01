@@ -49,4 +49,13 @@ class SubcategoriesController extends Controller
         $subcategory->delete();
         return redirect()->route('subcategory_list');
     }
+
+    public function postSearchSubCategories(Request $request){
+        //ajouter route fichier web.php
+
+        $subcategories = Subcategory::Where('category_id', '=', $request->input('category'))
+            ->get();
+
+        return ['subcategories' => $subcategories];
+    }
 }

@@ -42,4 +42,11 @@ class CategoriesController extends Controller
         $category->delete();
         return redirect()->route('category_list');
     }
+
+    public function postSearchCategories(){
+        //$categories = Category::get('id', 'name');
+       $categories = Category::get(['id', 'name']);
+
+        return ['categories' => $categories];
+    }
 }
