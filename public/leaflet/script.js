@@ -123,7 +123,7 @@ function printStores(stores){
             .openPopup();
     }
 
-    // generateCategories(res);
+   // generateCategories(res);
 }
 
 
@@ -152,14 +152,13 @@ function printStores(stores){
                 console.log(error);
             });
 
-        }
     }
 }*/
 
-function generateCategories(categories){
+function generateCategories(categories) {
     res = categories.data;
 
-    for(let i = 0; i < res['categories'].length ; i++){
+    for (let i = 0; i < res['categories'].length; i++) {
         let option = document.createElement('option');
         option.textContent = res['categories'][i].name;
         option.setAttribute('value', res['categories'][i].id);
@@ -169,8 +168,8 @@ function generateCategories(categories){
 
         document.getElementById('category').onchange = () => {
             axios.post(rt_search_subcategories, {
-                _token : token,
-                category : document.getElementById('category').value
+                _token: token,
+                category: document.getElementById('category').value
             })
                 .then(generateSubCategories)
                 .catch(function (error) {
@@ -180,6 +179,7 @@ function generateCategories(categories){
     }
 
 
+}
 
 function generateSubCategories(subcategories){
     res = subcategories.data;
