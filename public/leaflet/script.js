@@ -69,25 +69,23 @@ function generateCities(cities){
 
 function centerOnCity(latitude, longitude){
     map.setView([latitude, longitude], 13);
+        ext_pos = map.getBounds();
+        latMin = ext_pos.getSouthWest().lat
+        longMin = ext_pos.getSouthWest().lng;
+        latMax = ext_pos.getNorthEast().lat;
+        longMax = ext_pos.getNorthEast().lng;
 
-
-    ext_pos = map.getBounds();
-    latMin = ext_pos.getSouthWest().lat
-    longMin = ext_pos.getSouthWest().lng;
-    latMax = ext_pos.getNorthEast().lat;
-    longMax = ext_pos.getNorthEast().lng;
-
-    axios.post(rt_search_stores, {
-        _token : token,
-        latMin: latMin,
-        longMin : longMin,
-        latMax : latMax,
-        longMax : longMax
-    })
-        .then(printStores)
-        .catch(function (error) {
-            console.log(error);
-        });
+        axios.post(rt_search_stores, {
+            _token : token,
+            latMin: latMin,
+            longMin : longMin,
+            latMax : latMax,
+            longMax : longMax
+        })
+            .then(printStores)
+            .catch(function (error) {
+                console.log(error);
+            });
 
     map.on('moveend', function() {
         ext_pos = map.getBounds();
@@ -111,22 +109,22 @@ function centerOnCity(latitude, longitude){
     });
 }
 
-function printStores(stores){
+function printStores(stores) {
     let res = stores.data
 
-    for(let i = 0; i < res['stores'].length ; i++){
-       let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude]).addTo(map);
-        marker.bindPopup("<h4>"+res['stores'][i].name+"</h4>" +
-            "<li>" + res['stores'][i].address+"</li>" +
+    for (let i = 0; i < res['stores'].length; i++) {
+        let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude]).addTo(map);
+        marker.bindPopup("<h4>" + res['stores'][i].name + "</h4>" +
+            "<li>" + res['stores'][i].address + "</li>" +
             "<li>" + res['stores'][i].email + "</li>" +
             "<li>" + res['stores'][i].phone + "</li>" +
             "<button><a href=" + url_getCode + ">Obtenir code</a> </button>" +
-        "<button><a href=" + url_letRating + ">Laisser un avis</a> </button>")
-    .openPopup();
+            "<button><a href=" + url_letRating + ">Laisser un avis</a> </button>")
+        .openPopup();
     }
 
     // generateCategories(res);
-
+}
 
 
     /*function generateCategories(categories){
