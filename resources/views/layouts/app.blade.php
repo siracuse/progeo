@@ -19,6 +19,7 @@
             integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
             crossorigin=""></script>
     <script src="{{asset('leaflet/script.js')}}"></script>
+    <script src="{{asset('leaflet/bibliAjax.js')}}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 @yield('css')

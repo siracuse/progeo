@@ -108,7 +108,7 @@ class SocialiteManager extends Manager implements Contracts\Factory
         $config = $this->app['config']['services.gitlab'];
 
         return $this->buildProvider(
-            \Laravel\Socialite\Two\GitlabProvider::class, $config
+            GitlabProvider::class, $config
         );
     }
 

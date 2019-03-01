@@ -42,8 +42,6 @@ Route::post ('/admin/category/edit', 'Admin\CategoriesController@postEdit')->nam
 //Suppression categorie
 Route::get ('/admin/category/delete/{category_id}', 'Admin\CategoriesController@getDelete')->name('category_delete');
 
-Route::post('/map/categories', 'Admin\CategoriesController@postSearchCategories')->name('categories_search_post');
-
 /*
 |--------------------------------------------------------------------------
 | VILLE
@@ -86,8 +84,14 @@ Route::post ('/admin/subcategory/edit', 'Admin\SubcategoriesController@postEdit'
 //Suppression subcategorie
 Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
 
-Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
+/*
+|--------------------------------------------------------------------------
+| FACEBOOK
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 /*
 |--------------------------------------------------------------------------
@@ -144,11 +148,11 @@ Route::get ('/admin/promotion/list', 'Admin\PromotionsController@getAll')->name(
 Route::get ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new');
 Route::post ('/admin/promotion/new', 'Admin\PromotionsController@getNew')->name('promotion_new_post');
 
-//Modification promotion
+//Modification user
 Route::get ('/admin/promotion/edit/{promotion_id}', 'Admin\PromotionsController@getEdit')->name('promotion_edit');
 Route::post ('/admin/promotion/edit', 'Admin\PromotionsController@postEdit')->name('promotion_edit_post');
 
-//Suppression promotion
+//Suppression user
 Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsController@getDelete')->name('promotion_delete');
 
 
@@ -160,45 +164,4 @@ Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsControlle
 //Page d'accueil
 Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
 
-
-/*
-|--------------------------------------------------------------------------
-| MANAGER INTERFACE
-|--------------------------------------------------------------------------
-*/
-//STORES
-Route::get('/manager/', 'ManagerController@getStores')->name('manager_home');
-
-Route::get('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store');
-Route::post('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store_post');
-
-Route::get('/manager/edit_store/{store_id}', 'ManagerController@getEditStore')->name('manager_edit_store');
-Route::post('/manager/edit_store', 'ManagerController@postEditStore')->name('manager_edit_store_post');
-
-Route::get ('/manager/delete_store/{store_id}', 'ManagerController@deleteStore')->name('manager_delete_store');
-
-//PROMOS
-Route::get('/manager/get_promos', 'ManagerController@getAllPromos')->name('manager_get_promos');
-
-Route::get('/manager/refresh_promos/{promo_id}/{activated}', 'ManagerController@refreshPromo')->name('manager_refresh_promo');
-
-Route::get('/manager/add_promo/{store_id}', 'ManagerController@addPromo')->name('manager_add_promo');
-Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');
-
-
-Route::get('/test/', 'ManagerController@test')->name('test');
-
-/*
-|--------------------------------------------------------------------------
-| USER INTERFACE
-|--------------------------------------------------------------------------
-*/
-//Page d'accueil
-Route::get ('/user/', 'User\HomeController@index')->name('user_home');
-
-//Favoris
-Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
-
-//CodePromo
-Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_codePromo');
 

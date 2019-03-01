@@ -31,6 +31,9 @@
         <input type="radio" id="non" name="activated" value="0" >
         <label for="non">Non</label>
 
+
+
+
         <br><br><input type="submit" value="Ajouter"><br><br><br><br><br><br>
     </form>
 @endsection

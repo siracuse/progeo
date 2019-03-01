@@ -1,16 +1,11 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
                 <div class="panel-heading">Inscription</div>
 
-                <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nom</label>
 
@@ -88,8 +83,8 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-                        <div class="form-group">
+                    <div class="test">
+                        <div>
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
@@ -99,15 +94,21 @@
                             </div>
                         </div>
 
+
+
                         <div id="store" style="display: none">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Ajout d'un magasin</div>
                                 <div class="panel-body">
+                                    <div class="bloc-info">
+                                        <img src="{{asset('img/information.svg')}}">
+                                        <p>Veuillez renseigner le nom et le SIRET d'un magasin pour valider votre inscription en tant que responsable.</p>
+                                    </div>
                                     <div class="form-group{{ $errors->has('store_name') ? ' has-error' : '' }}">
                                         <label for="store_name" class="col-md-4 control-label">Nom du magasin</label>
 
                                         <div class="col-md-6">
-                                            <input id="store_name" type="text" class="form-control" name="store_name" value="{{ old('store_name') }}">
+                                            <input id="store_name" type="text" class="form-control name-store" name="store_name" value="{{ old('store_name') }}">
 
                                             @if ($errors->has('store_name'))
                                                 <span class="help-block">
@@ -116,11 +117,11 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="form-group{{ $errors->has('siret') ? ' has-error' : '' }}">
+                                    <div class="full {{ $errors->has('siret') ? ' has-error' : '' }}">
                                         <label for="siret" class="col-md-4 control-label">SIRET</label>
 
                                         <div class="col-md-6">
-                                            <input id="store_name" type="text" class="form-control" name="siret" value="{{ old('siret') }}">
+                                            <input id="store_name" type="text" class="form-control siret" name="siret" value="{{ old('siret') }}">
 
                                             @if ($errors->has('siret'))
                                                 <span class="help-block">
@@ -132,19 +133,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+
+
+                                <button type="submit" class="btn1 btn-form">
                                     S'inscrire
                                 </button>
-                            </div>
-                        </div>
+
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
