@@ -109,48 +109,48 @@ function centerOnCity(latitude, longitude){
     });
 }
 
-function printStores(stores) {
+function printStores(stores){
     let res = stores.data
 
-    for (let i = 0; i < res['stores'].length; i++) {
-        let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude]).addTo(map);
-        marker.bindPopup("<h4>" + res['stores'][i].name + "</h4>" +
-            "<li>" + res['stores'][i].address + "</li>" +
+    for(let i = 0; i < res['stores'].length ; i++){
+       let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude]).addTo(map);
+        marker.bindPopup("<h4>"+res['stores'][i].name+"</h4>" +
+            "<li>" + res['stores'][i].address+"</li>" +
             "<li>" + res['stores'][i].email + "</li>" +
             "<li>" + res['stores'][i].phone + "</li>" +
             "<button><a href=" + url_getCode + ">Obtenir code</a> </button>" +
             "<button><a href=" + url_letRating + ">Laisser un avis</a> </button>")
-        .openPopup();
+            .openPopup();
     }
 
     // generateCategories(res);
 }
 
 
-    /*function generateCategories(categories){
-        document.getElementById('category').options.length = 0;
+/*function generateCategories(categories){
+    document.getElementById('category').options.length = 0;
 
-        for(let i = 0; i < categories['stores'].length; i++){
-            let option = document.createElement('option');
-            option.textContent = categories['stores'][i]['category'].name;
-            option.setAttribute('value', categories['stores'][i].category_id)
+    for(let i = 0; i < categories['stores'].length; i++){
+        let option = document.createElement('option');
+        option.textContent = categories['stores'][i]['category'].name;
+        option.setAttribute('value', categories['stores'][i].category_id)
 
-            document.getElementById('category').appendChild(option);
-        }
+        document.getElementById('category').appendChild(option);
+    }
 
-        document.getElementById("category").onchange = () => {
-            axios.post(rt_search_stores, {
-                _token : token,
-                latMin: latMin,
-                longMin : longMin,
-                latMax : latMax,
-                longMax : longMax,
-                category : document.getElementById('category').value
-            })
-                .then(printStores)
-                .catch(function (error) {
-                    console.log(error);
-                });
+    document.getElementById("category").onchange = () => {
+        axios.post(rt_search_stores, {
+            _token : token,
+            latMin: latMin,
+            longMin : longMin,
+            latMax : latMax,
+            longMax : longMax,
+            category : document.getElementById('category').value
+        })
+            .then(printStores)
+            .catch(function (error) {
+                console.log(error);
+            });
 
         }
     }
@@ -181,26 +181,26 @@ function generateCategories(categories){
 
 
 
-    function generateSubCategories(subcategories){
-        res = subcategories.data;
+function generateSubCategories(subcategories){
+    res = subcategories.data;
 
-        console.log('coucou');
-        console.log(res);
-        document.getElementById('subcategory').options.length = 0;
-        document.getElementById('subcategory').style.display = 'block';
+    console.log('coucou');
+    console.log(res);
+    document.getElementById('subcategory').options.length = 0;
+    document.getElementById('subcategory').style.display = 'block';
 
-        for(let i = 0; i < res['subcategories'].length ; i++) {
-            console.log(i);
-            let option = document.createElement('option');
-            option.textContent = res['subcategories'][i].name;
-            option.setAttribute('value', res['subcategories'][i].id);
+    for(let i = 0; i < res['subcategories'].length ; i++) {
+        console.log(i);
+        let option = document.createElement('option');
+        option.textContent = res['subcategories'][i].name;
+        option.setAttribute('value', res['subcategories'][i].id);
 
-            document.getElementById('subcategory').appendChild(option);
-        }
-
-
+        document.getElementById('subcategory').appendChild(option);
     }
 
-    function error(){
+
+}
+
+function error(){
     console.log('ERROR !');
 }
