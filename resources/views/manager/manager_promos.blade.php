@@ -20,7 +20,11 @@
                 <td>{{$promo->promo_name}}</td>
                 <td>{{$promo->store_name}}</td>
                 <td>{{$promo->startDate}} -> {{$promo->endDate}}</td>
-                <td> <a href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id])}}">Réactiver</a></td>
+                @if($promo->activated == 0)
+                    <td> <a href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'no'])}}">Réactiver</a></td>
+                @else
+                    <td> <a href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'yes'])}}">Désactiver</a></td>
+                @endif
             </tr>
         @endforeach
 

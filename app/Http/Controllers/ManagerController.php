@@ -196,7 +196,7 @@ class ManagerController extends Controller
             ->join('users', 'users.id', '=', 'stores.user_id')
             ->where('users.id', '=', Auth::user()->id)
             ->select('stores.name as store_name', 'promotions.name as promo_name','promotions.id as promo_id', 'promotions.startDate',
-                'promotions.endDate')
+                'promotions.endDate', 'promotions.activated')
             ->get();
 
         return view('manager/manager_promos', ['promos' => $promos]);
@@ -244,10 +244,10 @@ class ManagerController extends Controller
         return view('manager/manager_new_promo', ['store' => $store]);
     }
 
-    public function refreshPromo($promo_id){
+    public function refreshPromo($promo_id, $activated){
         //current Datetime
         $currentDate = date('Y-m-d H:i:s');
-        $currentDatePLusOneMonth = date('Y-m-d H:i:s', strtotime(' +1month'));
+        $currentDatePlus2Weeks = date('Y-m-d H:i:s', strtotime(' +2weeks'));
 
         //on update la date de debut (date du jour actuel) et date de fin(date debut + 1 mois)
         //on peut surement tout faire d'un coup mais pas trouvé
@@ -256,13 +256,23 @@ class ManagerController extends Controller
             ->update(['startDate' => $currentDate]);
         DB::table('promotions')
             ->where('id','=', $promo_id)
-            ->update(['endDate' => $currentDatePLusOneMonth]);
-        DB::table('promotions')
-            ->where('id','=', $promo_id)
-            ->update(['activated' => '1']);
+            ->update(['endDate' => $currentDatePlus2Weeks]);
 
-       // return view('manager/manager_test',  ['date' => $currentDatePLusOneMonth]);
-        return redirect()->route('manager_get_promos', ['date' => $currentDatePLusOneMonth]);
+        if($activated == 'no'){
+            DB::table('promotions')
+                ->where('id','=', $promo_id)
+                ->update(['activated' => '1']);
+        } else if($activated == 'yes'){
+            DB::table('promotions')
+                ->where('id','=', $promo_id)
+                ->update(['activated' => '0']);
+        }
+
+        return redirect()->route('manager_get_promos');
+    }
+
+    public function test(){
+        echo 'ok';
     }
 
 

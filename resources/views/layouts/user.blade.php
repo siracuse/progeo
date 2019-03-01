@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Utilisateur</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -19,6 +19,7 @@
             integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
             crossorigin=""></script>
     <script src="{{asset('leaflet/script.js')}}"></script>
+    <script src="{{asset('leaflet/bibliAjax.js')}}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 @yield('css')
@@ -37,7 +38,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/user') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -55,6 +56,9 @@
                             <li><a href="{{ route('login') }}">Connexion</a></li>
                             <li><a href="{{ route('register') }}">Inscription</a></li>
                         @else
+                            <li><a href="{{ route('user_favoris') }}">Favoris</a></li>
+                            <li><a href="{{ route('user_codePromo') }}">Code Promo</a></li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
