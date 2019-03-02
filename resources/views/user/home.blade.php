@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.app')
 
 @section('css')
     <style>
@@ -17,6 +17,10 @@
         <option value="choisir" selected="selected">Choisir...</option>;
     </select>
 
+    <select id="subcategory" style="display: none">
+        <option value="choisir" selected="selected">Choisir...</option>;
+    </select>
+
 
 
     <div id="map"></div>
@@ -29,6 +33,11 @@
         //declaration routes
         var rt_search_cities = '{{ route('cities_search_post')}}';
         var rt_search_stores = '{{ route('stores_search_post')}}';
+        var rt_search_categories = '{{ route('categories_search_post') }}';
+        var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
+        var rt_getPromotionCode = '{{ route('user_codePromo')}}';
+        var rt_letRating = '{{ route('user_favoris')}}';
+
         var token = '{{csrf_token()}}';
 
         window.onload = function () {
@@ -36,5 +45,6 @@
             initMap();
             createList();
         };
+
     </script>
 @endsection

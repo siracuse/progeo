@@ -120,8 +120,8 @@ function printStores(stores){
             "<li>" + res['stores'][i].address+"</li>" +
             "<li>" + res['stores'][i].email + "</li>" +
             "<li>" + res['stores'][i].phone + "</li>" +
-            "<button><a href=" + url_getCode + ">Obtenir code</a> </button>" +
-            "<button><a href=" + url_letRating + ">Laisser un avis</a> </button>")
+            "<button><a href=" + rt_getPromotionCode + ">Obtenir code</a> </button>" +
+            "<button><a href=" + rt_letRating + ">Laisser un avis</a> </button>")
             .openPopup();
     }
 
@@ -186,13 +186,10 @@ function generateCategories(categories){
 function generateSubCategories(subcategories){
     res = subcategories.data;
 
-    console.log('coucou');
-    console.log(res);
     document.getElementById('subcategory').options.length = 0;
     document.getElementById('subcategory').style.display = 'block';
 
     for(let i = 0; i < res['subcategories'].length ; i++) {
-        console.log(i);
         let option = document.createElement('option');
         option.textContent = res['subcategories'][i].name;
         option.setAttribute('value', res['subcategories'][i].id);

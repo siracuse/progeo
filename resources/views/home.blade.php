@@ -35,8 +35,8 @@
         var rt_search_stores = '{{ route('stores_search_post')}}';
         var rt_search_categories = '{{ route('categories_search_post') }}';
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
-        var rt_getPromotionCode = '{{url('test')}}';
-        var rt_letRating = '{{url('bite')}}';
+        var rt_getPromotionCode = '{{ route('user_codePromo')}}';
+        var rt_letRating = '{{ route('user_favoris')}}';
 
         var token = '{{csrf_token()}}';
 
@@ -46,7 +46,5 @@
             createList();
         };
 
-        var url_getCode = '{{url('test')}}';
-        var url_letRating = '{{url('bite')}}';
     </script>
 @endsection
