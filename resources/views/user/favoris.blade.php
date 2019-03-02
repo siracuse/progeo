@@ -8,9 +8,8 @@
         <tbody>
         <tr>
             <td style="width:200px;"><b>Nom Magasin</b></td>
-            <td style="width:200px;"><b>SIRET</b></td>
-            <td style="width:200px;"><b>Nom User</b></td>
-            {{--<td style="width:200px;"><b>Action</b></td>--}}
+            <td style="width:350px;"><b>Adresse</b></td>
+            <td style="width:350px;"><b>Action</b></td>
         </tr>
 
         @foreach($favoris as $favori )
@@ -18,8 +17,12 @@
                 @if ($user->pivot->favoris === 1 && $user->name === Auth::user()->name )
                     <tr>
                         <td>{{$favori->name}}</td>
-                        <td>{{$favori->siret}}</td>
-                        <td>{{$user->name}}</td>
+                        <td>{{$favori->address}}</td>
+                        <td>
+                            <a href="{{url ('user\favoris\delete',
+                                ['store_id' => $favori->id, 'user_id' => Auth::user()->id]
+                            )}}">Supprimer</a>
+                        </td>
                     </tr>
                 @endif
             @endforeach
