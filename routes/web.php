@@ -198,7 +198,11 @@ Route::get ('/user/', 'User\HomeController@index')->name('user_home');
 
 //Favoris
 Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
+Route::get ('/user/favoris/delete/{store_id}/{user_id}', 'User\FavorisController@update')->name('user_favoris_update');
 
 //CodePromo
 Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_codePromo');
 
+//User get a promo code
+Route::get ('/user/getPromo/{promotion_id}/{user_id}', 'User\CodePromosController@userGetPromo')->name('user_get_promo');
+//Route::get ('/user/getPromo', 'User\CodePromosController@userGetPromo')->name('user_get_promo');

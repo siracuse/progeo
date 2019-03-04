@@ -40,7 +40,4 @@ class User extends Authenticatable
     public function storeSecond() {
         return $this->belongsToMany(Store::class);
     }
-
-
-
 }

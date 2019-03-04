@@ -236,8 +236,8 @@ class ManagerController extends Controller
 
             $promotion->store_id = $request->input('store_id');
 
-           // $promotion->save();
-           // return redirect()->route('manager_home');
+            $promotion->save();
+            return redirect()->route('manager_home');
         }
 
         $store = Store::findOrFail($store_id);

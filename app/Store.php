@@ -18,7 +18,6 @@ class Store extends Model
         return $this->belongsToMany(User::class)->withPivot('codePromo', 'favoris');
     }
 
-
     public function city() {
         return $this->belongsTo(City::class);
     }
