@@ -12,11 +12,47 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert ([
-            'name' => 'Belaghrouz',
-            'firstname' => 'Quentin',
+            'name' => 'hari',
+            'firstname' => 'hari',
             'phone'=>'0000000000',
-            'email' => 'quentin.belaghrouz@example.fr',
-            'password'=> '123456789',
+            'email' => 'hari@gmail.com',
+            'password'=> bcrypt('azerty'),
+            'is_resp'=>false
+        ]);
+
+        DB::table('users')->insert ([
+            'name' => 'quentin',
+            'firstname' => 'quentin',
+            'phone'=>'0000000000',
+            'email' => 'quentin@gmail.com',
+            'password'=> bcrypt('azerty'),
+            'is_resp'=>false
+        ]);
+
+        DB::table('users')->insert ([
+            'name' => 'dorian',
+            'firstname' => 'dorian',
+            'phone'=>'0000000000',
+            'email' => 'dorian@gmail.com',
+            'password'=> bcrypt('azerty'),
+            'is_resp'=>false
+        ]);
+
+        DB::table('users')->insert ([
+            'name' => 'samuel',
+            'firstname' => 'samuel',
+            'phone'=>'0000000000',
+            'email' => 'samuel@gmail.com',
+            'password'=> bcrypt('azerty'),
+            'is_resp'=>false
+        ]);
+
+        DB::table('users')->insert ([
+            'name' => 'apu',
+            'firstname' => 'apu',
+            'phone'=>'0000000000',
+            'email' => 'apu@gmail.com',
+            'password'=> bcrypt('azerty'),
             'is_resp'=>true
         ]);
 
