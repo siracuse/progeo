@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layout.user')
 
 
 @section('content')
@@ -9,23 +9,21 @@
         <tr>
             <td style="width:200px;"><b>Nom Magasin</b></td>
             <td style="width:350px;"><b>Adresse</b></td>
+            <td style="width:350px;"><b>Ville</b></td>
             <td style="width:350px;"><b>Action</b></td>
         </tr>
 
         @foreach($favoris as $favori )
-            @foreach($favori->userSecond as $user)
-                @if ($user->pivot->favoris === 1 && $user->name === Auth::user()->name )
                     <tr>
-                        <td>{{$favori->name}}</td>
+                        <td>{{$favori->store_name}}</td>
                         <td>{{$favori->address}}</td>
+                        <td>{{$favori->city_name}} - {{$favori->postalCode}}</td>
                         <td>
                             <a href="{{url ('user\favoris\delete',
-                                ['store_id' => $favori->id, 'user_id' => Auth::user()->id]
+                                ['store_id' => $favori->store_id, 'user_id' => Auth::user()->id]
                             )}}">Supprimer</a>
                         </td>
                     </tr>
-                @endif
-            @endforeach
         @endforeach
         </tbody>
     </table>
