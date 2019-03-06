@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -88,13 +88,12 @@ class RegisterController extends Controller
                 Store::create([
                     'name' => $data['store_name'],
                     'siret' => $data['siret'],
-                    'manager_id' => $u->id
+                    'user_id' => $u->id
                 ]);
 
-                return redirect()->route('manager_home');
+                $this->redirectTo = '/manager';
 
             }
-
             return $u;
     }
 }
