@@ -357,4 +357,18 @@ input{
     padding: 10px;
 }
 
+.table{
+    width: 75%;
+    margin: 30px auto;
+}
+
+.table thead{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.table thead tr th{
+    margin: 10px;
+}
+
 /* MANAGER  */

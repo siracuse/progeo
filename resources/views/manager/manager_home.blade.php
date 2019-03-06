@@ -3,11 +3,11 @@
 @section('content')
     <h1>Accueil Manager {{ Auth::user()->name }}</h1>
 
-    <h3>Liste des fonctionnalités</h3>
+    {{--<h3>Liste des fonctionnalités</h3>
 
         <a href="{{url ('manager\add_store')}}">Ajouter un magasin</a>
 
-    <hr>
+    <hr>--}}
 
     <h3>Liste des magasins</h3>
 
