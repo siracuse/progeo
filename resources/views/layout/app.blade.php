@@ -18,10 +18,10 @@
 
 <body>
     <header>
-        <img src="{{asset('img/logo.png')}}">
+        <a href="{{route('home')}}"> <img src="{{asset('img/logo.png')}}"> </a>
         <nav>
             <ul>
-                <li><a href="">Accueil</a></li>
+                <li><a href="{{route('home')}}">Accueil</a></li>
                 <li><a href="">Nous rejoindre</a></li>
                 <li><a href="">FAQ</a></li>
                 <li><a href="">Nous contacter</a></li>
