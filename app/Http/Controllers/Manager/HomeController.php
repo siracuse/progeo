@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
-class ManagerController extends Controller
+class HomeController extends Controller
 {
     public function getStores()
     {
@@ -32,67 +32,7 @@ class ManagerController extends Controller
         return view('manager/manager_home', ['stores' => $stores]);
     }
 
-    public function addStore(Request $request)
-    {
-        if ($request->input('name')) {
-            $this->validate($request, ['name' => 'required']);
-            $store = new Store();
-            $store->name = $request->input('name');
-            $store->address = $request->input('address');
-            $store->phone = $request->input('phone');
-            $store->email = $request->input('email');
-            $store->siret = $request->input('siret');
-            $store->photoInside = $request->input('photoInside');
-            $store->photoOutside = $request->input('photoOutside');
-            $store->latitude = $request->input('latitude');
-            $store->longitude = $request->input('longitude');
 
-            $villeID = DB::table('cities')->where('name', '=', $request->input('city_name'))->get();
-            foreach ($villeID as $key => $value) {
-                $id = $value->id;
-            }
-
-            $store->city_id = $id;
-            $store->category_id = $request->input('category_id');
-            $store->subcategory_id = $request->input('subcategory_id');
-            $store->user_id = Auth::user()->id;
-
-            $user = DB::table('users') ->where('id', '=', Auth::user()->id)
-                ->get();
-            foreach ($user as $key => $value)
-                $user_id = $value->id; $user_name = $value->name;
-            $directory_path = public_path().'/Images/stores/'.$user_id . '_' . $user_name;
-
-            if(!file_exists($directory_path))
-                File::makeDirectory($directory_path, $mode = 0777, true, true);
-
-            if( $request->file('photoInside')){
-                $file1 = $request->file('photoInside');
-                $file1_name = str_replace(' ','',$request->input('name')).'Inside'.rand(10, 10000).'.'.$file1->getClientOriginalExtension();
-                $file1->move($directory_path, $file1_name);
-                $store->photoInside = $file1_name;
-            }
-            if( $request->file('photoOutside')){
-                $file2 = $request->file('photoOutside');
-                $file2_name = str_replace(' ','',$request->input('name')).'Outside'.rand(10, 10000).'.'.$file2->getClientOriginalExtension();
-                $file2->move($directory_path, $file2_name);
-                $store->photoOutside = $file2_name;
-            }
-
-            $store->save();
-
-           return redirect()->route('manager_home');
-        }
-        $categories = Category::get();
-        $subcategories = Subcategory::get();
-
-        return view('manager.manager_add_store', [
-            'categories' => $categories,
-            'subcategories' => $subcategories,
-        ]);
-
-        return view('manager/manager_add_store');
-    }
 
     public function getEditStore($store_id)
     {
@@ -170,8 +110,8 @@ class ManagerController extends Controller
             $store->photoOutside = $file2_name;
         }
 
-       $store->save();
-       return redirect()->route('manager_home');
+        $store->save();
+        return redirect()->route('manager_home');
     }
 
     public function deleteStore($store_id)
@@ -236,8 +176,8 @@ class ManagerController extends Controller
 
             $promotion->store_id = $request->input('store_id');
 
-            $promotion->save();
-            return redirect()->route('manager_home');
+            // $promotion->save();
+            // return redirect()->route('manager_home');
         }
 
         $store = Store::findOrFail($store_id);

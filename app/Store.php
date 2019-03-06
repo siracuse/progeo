@@ -14,6 +14,10 @@ class Store extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function userSecond() {
+        return $this->belongsToMany(User::class)->withPivot('codePromo', 'favoris');
+    }
+
     public function city() {
         return $this->belongsTo(City::class);
     }

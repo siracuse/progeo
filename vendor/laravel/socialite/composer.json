@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Laravel\\Socialite\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "extra": {

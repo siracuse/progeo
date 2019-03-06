@@ -45,7 +45,8 @@ class CategoriesController extends Controller
 
     public function postSearchCategories(){
         //$categories = Category::get('id', 'name');
-        $categories = Category::get(['id', 'name']);
+       $categories = Category::get(['id', 'name']);
+
         return ['categories' => $categories];
     }
 }

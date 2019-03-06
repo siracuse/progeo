@@ -88,14 +88,6 @@ Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesContr
 
 Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
 
-/*
-|--------------------------------------------------------------------------
-| FACEBOOK
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 /*
 |--------------------------------------------------------------------------
@@ -176,17 +168,26 @@ Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
 */
 //STORES
 Route::get('/manager/', 'ManagerController@getStores')->name('manager_home');
+
 Route::get('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store');
 Route::post('/manager/add_store', 'ManagerController@addStore')->name('manager_add_store_post');
+
 Route::get('/manager/edit_store/{store_id}', 'ManagerController@getEditStore')->name('manager_edit_store');
 Route::post('/manager/edit_store', 'ManagerController@postEditStore')->name('manager_edit_store_post');
+
 Route::get ('/manager/delete_store/{store_id}', 'ManagerController@deleteStore')->name('manager_delete_store');
+
 //PROMOS
 Route::get('/manager/get_promos', 'ManagerController@getAllPromos')->name('manager_get_promos');
+
 Route::get('/manager/refresh_promos/{promo_id}/{activated}', 'ManagerController@refreshPromo')->name('manager_refresh_promo');
+
 Route::get('/manager/add_promo/{store_id}', 'ManagerController@addPromo')->name('manager_add_promo');
 Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');
+
+
 Route::get('/test/', 'ManagerController@test')->name('test');
+
 /*
 |--------------------------------------------------------------------------
 | USER INTERFACE
@@ -194,7 +195,14 @@ Route::get('/test/', 'ManagerController@test')->name('test');
 */
 //Page d'accueil
 Route::get ('/user/', 'User\HomeController@index')->name('user_home');
+
 //Favoris
 Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
+Route::get ('/user/favoris/delete/{store_id}/{user_id}', 'User\FavorisController@update')->name('user_favoris_update');
+
 //CodePromo
 Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_codePromo');
+
+//User get a promo code
+Route::get ('/user/getPromo/{promotion_id}/{user_id}', 'User\CodePromosController@userGetPromo')->name('user_get_promo');
+//Route::get ('/user/getPromo', 'User\CodePromosController@userGetPromo')->name('user_get_promo');

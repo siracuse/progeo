@@ -35,9 +35,4 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    'facebook' => [
-        'client_id' => '388066218420505',
-        'client_secret' => '111cd15c01318c8665394e9bd6e35dda',
-        'redirect' => 'http://localhost:8080/progeo/public/callback',
-    ],
 ];

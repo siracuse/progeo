@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>bob</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -12,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('leaflet/script.js')}}"></script>
-    <script src="{{asset('leaflet/bibliAjax.js')}}"></script>
 </head>
 
 <body>
@@ -51,5 +52,7 @@
         <p>© Progeo 2019 | Créer par Sahaquedo</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

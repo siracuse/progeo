@@ -62,7 +62,7 @@
         var rt_search_stores = '{{ route('stores_search_post')}}';
         var rt_search_categories = '{{ route('categories_search_post') }}';
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
-        var rt_getPromotionCode = '{{url('test')}}';
+        {{--var rt_getPromotionCode = '{{route('user_get_promo', ['promotion_id' => 'promo_id', 'user_id' => Auth::user()->id])}}';--}}
         var rt_letRating = '{{url('bite')}}';
 
         var token = '{{csrf_token()}}';
