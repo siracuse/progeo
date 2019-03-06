@@ -316,3 +316,19 @@ input{
 }
 
 /* INSCRIPTION */
+
+
+/* CONNEXION */
+
+.btn-login{
+    display: block;
+    margin: 50px auto;
+    width: 100%;
+}
+
+.mdp-forget{
+    display: block;
+    margin: 48px auto;
+}
+
+/* CONNEXION */
