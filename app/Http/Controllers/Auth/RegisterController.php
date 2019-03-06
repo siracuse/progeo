@@ -73,7 +73,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        dd($data);
             $u = User::create([
                 'name' => $data['name'],
                 'firstname' => $data['first_name'],
@@ -90,7 +89,6 @@ class RegisterController extends Controller
                     'siret' => $data['siret'],
                     'manager_id' => $u->id
                 ]);
-
                 return redirect()->route('manager_home');
 
             }

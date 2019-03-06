@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.manager')
 
 @section('content')
     <h1>Accueil Manager {{ Auth::user()->name }}</h1>
