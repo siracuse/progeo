@@ -21,8 +21,8 @@ class CreatePromotionsTable extends Migration
             $table->boolean('activated')->index();
             $table->string('promotionCode', 3)->index();
             $table->string('opinionCode', 3);
-            $table->string('photo1', 50);
-            $table->string('photo2', 50);
+            $table->string('photo1', 50)->nullable();
+            $table->string('photo2', 50)->nullable();
 
             $table->integer('store_id')->unsigned();
             $table->foreign('store_id')->references('id')->on('stores');
