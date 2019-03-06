@@ -1,29 +1,24 @@
 @extends('layout.user')
 
-@section('css')
-    <style>
-        #map {
-            margin-top: 50px;
-            height: 500px;
-        }
-    </style>
-@endsection
 
 @section('content')
-    <input id="city" list="cities">
-    <datalist id="cities"></datalist>
+    <div class="container--map">
+        <div class="barre"></div>
+        <img class="icon-triangle" src="{{asset('img/sort-down.svg')}}">
+        <div id="map"></div>
 
-    <select id="category">
-        <option value="choisir" selected="selected">Choisir...</option>;
-    </select>
+        <div class="bloc-search">
+            <input placeholder="Ville.." id="city" list="cities">
+            <datalist id="cities"></datalist>
 
-    <select id="subcategory" style="display: none">
-        <option value="choisir" selected="selected">Choisir...</option>;
-    </select>
-
-    {{ $error or ""}}
-
-    <div id="map"></div>
+            <select id="category">
+                <option value="choisir" selected="selected">Catégorie...</option>;
+            </select>
+            <select id="subCategory">
+                <option value="choisir" selected="selected">Sous catégorie...</option>;
+            </select>
+        </div>
+    </div>
 
     <script type="text/javascript">
         var map = null;
