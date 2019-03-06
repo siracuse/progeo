@@ -109,19 +109,30 @@ function centerOnCity(latitude, longitude){
 
 function printStores(stores){
     let res = stores.data
-    for(let i = 0; i < res['stores'].length ; i++){
-        rt_getPromotionCode = rt_getPromotionCode.replace('promo_id', res['stores'][i].promotion_id);
 
-        let marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude],
+    markersGroup = new L.LayerGroup();
+
+    for(let i = 0; i < res['stores'].length ; i++){
+
+        rt_getPromotionCode = rt_getPromotionCode.replace('promo_id', res['stores'][i].promotion_id);
+        rt_getPromotionCode = rt_getPromotionCode.replace('sto_id', res['stores'][i].store_id);
+
+        rt_user_store_fav = rt_user_store_fav.replace('sto_id', res['stores'][i].store_id);
+        console.log('promo', rt_getPromotionCode);
+        console.log('fav', rt_user_store_fav);
+
+
+        marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude],
             {
                 markerColor: 'red'
             }).addTo(map);
+        markersGroup.addLayer(marker);
 
         if(res['stores'][i].promotion_id){
             marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
                 "<p>" +  res['stores'][i].promotion_name +"</p>" +
                 "<button><a href=" + rt_getPromotionCode + ">Obtenir code</a> </button>" +
-                "<button><a href=" + rt_letRating + ">Laisser un avis</a> </button>")
+                "<button><a href=" + rt_user_store_fav + ">Ajouter en favoris</a> </button>")
                 .openPopup();
         }else{
             marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
@@ -132,27 +143,48 @@ function printStores(stores){
     }
 }
 
-
+//requete de la muerte pour cat + count (useless? idk)
+/* select categories.name, count(promotions.id)
+from categories left join stores on categories.id = stores.category_id
+left join promotions on stores.id = promotions.store_id
+where promotions.activated = 1 group by categories.id
+ */
 function generateCategories(categories){
     res = categories.data;
 
-    for(let i = 0; i < res['categories'].length ; i++){
+    for(let i = 0; i < res['categories'].length ; i++) {
         let option = document.createElement('option');
         option.textContent = res['categories'][i].name;
         option.setAttribute('value', res['categories'][i].id);
 
         document.getElementById('category').appendChild(option);
 
-        document.getElementById('category').onchange = () => {
-            axios.post(rt_search_subcategories, {
-                _token : token,
-                category : document.getElementById('category').value
+        document.getElementById('category').onchange = () =>
+        {
+            /* axios.post(rt_search_subcategories, {
+                 _token : token,
+                 category : document.getElementById('category').value
+             })
+                 .then(generateSubCategories)
+                 .catch(function (error) {
+                     console.log(error);
+                 });
+         };*/
+
+
+            axios.post(rt_search_stores, {
+                _token: token,
+                latMin: latMin,
+                longMin: longMin,
+                latMax: latMax,
+                longMax: longMax
             })
-                .then(generateSubCategories)
+                .then(printStores)
                 .catch(function (error) {
                     console.log(error);
                 });
-        };
+
+        }
     }
 
 

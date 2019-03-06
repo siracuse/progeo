@@ -35,7 +35,6 @@
         var rt_search_stores = '{{ route('stores_search_post')}}';
         var rt_search_categories = '{{ route('categories_search_post') }}';
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
-        var rt_getPromotionCode = '{{url('user_get_promo')}}';
         var rt_letRating = '{{url('bite')}}';
 
         var token = '{{csrf_token()}}';
