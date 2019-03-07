@@ -391,6 +391,14 @@ input{
     justify-content: space-around;
 }
 
+.btn-supp:hover{
+    background-color: #3d4c51;
+}
+
+.btn-modif:hover{
+    background-color: #3d4c51;
+}
+
 .action-table{
     display: flex;
     justify-content: space-around;
