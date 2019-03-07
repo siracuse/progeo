@@ -367,8 +367,38 @@ input{
     font-weight: bold;
 }
 
-.table thead tr th{
-    margin: 10px;
+.table tr{
+    height: 50px;
+}
+
+.btn-modif{
+    background-color: #fbc632;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-supp{
+    background-color: #fb3b32;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.action-table{
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-table img{
+    margin-left: 18px;
+    width: 13px;
 }
 
 /* MANAGER  */
