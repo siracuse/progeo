@@ -110,21 +110,16 @@ class StoresController extends Controller
     }
 
     public function postSearchStores(Request $request){
-     /*   $stores = DB::table('stores')
-            ->join('categories', 'stores.category_id', '=', 'stores.id')
-            ->where('latitude', '>', $request->input('latMin'))
-            ->where('longitude', '>', $request->input('longMin'))
-            ->where('latitude', '<', $request->input('latMax'))
-            ->where('longitude', '<', $request->input('latMax')); */
 
-     $stores = Store::with('category')
-         ->leftJoin('promotions', 'stores.id', '=', 'promotions.store_id')
+     $stores = DB::table('stores')
+         ->Join('promotions', 'stores.id', '=', 'promotions.store_id')
+         ->Join('categories', 'categories.id', '=', 'stores.category_id')
          ->where('latitude', '>', $request->input('latMin'))
          ->where('longitude', '>', $request->input('longMin'))
          ->where('latitude', '<', $request->input('latMax'))
          ->where('longitude', '<', $request->input('latMax'))
          ->when($request->input('category'), function($query) use ($request){
-             return $query->where('category_id', $request->input('category'));
+             return $query->where('category_id', '=', $request->input('category'));
          })
          ->select('stores.name as store_name', 'stores.id as store_id', 'stores.*',
                   'promotions.name as promotion_name', 'promotions.id as promotion_id', 'promotions.*')

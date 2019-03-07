@@ -5,7 +5,11 @@ function initMap() {
         minZoom: 1,
         maxZoom: 200
     }).addTo(map);
+
+    layerGroup = L.layerGroup();
 }
+
+
 
 function createList(){
     let body = document.getElementsByTagName("body")[0];
@@ -109,8 +113,8 @@ function centerOnCity(latitude, longitude){
 
 function printStores(stores){
     let res = stores.data
-
-    markersGroup = new L.LayerGroup();
+    console.log('stores', res);
+    map.removeLayer(layerGroup);
 
     for(let i = 0; i < res['stores'].length ; i++){
 
@@ -118,15 +122,13 @@ function printStores(stores){
         rt_getPromotionCode = rt_getPromotionCode.replace('sto_id', res['stores'][i].store_id);
 
         rt_user_store_fav = rt_user_store_fav.replace('sto_id', res['stores'][i].store_id);
-        console.log('promo', rt_getPromotionCode);
-        console.log('fav', rt_user_store_fav);
-
 
         marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude],
             {
                 markerColor: 'red'
             }).addTo(map);
-        markersGroup.addLayer(marker);
+
+        layerGroup.addLayer(marker);
 
         if(res['stores'][i].promotion_id){
             marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
@@ -141,6 +143,8 @@ function printStores(stores){
         }
 
     }
+
+    layerGroup = layerGroup.addTo(map);
 }
 
 //requete de la muerte pour cat + count (useless? idk)
@@ -152,6 +156,8 @@ where promotions.activated = 1 group by categories.id
 function generateCategories(categories){
     res = categories.data;
 
+
+
     for(let i = 0; i < res['categories'].length ; i++) {
         let option = document.createElement('option');
         option.textContent = res['categories'][i].name;
@@ -161,6 +167,8 @@ function generateCategories(categories){
 
         document.getElementById('category').onchange = () =>
         {
+            console.log('un coucou impromptu');
+            layerGroup.clearLayers();
             /* axios.post(rt_search_subcategories, {
                  _token : token,
                  category : document.getElementById('category').value
@@ -177,7 +185,8 @@ function generateCategories(categories){
                 latMin: latMin,
                 longMin: longMin,
                 latMax: latMax,
-                longMax: longMax
+                longMax: longMax,
+                category: document.getElementById('category').value
             })
                 .then(printStores)
                 .catch(function (error) {
