@@ -27,6 +27,8 @@
             <li><a href="">Nous contacter</a></li>
             <li><a href="{{route('user_favoris')}}">Favoris</a></li>
             <li><a href="{{route('user_codePromo')}}">Code Promo</a></li>
+            <li><a href="{{route('user_edit_account')}}">Mon Compte</a></li>
+            <li><a href="{{route('user_edit_password')}}">Mdp</a></li>
         </ul>
         <ul>
             <!-- Authentication Links -->
