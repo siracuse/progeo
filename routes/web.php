@@ -215,3 +215,11 @@ Route::post ('/user/editAccount', 'User\AccountController@postEditAccount')->nam
 //User edit password
 Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
 Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
+
+/*
+|--------------------------------------------------------------------------
+| STORE INTERFACE
+|--------------------------------------------------------------------------
+*/
+
+Route::get ('store/{store_id}', 'StoreController@getDetails')->name('store_details');
