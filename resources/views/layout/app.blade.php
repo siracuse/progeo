@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="fr">
-<head>
     <meta charset="utf-8">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -13,6 +12,7 @@
             crossorigin=""></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <script src="{{asset('js/bibliAjax.js')}}"></script>
     <script src="{{asset('leaflet/script.js')}}"></script>
 </head>
 

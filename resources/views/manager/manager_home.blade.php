@@ -36,9 +36,7 @@
                         <img src="{{asset('img/cancel.svg')}}">
                     </a>
                 </td>
-                {{--<td><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Ajouter</a> /
-                    <a href="{{url ('/manager/get_promos')}}">Consulter</a>
-                </td>--}}
+                <td><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Ajouter</a></td>
             </tr>
         @endforeach
 

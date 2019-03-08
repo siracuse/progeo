@@ -9,8 +9,6 @@ function initMap() {
     layerGroup = L.layerGroup();
 }
 
-
-
 function createList(){
     let body = document.getElementsByTagName("body")[0];
     let input = document.getElementById("city");
@@ -167,7 +165,6 @@ function generateCategories(categories){
 
         document.getElementById('category').onchange = () =>
         {
-            console.log('un coucou impromptu');
             layerGroup.clearLayers();
             /* axios.post(rt_search_subcategories, {
                  _token : token,

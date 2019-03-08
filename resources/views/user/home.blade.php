@@ -18,6 +18,8 @@
                 {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
+
+        <button onclick="testAdddress()">TEST</button>
     </div>
 
     <script type="text/javascript">

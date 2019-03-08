@@ -20,7 +20,7 @@ class CreateStoreUserTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('promo_id')->unsigned();
+            $table->integer('promo_id')->unsigned()->nullable();
             $table->foreign('promo_id')->references('id')->on('promotions');
 
             $table->boolean('favoris')->nullable();
