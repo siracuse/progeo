@@ -18,17 +18,15 @@
 
 <body>
 <header>
-    <a href="{{route('user_home')}}"> <img src="{{asset('img/logo.png')}}"> </a>
+    <a href="{{route('manager_home')}}"> <img src="{{asset('img/logo.png')}}"> </a>
     <nav>
         <ul>
-            <li><a href="{{route('user_home')}}">Accueil</a></li>
+            <li><a href="{{route('manager_home')}}">Accueil</a></li>
             <li><a href="">Nous rejoindre</a></li>
             <li><a href="">FAQ</a></li>
             <li><a href="">Nous contacter</a></li>
-            <li><a href="{{route('user_favoris')}}">Favoris</a></li>
-            <li><a href="{{route('user_codePromo')}}">Code Promo</a></li>
-            <li><a href="{{route('user_edit_account')}}">Mon Compte</a></li>
-            <li><a href="{{route('user_edit_password')}}">Mdp</a></li>
+            {{--<li><a href="{{route('user_favoris')}}">Favoris</a></li>
+            <li><a href="{{route('user_codePromo')}}">Code Promo</a></li>--}}
         </ul>
         <ul>
             <!-- Authentication Links -->
@@ -59,6 +57,12 @@
         </ul>
     </nav>
 </header>
+<ul class="nav2-manager">
+    <li><a href="{{route('manager_home')}}">Mes magasins</a></li>
+    <li><a href="{{url ('manager\add_store')}}">Ajouter un magasin</a></li>
+    <li><a href="{{route('manager_get_promos')}}">Historique des promotions</a></li>
+    {{--<li><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Créer une promotion</a></li>--}}
+</ul>
 
 @yield('content')
 

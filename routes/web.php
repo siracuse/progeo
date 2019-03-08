@@ -208,4 +208,10 @@ Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_c
 //User get a promo code
 Route::get ('/user/getPromo/{store_id}/{promotion_id}/{user_id}', 'User\CodePromosController@userGetPromo')->name('user_get_promo');
 
+//User edit account
+Route::get ('/user/editAccount', 'User\AccountController@getEditAccount')->name('user_edit_account');
+Route::post ('/user/editAccount', 'User\AccountController@postEditAccount')->name('user_edit_post_account');
 
+//User edit password
+Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
+Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');

@@ -332,3 +332,81 @@ input{
 }
 
 /* CONNEXION */
+
+
+
+/* MANAGER */
+
+.nav2-manager{
+    display: flex;
+    background-color: #fbc632;
+    margin-bottom: 50px;
+}
+
+.nav2-manager li{
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.nav2-manager li:hover{
+    background-color: #3d4c51;
+    color: white;
+}
+
+.nav2-manager a{
+    padding: 10px;
+}
+
+.table{
+    width: 75%;
+    margin: 30px auto;
+}
+
+.table thead{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.table tr{
+    height: 50px;
+}
+
+.btn-modif{
+    background-color: #fbc632;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-supp{
+    background-color: #fb3b32;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-supp:hover{
+    background-color: #3d4c51;
+}
+
+.btn-modif:hover{
+    background-color: #3d4c51;
+}
+
+.action-table{
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-table img{
+    margin-left: 18px;
+    width: 13px;
+}
+
+/* MANAGER  */

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.manager')
 
 @section('content')
     <h3>Liste des promos</h3>
