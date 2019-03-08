@@ -3,7 +3,6 @@
 @section('content')
     <h3>Liste des promos</h3>
 
-    <a href="{{url ('manager')}}">Retour</a><br><br>
 
     <table class="table">
         <thead>

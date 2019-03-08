@@ -391,7 +391,21 @@ input{
     justify-content: space-around;
 }
 
+.btn-add-promo{
+    background-color: #64b5f6;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .btn-supp:hover{
+    background-color: #3d4c51;
+}
+
+.btn-add-promo:hover{
     background-color: #3d4c51;
 }
 
@@ -407,6 +421,23 @@ input{
 .action-table img{
     margin-left: 18px;
     width: 13px;
+}
+
+.retour{
+    background-color: #3d4c51;
+    color: white;
+    padding: 5px 31px;
+}
+
+.container-form{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.container-form h2{
+    margin: 35px 0;
+    font-size: 19px;
+    font-weight: bold;
 }
 
 /* MANAGER  */
