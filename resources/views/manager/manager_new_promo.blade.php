@@ -2,7 +2,6 @@
 
 @section('content')
 
-    <a href="{{url ('manager')}}">Retour</a><br><br>
     <h2>Ajout d'une promotion pour {{$store->name}}</h2>
 
     <form method="post" action="{{ route ('manager_add_promo_post', ['store_id' => $store->id]) }}" enctype="multipart/form-data">

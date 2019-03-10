@@ -131,7 +131,7 @@ function printStores(stores){
         if(res['stores'][i].promotion_id){
             marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
                 "<p>" +  res['stores'][i].promotion_name +"</p>" +
-                "<button><a href=" + rt_getPromotionCode + ">Obtenir code</a> </button>" +
+                "<button id='promo'><a href=" + rt_getPromotionCode + ">Obtenir code</a> </button>" +
                 "<button><a href=" + rt_user_store_fav + ">Ajouter en favoris</a> </button>")
                 .openPopup();
         }else{
@@ -139,6 +139,8 @@ function printStores(stores){
                 "<p> Aucune promotion en ce moment...</p>")
                 .openPopup();
         }
+
+        console.log(document.getElementById('promo'));
 
     }
 

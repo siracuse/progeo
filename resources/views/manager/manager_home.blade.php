@@ -36,7 +36,13 @@
                         <img src="{{asset('img/cancel.svg')}}">
                     </a>
                 </td>
+<<<<<<< HEAD
                 <td><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Ajouter</a></td>
+=======
+                <td><a class="btn-add-promo" href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Ajouter une promotion</a>
+                    {{--<a href="{{url ('/manager/get_promos')}}">Consulter</a>--}}
+                </td>
+>>>>>>> ea6da389cab0ddb454e1ec94f8694625fbae78bc
             </tr>
         @endforeach
 

@@ -2,7 +2,6 @@
 
 @section ('content')
 
-    <a href="{{url ('manager')}}">Retour</a><br><br>
     <h2> Edition du Magasin:  {{ $store->name}}</h2>
 
     <form method="post" action="{{ route ('manager_edit_store_post') }}" enctype="multipart/form-data">
