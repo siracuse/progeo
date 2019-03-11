@@ -63,7 +63,6 @@ h1,h2,h3,h4,h5,h6{
     height: 550px;
     width: 100%;
     margin-bottom: 50px;
-    z-index: 0;
 }
 
 
@@ -132,31 +131,6 @@ nav ul li{
 .btn-inscription{
     text-decoration: underline;
     text-underline-position: under;
-}
-
-li:hover .hidden li a {
-    line-height: 40px;
-}
-
-li ul li a {
-    width: auto;
-}
-
-.hidden {
-    display: none;
-    margin-left: 0;
-    z-index: 2;
-    background-color: white;
-}
-
-.hidden li {
-    display: block;
-}
-
-ul li a:hover + .hidden, .hidden:hover {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
 }
 
 /* NAV */
