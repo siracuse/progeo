@@ -379,7 +379,6 @@ input{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 7px;
 }
 
 .btn-supp{
@@ -390,7 +389,6 @@ input{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 7px;
 }
 
 .btn-add-promo{
@@ -400,7 +398,6 @@ input{
     font-weight: bold;
     display: flex;
     align-items: center;
-    margin-top: 7px;
     justify-content: space-around;
 }
 
@@ -443,13 +440,4 @@ input{
     font-weight: bold;
 }
 
-.form-group select{
-    padding: 10px;
-    margin: 10px;
-    background-color: #f6f6f6;
-}
-
 /* MANAGER  */
-
-tr:nth-child(even) {background: #f7f7f7}
-tr:nth-child(odd) {background: #FFF}
