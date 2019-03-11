@@ -1,8 +1,17 @@
-@extends('layout.user')
+@extends('user.home')
 
 
-@section('content')
+@section('mes_infos')
 
+    <style>
+        .mes_infos li {
+            border: none;
+        }
+
+        .favoris {
+            border-bottom: 2px solid #0063B2;
+        }
+    </style>
     <h2> Mes Favoris </h2>
     <table>
         <tbody>

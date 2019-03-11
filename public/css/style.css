@@ -482,5 +482,35 @@ input{
 
 /* MANAGER  */
 
+/* USER */
+
+.mes_infos{
+    margin-right: 41px;
+    padding: 0;
+    width: 100%;
+    margin-left: 46px;
+
+    font-size: 17px;
+    color: #101010;
+}
+
+.mes_infos ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.mes_infos ul li{
+    margin: 0 20px;
+}
+
+
+/* USER */
+
+
+
 tr:nth-child(even) {background: #f7f7f7}
 tr:nth-child(odd) {background: #FFF}
+
+
+

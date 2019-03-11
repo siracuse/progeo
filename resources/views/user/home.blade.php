@@ -45,4 +45,18 @@
         var url_getCode = '{{url('test')}}';
         var url_letRating = '{{url('bite')}}';
     </script>
+
+    <div class="container">
+        <div class="mes_infos">
+            <ul>
+                <li ><a class="favoris" href="{{route('user_favoris')}}">Mes favoris</a></li>
+                <li ><a class="promotions" href="{{route('user_codePromo')}}">Mes promotions</a></li>
+                <li ><a class="avis" href="">Mes avis</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            @yield('mes_infos')
+        </div>
+    </div>
 @endsection
