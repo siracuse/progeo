@@ -1,7 +1,7 @@
 @extends('layout.manager')
 
 @section('content')
-    <h3>Liste des promos</h3>
+    <div class="panel-heading">Liste des promos</div>
 
 
     <table class="table">
@@ -20,9 +20,9 @@
                 <td>{{$promo->store_name}}</td>
                 <td>{{$promo->startDate}} -> {{$promo->endDate}}</td>
                 @if($promo->activated == 0)
-                    <td> <a href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'no'])}}">Réactiver</a></td>
+                    <td> <a class="btn-add-promo" href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'no'])}}">Réactiver</a></td>
                 @else
-                    <td> <a href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'yes'])}}">Désactiver</a></td>
+                    <td> <a class="btn-supp" href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'yes'])}}">Désactiver</a></td>
                 @endif
             </tr>
         @endforeach

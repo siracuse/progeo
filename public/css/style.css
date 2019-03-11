@@ -111,20 +111,20 @@ nav{
     margin-right: 41px;
     padding: 0;
     width: 100%;
+    margin-left: 46px;
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
+    font-size: 17px;
     color: #101010;
 }
 
 nav ul{
     display: flex;
     list-style: none;
-    margin-left: 100px;
 }
 
 nav ul li{
-    margin: 0 25px;
+    margin: 0 20px;
 }
 
 
@@ -247,6 +247,8 @@ form{
 
 .form-group{
     width: 45%;
+    display: flex;
+    flex-direction: column;
 }
 
 input{
@@ -426,11 +428,6 @@ input{
     width: 13px;
 }
 
-.retour{
-    background-color: #3d4c51;
-    color: white;
-    padding: 5px 31px;
-}
 
 .container-form{
     width: 75%;
@@ -446,7 +443,16 @@ input{
 .form-group select{
     padding: 10px;
     margin: 10px;
+    width: 38%;
     background-color: #f6f6f6;
+}
+
+.active-promo-texte{
+    width: 90%;
+}
+
+.input-radio{
+    width: 20%;
 }
 
 /* MANAGER  */

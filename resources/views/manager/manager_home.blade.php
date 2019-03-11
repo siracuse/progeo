@@ -36,6 +36,7 @@
                         <img src="{{asset('img/cancel.svg')}}">
                     </a>
                 </td>
+
                 <td><a class="btn-add-promo" href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Ajouter une promotion</a>
                     {{--<a href="{{url ('/manager/get_promos')}}">Consulter</a>--}}
                 </td>
