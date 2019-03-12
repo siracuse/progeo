@@ -12,24 +12,20 @@
             border-bottom: 2px solid #0063B2;
         }
     </style>
-    <h2> Mes Code Promo </h2>
-    <table>
-        <tbody>
-        <tr>
-            <td style="width:200px;"><b>Nom Magasin</b></td>
-            <td style="width:200px;"><b>Pormotion</b></td>
-            <td style="width:200px;"><b>Code Promo</b></td>
-            <td style="width:200px;"><b>Période</b></td>
-        </tr>
 
-        @foreach($promos as $promo)
-            <tr>
-                <td>{{$promo->store_name}}</td>
-                <td>{{$promo->promo_name}}</td>
-                <td>{{$promo->promotionCode}}</td>
-                <td>{{$promo->startDate}} / {{$promo->endDate}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+
+    <div class="flex-mes-infos">
+    @foreach($promos as $promo)
+
+        <ul>
+            <li class="store-promo">{{$promo->store_name}}</li>
+            <li class="name-promo">Nom : {{$promo->promo_name}}</li>
+            <li class="code-promo">Code : {{$promo->promotionCode}}</li>
+            <li class="date-promo">Du {{$promo->startDate}}</li>
+            <li>Au {{$promo->endDate}}</li>
+        </ul>
+    @endforeach
+    </div>
+
 @endsection
