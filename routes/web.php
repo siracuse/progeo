@@ -204,6 +204,7 @@ Route::get ('/user/favoris/update/{store_id}/{user_id}', 'User\FavorisController
 
 //CodePromo
 Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_codePromo');
+Route::get ('/user/codePromo/{store_id}/{user_id}/{promo_id}', 'User\CodePromosController@delete')->name('user_codePromo_delete');
 
 //User get a promo code
 Route::get ('/user/getPromo/{store_id}/{promotion_id}/{user_id}', 'User\CodePromosController@userGetPromo')->name('user_get_promo');
