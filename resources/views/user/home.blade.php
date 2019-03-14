@@ -12,7 +12,7 @@
             <input placeholder="Ville.." id="city" list="cities">
             <datalist id="cities"></datalist>
 
-            <select id="category">
+            <select class="select-category" id="category">
                 <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
             {{--<select id="subCategory">--}}
@@ -47,14 +47,66 @@
     <div class="container">
         <div class="mes_infos">
             <ul>
-                <li ><a class="favoris" href="{{route('user_favoris')}}">Mes favoris</a></li>
-                <li ><a class="promotions" href="{{route('user_codePromo')}}">Mes promotions</a></li>
+                <li id="button_favoris"><a class="favoris" onclick="afficheFavoris()" onmouseover="this.style.cursor='pointer'">Mes favoris</a></li>
+                <li id="button_promo"><a class="promotions" onclick="affichePromos()" onmouseover="this.style.cursor='pointer'">Mes promotions</a></li>
                 <li ><a class="avis" href="">Mes avis</a></li>
             </ul>
         </div>
 
         <div class="content">
-            @yield('mes_infos')
+            <div id="promos" class="flex-mes-infos">
+                @foreach($promos as $promo)
+
+                    <ul>
+                        <li class="store-promo">{{$promo->store_name}}</li>
+                        <li class="name-promo">Nom : {{$promo->promo_name}}</li>
+                        <li class="code-promo">Code : {{$promo->promotionCode}}</li>
+                        <li class="date-promo">Du {{date('d-m-Y', strtotime($promo->startDate))}} </li>
+                        <li>Au {{date('d-m-Y', strtotime($promo->endDate))}}</li>
+                        <li><a class="btn-inscription" href="{{url ('user/codePromo',
+                    ['store_id' => $promo->store_id, 'user_id' => $promo->user_id, 'promo_id' => $promo->promo_id]
+                    )}}">
+                                Retirer</a>
+                        </li>
+                    </ul>
+                @endforeach
+            </div>
+            <div id="favoris" class="flex-mes-infos">
+                @foreach($favoris as $favori )
+                    <ul>
+                        <li class="store-promo">{{$favori->store_name}} <img class="star" src="{{asset('img/star.svg')}}"/></li>
+                        <li class="name-promo">{{$favori->address}}</li>
+                        <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
+                        <li><img src="{{asset('img/store.svg')}}"/> {{$favori->category_name}}</li>
+                        <li><img src="{{asset('img/add.svg')}}"/> {{$favori->subcategory_name}}</li>
+                        <li><a class="btn-inscription" href="{{url ('user\favoris\delete',
+
+                                ['store_id' => $favori->store_id, 'user_id' => Auth::user()->id]
+                            )}}">Supprimer</a></li>
+                    </ul>
+                @endforeach
+            </div>
+
+            <!--@yield('mes_infos')-->
+            <script>
+                document.getElementById("promos").style.display= "none";
+                document.getElementById('favoris').style.display="none";
+
+                function affichePromos(){
+                    document.getElementById("promos").style.display= "flex";
+                    document.getElementById('favoris').style.display="none";
+                    document.getElementById('button_promo').style.borderBottom = "2px solid #0063B2";
+                    document.getElementById('button_favoris').style.borderBottom = "none";
+                }
+
+                function afficheFavoris(){
+                    document.getElementById("promos").style.display= "none";
+                    document.getElementById('favoris').style.display="flex";
+                    document.getElementById('button_promo').style.borderBottom = "none";
+                    document.getElementById('button_favoris').style.borderBottom = "2px solid #0063B2";
+                }
+
+            </script>
         </div>
     </div>
 @endsection

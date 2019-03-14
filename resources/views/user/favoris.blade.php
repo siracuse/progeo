@@ -1,4 +1,4 @@
-@extends('user.home')
+<!-- @extends('user.home')
 
 
 @section('mes_infos')
@@ -30,4 +30,4 @@
             </ul>
         @endforeach
     </div>
-@endsection
+@endsection -->

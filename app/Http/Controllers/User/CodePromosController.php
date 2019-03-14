@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CodePromosController extends Controller
 {
-    public function getAll () {
+   /*public function getAll () {
 
         $promos = DB::table('store_user')
             ->join('stores', 'stores.id', '=', 'store_user.store_id')
@@ -34,7 +34,7 @@ class CodePromosController extends Controller
         return view ('user.codePromo',[
             'promos' => $promos
         ]);
-    }
+    }*/
 
 
     public function userGetPromo(Request $request){
