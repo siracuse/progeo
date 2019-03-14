@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('leaflet/script.js')}}"></script>
+    <script src="{{asset('js/bibliAjax.js')}}"></script>
 </head>
 
 <body>

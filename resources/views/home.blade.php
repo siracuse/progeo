@@ -8,6 +8,7 @@
         <div id="map"></div>
 
         <div class="bloc-search">
+            <div id="info_promo"></div>
             <input placeholder="Ville.." id="city" list="cities">
             <datalist id="cities"></datalist>
 
@@ -62,10 +63,8 @@
         var rt_search_stores = '{{ route('stores_search_post')}}';
         var rt_search_categories = '{{ route('categories_search_post') }}';
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
-        {{--var rt_getPromotionCode = '{{route('user_get_promo', ['promotion_id' => 'promo_id', 'user_id' => Auth::user()->id])}}';--}}
-        var rt_letRating = '{{url('bite')}}';
-
         var token = '{{csrf_token()}}';
+        var view = 'home';
 
         window.onload = function () {
             // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
@@ -73,7 +72,5 @@
             createList();
         };
 
-        var url_getCode = '{{url('test')}}';
-        var url_letRating = '{{url('bite')}}';
     </script>
 @endsection

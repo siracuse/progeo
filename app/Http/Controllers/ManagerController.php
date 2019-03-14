@@ -81,7 +81,7 @@ class ManagerController extends Controller
 
             $store->save();
 
-           return redirect()->route('manager_home');
+            return redirect()->route('manager_home');
         }
         $categories = Category::get();
         $subcategories = Subcategory::get();
@@ -120,6 +120,8 @@ class ManagerController extends Controller
     }
 
     public function postEditStore (Request $request) {
+        echo $request->input('latitude');
+        echo $request->input('longitude');
 
         $this->validate($request, ['name' => 'required']);
 
@@ -170,23 +172,27 @@ class ManagerController extends Controller
             $store->photoOutside = $file2_name;
         }
 
-       $store->save();
-       return redirect()->route('manager_home');
+        $store->save();
+        return redirect()->route('manager_home');
     }
 
     public function deleteStore($store_id)
     {
         $store = Store::findOrFail($store_id);
 
-        $user = DB::table('users') ->where('id', '=', $store->user_id)
-            ->get();
+        $promotion = DB::table('promotions')->where('store_id', '=', $store_id);
+
+        $user = DB::table('users') ->where('id', '=', $store->user_id)->get();
         foreach ($user as $key => $value)
             $user_id = $value->id; $user_name = $value->name;
 
         $directory_path = public_path().'/Images/stores/'.$user_id . '_' . $user_name;
         File::delete($directory_path.'/'.$store->photoInside);
         File::delete($directory_path.'/'.$store->photoOuside);
+
+        $promotion->delete();
         $store->delete();
+
         return redirect()->route('manager_home');
     }
 
@@ -210,8 +216,6 @@ class ManagerController extends Controller
             }
             $promotion = new Promotion();
             $promotion->name = $request->input('name');
-            $promotion->startDate = date('Y-m-d', strtotime($request->input('dateStart')));
-            $promotion->endDate = date('Y-m-d', strtotime($request->input('dateStart')));
 
             $user = DB::table('users') ->where('id', '=', Auth::user()->id)
                 ->get();
@@ -227,6 +231,10 @@ class ManagerController extends Controller
                 $file_name = 'promo_'.$request->input('store_id').'_'.rand(10, 10000).'.'.$file->getClientOriginalExtension();
                 $file->move($directory_path, $file_name);
                 $promotion->photo1 = $file_name;
+            }
+            if($request->input('activated') == 1){
+                $promotion->startDate = date('Y-m-d');
+                $promotion->endDate = date('Y-m-d', strtotime(' +2weeks'));
             }
 
             $promotion->activated = $request->input('activated');
@@ -246,8 +254,8 @@ class ManagerController extends Controller
 
     public function refreshPromo($promo_id, $activated){
         //current Datetime
-        $currentDate = date('Y-m-d H:i:s');
-        $currentDatePlus2Weeks = date('Y-m-d H:i:s', strtotime(' +2weeks'));
+        $currentDate = date('Y-m-d');
+        $currentDatePlus2Weeks = date('Y-m-d', strtotime(' +2weeks'));
 
         //on update la date de debut (date du jour actuel) et date de fin(date debut + 1 mois)
         //on peut surement tout faire d'un coup mais pas trouvé

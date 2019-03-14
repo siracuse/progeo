@@ -197,6 +197,10 @@ Route::get('/test/', 'ManagerController@test')->name('test');
 //Page d'accueil
 Route::get ('/user/', 'User\HomeController@index')->name('user_home');
 
+
+//User->GetPromo
+Route::post('/user/promo', 'User\CodePromosController@userGetPromo')->name('user_promotion_post');
+
 //Favoris
 Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
 Route::get ('/user/favoris/delete/{store_id}/{user_id}', 'User\FavorisController@delete')->name('user_favoris_delete');
@@ -204,9 +208,7 @@ Route::get ('/user/favoris/update/{store_id}/{user_id}', 'User\FavorisController
 
 //CodePromo
 Route::get ('/user/codePromo', 'User\CodePromosController@getAll')->name('user_codePromo');
-
-//User get a promo code
-Route::get ('/user/getPromo/{store_id}/{promotion_id}/{user_id}', 'User\CodePromosController@userGetPromo')->name('user_get_promo');
+Route::get ('/user/codePromo/{store_id}/{user_id}/{promo_id}', 'User\CodePromosController@delete')->name('user_codePromo_delete');
 
 //User edit account
 Route::get ('/user/editAccount', 'User\AccountController@getEditAccount')->name('user_edit_account');
