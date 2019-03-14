@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-form">
         <div class="panel-heading">Inscription</div>
 
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">

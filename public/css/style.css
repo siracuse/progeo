@@ -271,7 +271,7 @@ form{
 }
 
 .form-group{
-    width: 45%;
+    width: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -318,7 +318,6 @@ input{
 }
 
 .btn-form{
-    margin-right: 118px;
     font-size: 19px;
     margin-top: 35px;
     cursor: pointer;
@@ -341,6 +340,40 @@ input{
 .bloc-info p{
     color: #adadad;
 }
+
+.container-form{
+    width: 75%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1020px) {
+    .container-form{
+        width: 100%;
+    }
+
+    input{
+        width: 85%;
+    }
+
+    form{
+        padding: 0 45px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    input{
+        width: 90%;
+    }
+
+    .form-group{
+        width: 80%;
+    }
+
+    form{
+        padding: 0;
+    }
+}
+
 
 /* INSCRIPTION */
 
@@ -385,7 +418,7 @@ input{
 }
 
 .table{
-    width: 75%;
+    width: 100%;
     margin: 30px auto;
 }
 
@@ -396,11 +429,13 @@ input{
 
 .table tr{
     height: 50px;
+    font-size: 14px;
+    text-align: center;
 }
 
 .btn-modif{
     background-color: #fbc632;
-    padding: 10px 25px;
+    padding: 10px 15px;
     color: white;
     font-weight: bold;
     display: flex;
@@ -411,7 +446,7 @@ input{
 
 .btn-supp{
     background-color: #fb3b32;
-    padding: 10px 25px;
+    padding: 10px 15px;
     color: white;
     font-weight: bold;
     display: flex;
@@ -422,13 +457,14 @@ input{
 
 .btn-add-promo{
     background-color: #64b5f6;
-    padding: 10px 25px;
+    padding: 10px 0px;
     color: white;
     font-weight: bold;
     display: flex;
     align-items: center;
     margin-top: 7px;
     justify-content: space-around;
+    margin-right: 10px;
 }
 
 .btn-supp:hover{
@@ -451,12 +487,6 @@ input{
 .action-table img{
     margin-left: 18px;
     width: 13px;
-}
-
-
-.container-form{
-    width: 75%;
-    margin: 0 auto;
 }
 
 .container-form h2{
