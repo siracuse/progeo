@@ -512,5 +512,62 @@ input{
 
 /* MANAGER  */
 
+/* USER */
+
+.mes_infos{
+    margin-right: 41px;
+    padding: 0;
+    width: 100%;
+    margin-left: 46px;
+
+    font-size: 17px;
+    color: #101010;
+}
+
+.mes_infos ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.mes_infos ul li{
+    margin: 0 20px;
+}
+
+.flex-mes-infos {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.flex-mes-infos ul {
+    margin-bottom: 10px;
+    padding: 2px;
+    list-style: none;
+    background-color: #64B5F6;
+    border: 2px solid #0063B2;
+    width: 30%;
+}
+
+.flex-mes-infos ul li{
+    padding-bottom: 7px;
+}
+
+.store-promo {
+    padding-bottom: 15px;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+/* USER */
+
+
+
 tr:nth-child(even) {background: #f7f7f7}
 tr:nth-child(odd) {background: #FFF}
+
+
+
