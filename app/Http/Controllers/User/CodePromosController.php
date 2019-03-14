@@ -36,25 +36,27 @@ class CodePromosController extends Controller
         ]);
     }
 
-    public function userGetPromo($store_id, $promotion_id, $user_id){
+
+    public function userGetPromo(Request $request){
 
         $check_promo = DB::table('store_user')
-            ->where('user_id', '=', $user_id)
-            ->where('store_id', '=', $store_id)
-            ->where('promo_id', '=', $promotion_id)
+            ->where('user_id', '=', Auth::user()->id)
+            ->where('store_id', '=', $request->input('store_id'))
+            ->where('promo_id', '=', $request->input('promo_id'))
             ->get();
 
         if(count($check_promo) > 0){
-            return view('user/home', ['error' => 'promo déjà ajoutée']);
+            return ['info' => 'fail'];
         }else{
             DB::table('store_user')->insert(
                 [
-                    'store_id' => $store_id,
-                    'promo_id' => $promotion_id,
-                    'user_id' => $user_id]
+                    'store_id' => $request->input('store_id'),
+                    'promo_id' => $request->input('promo_id'),
+                    'user_id' => Auth::user()->id
+                ]
             );
 
-            return view('user/home');
+            return ['info' => 'c bon frere'];
         }
 
     }

@@ -31,7 +31,7 @@
                         Modifier
                         <img src="{{asset('img/pencil-edit-button.svg')}}">
                     </a>
-                    <a class="btn-supp" href="{{url ('manager\delete_store', ['store_id' => $store->id])}}">
+                    <a class="btn-supp" onclick="window.confirm('Êtes-vous sûre de vouloir supprimer le magasin?')" href="{{url ('manager\delete_store', ['store_id' => $store->id])}}">
                         Supprimer
                         <img src="{{asset('img/cancel.svg')}}">
                     </a>

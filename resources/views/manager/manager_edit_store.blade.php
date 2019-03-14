@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="address">Adresse :</label>
                 <input type="text" class="form-control" id="address" name="address"
-                       value="{{old('name', $store->address)}}">
+                       value="{{old('name', $store->address)}}" onchange="testAdddress()">
             </div>
 
             <div class="form-group">
@@ -51,22 +51,13 @@
                        value="{{old('name', $store->photoOutside)}}">
             </div>
 
-            <div class="form-group">
-                <label for="latitude">Latitude:</label>
-                <input type="number" class="form-control" id="latitude" name="latitude"
-                       value="{{old('name', $store->latitude)}}">
-            </div>
-
-            <div class="form-group">
-                <label for="longitude">Longitude:</label>
-                <input type="number" class="form-control" id="longitude" name="longitude"
-                       value="{{old('name', $store->longitude)}}">
-            </div>
+            <input id="latitude" name="latitude" type="hidden">
+            <input id="longitude" name="longitude" type="hidden">
 
             <div class="form-group">
                 <label for="city_id">Ville:</label>
                 <input type="text" class="form-control" id="city_name" name="city_name"
-                       value="{{old('name', $city->name)}}">
+                       value="{{old('name', $city->name)}}" onchange="testAdddress()">
             </div>
 
             <div class="form-group">
@@ -105,3 +96,33 @@
         </form>
     </div>
 @endsection
+
+<script>
+    function testAdddress(){
+
+
+        let address = document.getElementById('address').value;
+        let city = document.getElementById('city_name').value;
+        address=address.replace(/ /g,"+");
+        let full_address = address + ',' + city;
+
+        if(address && city){
+            console.log('remplis');
+            console.log(full_address);
+
+            let addressGPS = 'https://nominatim.openstreetmap.org/search?q='+ full_address +'&format=json&polygon=1&addressdetails=0';
+            $get(addressGPS, null, printTest , error);
+        }
+
+    }
+
+    function printTest() {
+        let json = JSON.parse(xhttp.responseText);
+        console.log('json', json);
+        console.log('---------');
+        console.log('lat/long', json[0].lat + '/' + json[0].lon);
+
+        document.getElementById('latitude').value = json[0].lat;
+        document.getElementById('longitude').value = json[0].lon;
+    }
+</script>

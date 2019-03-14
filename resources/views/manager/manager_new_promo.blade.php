@@ -13,16 +13,6 @@
             </div>
 
             <div class="form-group">
-                <label for="dateStart">Date début :</label>
-                <input type="text" class="form-control" id="dateStart" name="dateStart" value="2005-02-07 07:46:21">
-            </div>
-
-            <div class="form-group">
-                <label for="dateEnd">Date fin :</label>
-                <input type="text" class="form-control" id="dateEnd" name="dateEnd" value="2005-02-07 07:46:21">
-            </div>
-
-            <div class="form-group">
                 <label for="photo1">Photo :</label>
                 <input type="file" class="form-control" id="photo" name="photo" >
             </div>

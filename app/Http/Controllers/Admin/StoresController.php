@@ -112,7 +112,7 @@ class StoresController extends Controller
     public function postSearchStores(Request $request){
 
      $stores = DB::table('stores')
-         ->Join('promotions', 'stores.id', '=', 'promotions.store_id')
+         ->LeftJoin('promotions', 'stores.id', '=', 'promotions.store_id')
          ->Join('categories', 'categories.id', '=', 'stores.category_id')
          ->where('latitude', '>', $request->input('latMin'))
          ->where('longitude', '>', $request->input('longMin'))

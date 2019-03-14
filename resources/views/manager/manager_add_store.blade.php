@@ -26,7 +26,7 @@
                 <label for="name" class="col-md-4 control-label">Adresse</label>
 
                 <div class="col-md-6">
-                    <input id="address" name="address" type="text" class="form-control" value="bob" autofocus>
+                    <input id="address" name="address" type="text" class="form-control" value="bob" onchange="testAdddress()" autofocus>
 
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -100,37 +100,15 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-4 control-label">Latitude</label>
 
-                <div class="col-md-6">
-                    <input id="latitude" name="latitude" value="50" type="text" class="form-control" autofocus>
+            <input id="latitude" name="latitude" type="hidden">
+            <input id="longitude" name="longitude" type="hidden">
 
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                    @endif
-                </div>
-            </div>
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-4 control-label">Longitude</label>
-
-                <div class="col-md-6">
-                    <input id="longitude" name="longitude" value="50" type="text" class="form-control" autofocus>
-
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                    @endif
-                </div>
-            </div>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">Ville</label>
 
                 <div class="col-md-6">
-                    <input id="city_name" name="city_name" type="text" class="form-control" autofocus>
+                    <input id="city_name" name="city_name" type="text" class="form-control" onchange="testAdddress()" autofocus>
 
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -196,3 +174,22 @@
         </form>
     </div>
 @endsection
+
+<script>
+    function testAdddress(){
+        let address = document.getElementById('address').value;
+        address=address.replace(/ /g,"+");
+        let city = document.getElementById('city_name').value;
+        let full_address = address + ',' + city;
+        let addressGPS = 'https://nominatim.openstreetmap.org/search?q='+ full_address +'&format=json&polygon=1&addressdetails=0';
+        $get(addressGPS, null, printTest , error);
+    }
+    function printTest() {
+        let json = JSON.parse(xhttp.responseText);
+        console.log('json', json);
+        console.log('---------');
+        console.log('lat/long', json[0].lat + '/' + json[0].lon);
+        document.getElementById('latitude').value = json[0].lat;
+        document.getElementById('longitude').value = json[0].lon;
+    }
+</script>

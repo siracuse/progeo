@@ -111,52 +111,38 @@ function centerOnCity(latitude, longitude){
     });
 }
 
-function printStores(stores){
-    let res = stores.data
-    console.log('stores', res);
+function printStores(stores_){
+    let stores = stores_.data
     map.removeLayer(layerGroup);
 
-    for(let i = 0; i < res['stores'].length ; i++){
-
-        rt_getPromotionCode = rt_getPromotionCode.replace('promo_id', res['stores'][i].promotion_id);
-        rt_getPromotionCode = rt_getPromotionCode.replace('sto_id', res['stores'][i].store_id);
-
-        rt_user_store_fav = rt_user_store_fav.replace('sto_id', res['stores'][i].store_id);
-
-        marker = L.marker([res['stores'][i].latitude, res['stores'][i].longitude],
+    for(let i = 0; i < stores['stores'].length ; i++){
+        marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude],
             {
                 markerColor: 'red'
             }).addTo(map);
 
         layerGroup.addLayer(marker);
+        let value_promo = stores['stores'][i].promotion_id + '-' + stores['stores'][i].store_id
 
-        if(res['stores'][i].promotion_id){
-            marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
-                "<p>" +  res['stores'][i].promotion_name +"</p>" +
-                "<button><a href=" + rt_getPromotionCode + ">Obtenir code</a> </button>" +
-                "<button><a href=" + rt_user_store_fav + ">Ajouter en favoris</a> </button>")
+        if(stores['stores'][i].promotion_id) {
+            marker.bindPopup("<h4>" + stores['stores'][i].store_name + "</h4>" +
+                "<p>" + stores['stores'][i].promotion_name + "</p>" +
+                "<button id='promo' onclick='promo()' value=" + value_promo + ">Obtenir code promo</button>")
                 .openPopup();
         }else{
-            marker.bindPopup("<h4>"+res['stores'][i].store_name+"</h4>" +
+            marker.bindPopup("<h4>"+stores['stores'][i].store_name+"</h4>" +
                 "<p> Aucune promotion en ce moment...</p>")
                 .openPopup();
         }
 
+        console.log(document.getElementById('promo'));
     }
 
     layerGroup = layerGroup.addTo(map);
 }
 
-//requete de la muerte pour cat + count (useless? idk)
-/* select categories.name, count(promotions.id)
-from categories left join stores on categories.id = stores.category_id
-left join promotions on stores.id = promotions.store_id
-where promotions.activated = 1 group by categories.id
- */
 function generateCategories(categories){
     res = categories.data;
-
-
 
     for(let i = 0; i < res['categories'].length ; i++) {
         let option = document.createElement('option');
@@ -167,7 +153,6 @@ function generateCategories(categories){
 
         document.getElementById('category').onchange = () =>
         {
-            console.log('un coucou impromptu');
             layerGroup.clearLayers();
             /* axios.post(rt_search_subcategories, {
                  _token : token,
@@ -178,7 +163,6 @@ function generateCategories(categories){
                      console.log(error);
                  });
          };*/
-
 
             axios.post(rt_search_stores, {
                 _token: token,
@@ -195,9 +179,8 @@ function generateCategories(categories){
 
         }
     }
-
-
 }
+
 
 function generateSubCategories(subcategories){
     res = subcategories.data;
@@ -214,6 +197,56 @@ function generateSubCategories(subcategories){
     }
 
 
+}
+
+function promo(){
+    if(view == 'home')
+    {
+        let info_text = document.createElement('i');
+        info_text.setAttribute('id', 'info');
+        info_text.textContent = 'Veuillez d\'abord vous connecter!';
+        info_text.style.color = 'red';
+        document.getElementById('info_promo').appendChild(info_text);
+
+        setTimeout("document.getElementById('info_promo').removeChild(info)", 5000);
+    }else{
+        console.log(document.getElementById('promo').value);
+        let values = document.getElementById('promo').value.split('-');
+        let promo_id = values[0]; let store_id = values[1];
+
+        axios.post(rt_getPromotionCode, {
+            _token: token,
+            promo_id: promo_id,
+            store_id: store_id,
+        })
+            .then(promo_res)
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
+}
+
+function promo_res(json){
+    let info = json.data
+
+    console.log(info.info);
+    console.log(document.getElementById('info_promo'));
+
+    let info_text = document.createElement('i');
+    info_text.setAttribute('id', 'info');
+
+    if(info.info == 'fail'){
+        info_text.textContent = 'Promotion déjà ajoutée';
+        info_text.style.color = 'red';
+    }else{
+        info_text.textContent = 'Promotion ajoutée avec succès';
+        info_text.style.color = 'green';
+    }
+
+    document.getElementById('info_promo').appendChild(info_text);
+    setTimeout("document.getElementById('info_promo').removeChild(info)", 5000);
 }
 
 function error(){
