@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class FavorisController extends Controller
 {
 
-   /* public function getAll () {
+    public function getAll () {
         $favoris = DB::table('store_user')
             ->join('stores', 'store_user.store_id', '=', 'stores.id')
             ->join('cities', 'stores.city_id', '=', 'cities.id')
@@ -34,7 +34,7 @@ class FavorisController extends Controller
         return view ('user.favoris',[
             'favoris' => $favoris
         ]);
-    }*/
+    }
 
     public function update ($store_id, $user_id) {
         DB::table('store_user')

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CodePromosController extends Controller
 {
-   /*public function getAll () {
+   public function getAll () {
 
-        $promos = DB::table('store_user')
-            ->join('stores', 'stores.id', '=', 'store_user.store_id')
-            ->join('users', 'users.id', '=', 'store_user.user_id')
-            ->join('promotions', 'promotions.id', '=', 'store_user.promo_id')
-            ->where('users.id', '=', Auth::user()->id)
+        $promos = DB::table('codepromo')
+            ->join('users', 'users.id', '=', 'codepromo.user_id')
+            ->join('promotions', 'promotions.id', '=', 'codepromo.promotion_id')
+            ->join('stores', 'stores.id', '=', 'promotion.store_id')
+            ->where('codepromo.user_id', '=', Auth::user()->id)
             ->select(
                 'stores.id as store_id',
                 'stores.name as store_name',
@@ -29,12 +29,11 @@ class CodePromosController extends Controller
                 'promotions.endDate'
             )
             ->get();
-        
 
         return view ('user.codePromo',[
             'promos' => $promos
         ]);
-    }*/
+    }
 
 
     public function userGetPromo(Request $request){
