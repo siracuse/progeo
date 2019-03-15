@@ -550,7 +550,7 @@ input{
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 
 }
 
@@ -560,15 +560,14 @@ input{
 
 .flex-mes-infos ul {
     margin-bottom: 10px;
-    padding: 2px;
+    padding: 2px 15px;
     list-style: none;
     background: linear-gradient(rgba(0, 99, 178, 0.7), rgba(0, 99, 178, 0.7)), url("../img/epicerie-magasin-fruit-legume-bio.jpg");
     color: white;
     background-size: cover;
     border: 2px solid #0063B2;
-    width: 21%;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 19%;
+    margin-right: 10px;
 }
 
 .flex-mes-infos ul .store-promo {
@@ -587,6 +586,9 @@ input{
     width: 20px;
 }
 
+.date-fin-promo {
+    padding-left: 20px;
+}
 
 /* USER */
 
