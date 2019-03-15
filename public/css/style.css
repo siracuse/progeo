@@ -158,6 +158,21 @@ ul li a:hover + .hidden, .hidden:hover {
     flex-direction: column;
     position: absolute;
 }
+
+.nav-phone{
+    display: none;
+}
+
+
+@media screen and (max-width: 1050px) {
+    .nav-desk{
+        display: none;
+    }
+
+    .nav-phone{
+        display: block;
+    }
+}
 /* NAV */
 
 
@@ -651,7 +666,7 @@ tr:nth-child(odd) {background: #FFF}
 .btn-favoris{
     position: absolute;
     right: 20px;
-    top: 455px;
+    top: 122px;
     background-color: #ffaf12;
     padding: 7px 33px;
     font-size: 19px;
@@ -717,10 +732,7 @@ tr:nth-child(odd) {background: #FFF}
     .bloc-info-store{
         width: 90%;
     }
-
-    .btn-favoris{
-        top: 350px;
-    }
+    
 }
 
 /* STORE */

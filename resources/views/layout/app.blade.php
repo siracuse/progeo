@@ -20,7 +20,7 @@
 <body>
     <header>
         <a href="{{route('home')}}"> <img src="{{asset('img/logo.png')}}"> </a>
-        <nav>
+        <nav class="nav-desk">
             <ul>
                 <li><a href="{{route('home')}}">Accueil</a></li>
                 <li><a href="">Nous rejoindre</a></li>
@@ -54,6 +54,9 @@
                     </li>
                 @endguest
             </ul>
+        </nav>
+        <nav class="nav-phone">
+
         </nav>
     </header>
 
