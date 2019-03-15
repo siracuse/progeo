@@ -142,14 +142,14 @@ li ul li a {
     width: auto;
 }
 
-.hidden {
+.hidden, .hidden2 {
     display: none;
     margin-left: 0;
     z-index: 2;
     background-color: white;
 }
 
-.hidden li {
+.hidden li, .hidden2 li {
     display: block;
 }
 
@@ -161,6 +161,14 @@ ul li a:hover + .hidden, .hidden:hover {
 
 .nav-phone{
     display: none;
+}
+
+.hidden2 {
+    flex-direction: column;
+    position : absolute;
+    right: 0;
+    top : 100px;
+    line-height : 40px;
 }
 
 

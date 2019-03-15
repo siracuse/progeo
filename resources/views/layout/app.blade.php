@@ -56,8 +56,40 @@
             </ul>
         </nav>
         <nav class="nav-phone">
+            <a onclick="afficheMenu()" style="font-size: xx-large; float: right">&#8801;</a>
+            <ul class="hidden2" id="hidden2">
+                <li><a href="{{route('home')}}">Accueil</a></li>
+                <li><a href="">Nous rejoindre</a></li>
+                <li><a href="">FAQ</a></li>
+                <li><a href="">Nous contacter</a></li>
+                @guest
+                    <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
+                    <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
+                @else
+                    <li>
+                        <a class="btn-inscription" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            Deconnexion
+                        </a>
 
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                @endguest
+            </ul>
         </nav>
+        <script>
+            function afficheMenu(){
+                if (document.getElementById('hidden2').style.display === "none") {
+                    document.getElementById('hidden2').style.display = "flex";
+                }
+                else {
+                    document.getElementById('hidden2').style.display = "none";
+                }
+            }
+        </script>
     </header>
 
     @yield('content')
