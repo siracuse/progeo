@@ -67,7 +67,7 @@
                     </div>
                     <div class="bloc-btn">
                         <a class="btn1" href="">Obtenir code</a>
-                        <a class="btn1" href="">Laisser un avis</a>
+                        <a class="btn1" href="{{ route('promo_rating', ['promo_id' => $promotion->id]) }}">Laisser un avis</a>
                     </div>
                 </div>
             @endforeach

@@ -21,9 +21,10 @@
                     Envoyer
                 </button>
             </form>
-            @foreach($promotions as $promotion)
+            @foreach($ratings as $rating)
                 <div class="avis">
-                    <p>Jean Michel Michou</p>
+                    <p>{{$rating->name}}</p>
+                    {{$rating->rating}}
                     <div class="bloc-note">
                         <img src="{{asset('img/store/star-full.svg')}}">
                         <img src="{{asset('img/store/star-full.svg')}}">
@@ -31,9 +32,8 @@
                         <img src="{{asset('img/store/star-full.svg')}}">
                         <img src="{{asset('img/store/star-empty.svg')}}">
                     </div>
-                    <p>gr iohjio fjhigfhfjh igfjhif hkgh gkijio jij iogjh gfhj gfiohjgiofh gkhj gkjh fghjifghj iofjhiotjh iofjh
-                    gnidugiudgfugj uodjgorgjodogij jfj fdgjfgj idjfiojiorjgifjg ijfi jgfjg jdjfgjfkgj kdj jdoj gf jdr jdj ioj oiio</p>
-                </div>
+                    <p>{{$rating->comment}}</p>
+                </div><br><br><br>
             @endforeach
         </div>
     </div>

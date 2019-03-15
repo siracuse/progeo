@@ -4,32 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Store;
 
 class PromotionController extends Controller
 {
     public function formRating ($promo_id) {
-        $rating = DB::table('promotion_user')
+        $ratings = DB::table('promotion_user')
+            ->join('users', 'promotion_user.user_id', '=', 'users.id')
             ->join('promotions', 'promotions.id', '=', 'promotion_user.promotion_id')
-            ->join('users', 'promotion_user.user_id', '=', 'user_id')
-            ->join('cities', 'stores.city_id', '=', 'cities.id')
-            ->join('categories', 'stores.category_id', '=', 'categories.id')
-            ->join('subcategories', 'stores.subcategory_id', '=', 'subcategories.id')
-            ->where('store_user.user_id', '=', Auth::user()->id)
-            ->where('store_user.favoris', '=', 1)
             ->select(
-                'stores.id as store_id',
-                'stores.name as store_name',
-                'stores.address',
-                'stores.phone',
-                'categories.name as category_name',
-                'subcategories.name as subcategory_name',
-                'cities.name as city_name',
-                'cities.postalCode'
+                'promotion_user.rating',
+                'promotion_user.comment',
+                'promotions.store_id',
+                'users.name'
             )
             ->get();
 
-        return view ('user.favoris',[
-            'favoris' => $favoris
+        foreach ($ratings as $key => $values) {
+            $store_id = $values->store_id;
+        }
+
+        $store = Store::where('id', $store_id)->first();
+
+        return view ('storeRating',[
+            'ratings' => $ratings,
+            'store' => $store
         ]);
     }
 }
