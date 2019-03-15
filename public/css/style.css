@@ -576,19 +576,42 @@ tr:nth-child(odd) {background: #FFF}
     float: right;
 }
 
-.flex-mes-infos ul {
+.mes-infos-avis {
+    margin-bottom: 10px;
+    padding: 2px 15px;
+    list-style: none;
+    background: #252525;
+    color: white;
+    background-size: cover;
+    width: 30%;
+    margin-right: 10px;
+}
+
+.mes-infos-promo {
+    margin-bottom: 10px;
+    padding: 2px 15px;
+    list-style: none;
+    background: #252525;
+    color: white;
+    background-size: cover;
+    width: 19%;
+    margin-right: 10px;
+}
+
+.mes-infos-favoris {
     margin-bottom: 10px;
     padding: 2px 15px;
     list-style: none;
     background: linear-gradient(rgba(0, 99, 178, 0.7), rgba(0, 99, 178, 0.7)), url("../img/epicerie-magasin-fruit-legume-bio.jpg");
     color: white;
     background-size: cover;
-    border: 2px solid #0063B2;
     width: 19%;
+    border: 2px solid #0063B2;
     margin-right: 10px;
 }
 
-.flex-mes-infos ul .store-promo {
+.flex-mes-infos ul .titre-mes-infos {
+    margin-top: 10px;
     text-align: center;
     padding-bottom: 15px;
     font-size: large;
@@ -604,8 +627,28 @@ tr:nth-child(odd) {background: #FFF}
     width: 20px;
 }
 
+.btn-mes-promos-retirer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-mes-avis-modifier {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.btn-mes-avis-supprimer {
+    margin-bottom: 10px;
+}
+
 .date-fin-promo {
-    padding-left: 20px;
+    position: relative;
+    margin-left: 35px;
+}
+
+.calendar {
+    margin-top: 5px;
+    position: absolute;
 }
 
 /* USER */
