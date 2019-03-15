@@ -12,7 +12,7 @@
             <input placeholder="Ville.." id="city" list="cities">
             <datalist id="cities"></datalist>
 
-            <select id="category">
+            <select class="select-category" id="category">
                 <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
             {{--<select id="subCategory">--}}
