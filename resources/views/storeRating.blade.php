@@ -13,10 +13,10 @@
         <h1 class="center">{{$store->name}}</h1>
 
 
-        <div class="bloc-avis">
-            <form>
-                <label>Laisser un avis</label>
-                <textarea></textarea>
+        <div class="bloc-info-store">
+            <form class="full">
+                <label class="full">Laisser un avis</label>
+                <textarea class="full"></textarea>
                 <button type="submit" class="btn1 btn-form">
                     Envoyer
                 </button>
