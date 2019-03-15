@@ -114,23 +114,23 @@ function centerOnCity(latitude, longitude){
 function printStores(stores_){
     let stores = stores_.data
     map.removeLayer(layerGroup);
-
     for(let i = 0; i < stores['stores'].length ; i++){
+
         marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude],
             {
                 markerColor: 'red'
             }).addTo(map);
 
         layerGroup.addLayer(marker);
-        let value_promo = stores['stores'][i].promotion_id + '-' + stores['stores'][i].store_id
+        let value_promo = stores['stores'][i].promotion_id + '-' + stores['stores'][i].store_id;
 
         if(stores['stores'][i].promotion_id) {
-            marker.bindPopup("<h4>" + stores['stores'][i].store_name + "</h4>" +
+            marker.bindPopup('<a href=store/' + stores['stores'][i].sto_id + '>'+ stores['stores'][i].store_name + '</a>' +
                 "<p>" + stores['stores'][i].promotion_name + "</p>" +
                 "<button id='promo' onclick='promo()' value=" + value_promo + ">Obtenir code promo</button>")
                 .openPopup();
         }else{
-            marker.bindPopup("<h4>"+stores['stores'][i].store_name+"</h4>" +
+            marker.bindPopup('<a href=store/' + stores['stores'][i].sto_id + '>'+ stores['stores'][i].store_name + '</a>' +
                 "<p> Aucune promotion en ce moment...</p>")
                 .openPopup();
         }

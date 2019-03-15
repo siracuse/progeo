@@ -121,7 +121,7 @@ class StoresController extends Controller
          ->when($request->input('category'), function($query) use ($request){
              return $query->where('category_id', '=', $request->input('category'));
          })
-         ->select('stores.name as store_name', 'stores.id as store_id', 'stores.*',
+         ->select('stores.name as store_name', 'stores.id as sto_id', 'stores.*',
                   'promotions.name as promotion_name', 'promotions.id as promotion_id', 'promotions.*')
          -> get();
 

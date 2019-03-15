@@ -38,19 +38,18 @@ class CodePromosController extends Controller
 
     public function userGetPromo(Request $request){
 
-        $check_promo = DB::table('store_user')
+        $check_promo = DB::table('codepromo')
             ->where('user_id', '=', Auth::user()->id)
-            ->where('store_id', '=', $request->input('store_id'))
-            ->where('promo_id', '=', $request->input('promo_id'))
+//            ->where('store_id', '=', $request->input('store_id'))
+            ->where('promotion_id', '=', $request->input('promo_id'))
             ->get();
 
         if(count($check_promo) > 0){
             return ['info' => 'fail'];
         }else{
-            DB::table('store_user')->insert(
+            DB::table('codepromo')->insert(
                 [
-                    'store_id' => $request->input('store_id'),
-                    'promo_id' => $request->input('promo_id'),
+                    'promotion_id' => $request->input('promo_id'),
                     'user_id' => Auth::user()->id
                 ]
             );

@@ -225,3 +225,4 @@ Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('
 */
 
 Route::get ('store/{store_id}', 'StoreController@getDetails')->name('store_details');
+Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating');
