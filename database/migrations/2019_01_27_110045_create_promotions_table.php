@@ -15,8 +15,8 @@ class CreatePromotionsTable extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('startDate')->index();
-            $table->dateTime('endDate')->index();
+            $table->dateTime('startDate')->index()->nullable();
+            $table->dateTime('endDate')->index()->nullable();
             $table->string('name', 50);
             $table->boolean('activated')->index();
             $table->string('promotionCode', 3)->index();
