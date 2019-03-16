@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Store;
 
 class PromotionController extends Controller
 {
     public function formRating ($promo_id) {
-
 
         $ratings = DB::table('promotion_user')
             ->join('users', 'promotion_user.user_id', '=', 'users.id')
@@ -22,6 +23,7 @@ class PromotionController extends Controller
                 'promotions.store_id',
                 'users.name'
             )
+//            ->orderBy("desc")
             ->get();
 
 
@@ -30,20 +32,41 @@ class PromotionController extends Controller
         }
 
         if (empty($store_id)) {
-            $store = DB::table('promotion_user')
-                ->join('promotions', 'promotions.id', '=', 'promotion_user.promotion_id')
-                ->join('stores', 'stores.id', '=', 'promotions.store_id')
+            $monStoreId = DB::table('promotions')
+                ->where('promotions.id', '=', $promo_id)
+                ->select('promotions.store_id')
                 ->first();
+            $store = Store::where('id', $monStoreId->store_id)->first();
+
             return view ('storeRating',[
                 'ratings' => $ratings,
-                'store' => $store
+                'store' => $store,
+                'promo_id' => $promo_id
             ]);
         }
 
         $store = Store::where('id', $store_id)->first();
         return view ('storeRating',[
             'ratings' => $ratings,
-            'store' => $store
+            'store' => $store,
+            'promo_id' => $promo_id
         ]);
+    }
+
+
+    public function getNew (Request $request) {
+        if ($request->input('comment')) {
+            $this->validate($request, ['comment' => 'required']);
+            DB::table('promotion_user')->insert(
+                array(
+                    'promotion_id' => $request->input('promo_id'),
+                    'user_id' => Auth::user()->id,
+                    'rating' => $request->input('rating'),
+                    'comment' => $request->input('comment'),
+                )
+            );
+            return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+        }
+        return redirect()->route('home');
     }
 }
