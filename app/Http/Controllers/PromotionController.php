@@ -23,7 +23,7 @@ class PromotionController extends Controller
                 'promotions.store_id',
                 'users.name'
             )
-//            ->orderBy("desc")
+            ->orderBy('date', 'desc')
             ->get();
 
 
@@ -63,6 +63,7 @@ class PromotionController extends Controller
                     'user_id' => Auth::user()->id,
                     'rating' => $request->input('rating'),
                     'comment' => $request->input('comment'),
+                    'date' => date("Y-m-d H:i:s"),
                 )
             );
             return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);

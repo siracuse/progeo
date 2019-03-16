@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Promotion extends Model
 {
     public function users() {
-        return $this->belongsToMany(User::class)->withPivot('rating', 'comment');
+        return $this->belongsToMany(User::class)->withPivot('rating', 'comment', 'date');
     }
 
     public function store() {
