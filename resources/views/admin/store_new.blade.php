@@ -11,7 +11,7 @@
                             <strong>Ajout </strong> d'un magasin
                         </div>
                         <div class="card-body card-block">
-                            <form action="{{ route ('store_new') }}" method="post" class="form-horizontal">
+                            <form action="{{ route('store_new')}}" method="post" class="form-horizontal">
                                 {{ csrf_field() }}
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="name" class=" form-control-label">Nom</label></div>

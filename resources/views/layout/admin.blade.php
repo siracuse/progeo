@@ -39,16 +39,16 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./admin"><img src="{{asset('pic/logo.png')}}" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./admin"><img src="{{asset('pic/logo2.png')}}" alt="Logo"></a>
+            <a class="navbar-brand" href="{{url ('admin')}}"><img src="{{asset('pic/logo.png')}}" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="{{url ('admin')}}"><img src="{{asset('pic/logo2.png')}}" alt="Logo"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="./admin"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{url ('admin')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
-                <h3 class="menu-title">Gestion du site</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Gestion du site</h3>
                 <li>
                     <a href="{{url ('admin\store\list')}}"><i class="menu-icon fa fa-laptop"></i>Magasin</a>
                     <a href="{{url ('admin\user\list')}}"><i class="menu-icon fa fa-laptop"></i>Utilisateur</a>

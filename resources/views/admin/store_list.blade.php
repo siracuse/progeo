@@ -40,10 +40,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{$stores->links()}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{$stores->links()}}
 @endsection
