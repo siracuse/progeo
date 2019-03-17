@@ -42,7 +42,7 @@ class CitiesController extends Controller
     }
 
     public function getDelete ($city_id) {
-        $city = Category::findOrFail($city_id);
+        $city = City::findOrFail($city_id);
         $city->delete();
         return redirect()->route('city_list');
     }
