@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Promotion;
 use App\Rating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,16 +58,23 @@ class PromotionController extends Controller
     public function getNew (Request $request) {
         if ($request->input('comment')) {
             $this->validate($request, ['comment' => 'required']);
-            DB::table('promotion_user')->insert(
-                array(
-                    'promotion_id' => $request->input('promo_id'),
-                    'user_id' => Auth::user()->id,
-                    'rating' => $request->input('rating'),
-                    'comment' => $request->input('comment'),
-                    'date' => date("Y-m-d H:i:s"),
-                )
-            );
-            return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+            $promo = Promotion::findOrFail($request->input('promo_id'));
+            if ($promo->opinionCode === $request->input('code')) {
+                DB::table('promotion_user')->insert(
+                    array(
+                        'promotion_id' => $request->input('promo_id'),
+                        'user_id' => Auth::user()->id,
+                        'rating' => $request->input('rating'),
+                        'comment' => $request->input('comment'),
+                        'date' => date("Y-m-d H:i:s"),
+                    )
+                );
+                return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+            }
+            else {
+                //redirection avec erreur !!!
+                return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+            }
         }
         return redirect()->route('home');
     }
