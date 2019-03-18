@@ -243,6 +243,9 @@ function promo_res(json){
     }else{
         info_text.textContent = 'Promotion ajoutée avec succès';
         info_text.style.color = 'green';
+
+        affichePromos();
+
     }
 
     document.getElementById('info_promo').appendChild(info_text);
