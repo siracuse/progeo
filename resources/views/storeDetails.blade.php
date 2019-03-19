@@ -15,8 +15,8 @@
     @endforeach--}}
 
     <div class="header-store">
-        <img src="{{asset('img/otacos1.jpg')}}">
-        <img src="{{asset('img/otacos2.jpg')}}">
+        <img src="{{asset($img_1)}}">
+        <img src="{{asset($img_2)}}">
     </div>
 
     <a class="btn1 btn-favoris" href="">Favoris</a>

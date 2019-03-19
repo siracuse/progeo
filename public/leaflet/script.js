@@ -113,6 +113,7 @@ function centerOnCity(latitude, longitude){
 
 function printStores(stores_){
     let stores = stores_.data
+    console.log(stores);
     map.removeLayer(layerGroup);
     for(let i = 0; i < stores['stores'].length ; i++){
 
@@ -134,8 +135,6 @@ function printStores(stores_){
                 "<p> Aucune promotion en ce moment...</p>")
                 .openPopup();
         }
-
-        console.log(document.getElementById('promo'));
     }
 
     layerGroup = layerGroup.addTo(map);
@@ -245,6 +244,7 @@ function promo_res(json){
         info_text.style.color = 'green';
     }
 
+    console.log('coucou');
     affichePromos();
 
     document.getElementById('info_promo').appendChild(info_text);
