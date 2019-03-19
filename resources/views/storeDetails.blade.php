@@ -19,7 +19,7 @@
         <img src="{{asset($img_2)}}">
     </div>
 
-    <a class="btn1 btn-favoris" href="">Favoris</a>
+    <a class="btn1 btn-favoris" href="{{route('user_favoris_update', ['store_id' => $store->id, 'user_id' => Auth::user()->id]) }}">Favoris</a>
 
     <div class="container-store">
         <h1 class="center">{{$store->name}}</h1>
@@ -75,3 +75,4 @@
     </div>
 
 @endsection
+

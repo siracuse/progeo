@@ -72,5 +72,6 @@
             createList();
         };
 
+
     </script>
 @endsection

@@ -37,11 +37,13 @@ class FavorisController extends Controller
     }
 
     public function update ($store_id, $user_id) {
+        echo 'oucou';
+
         DB::table('store_user')
-            ->where('store_id', $store_id)
-            ->where('user_id', $user_id)
+            ->where('store_id', '=',$store_id)
+            ->where('user_id', '=', $user_id)
             ->update(['favoris' => 1]);
-        return redirect()->route('user_favoris');
+        return redirect()->route('store_details', $store_id);
     }
 
     public function delete($store_id, $user_id){
