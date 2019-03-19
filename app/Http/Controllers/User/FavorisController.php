@@ -37,12 +37,13 @@ class FavorisController extends Controller
     }
 
     public function update ($store_id, $user_id) {
-        echo 'oucou';
-
         DB::table('store_user')
-            ->where('store_id', '=',$store_id)
-            ->where('user_id', '=', $user_id)
-            ->update(['favoris' => 1]);
+            ->insert([
+                    'store_id' => $store_id,
+                    'user_id' => $user_id,
+                    'favoris' => 1,
+                ]
+            );
         return redirect()->route('store_details', $store_id);
     }
 
@@ -50,7 +51,7 @@ class FavorisController extends Controller
         DB::table('store_user')
             ->where('store_id', $store_id)
             ->where('user_id', $user_id)
-            ->update(['favoris' => 0]);
-        return redirect()->route('user_favoris');
+            ->delete();
+        return redirect()->route('user_home');
     }
 }
