@@ -668,6 +668,7 @@ tr:nth-child(odd) {background: #FFF}
     display: flex;
     position: absolute;
     z-index: -50;
+    width: 100%;
 }
 
 .header-store img{
