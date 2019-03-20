@@ -15,7 +15,10 @@ class CitiesController extends Controller
 
     public function getNew (Request $request) {
         if ($request->input('name')) {
-            $this->validate($request, ['name' => 'required']);
+            $this->validate($request, [
+                'name' => 'required'
+
+            ]);
             $city = new City ();
             $city->name = $request->input('name');
             $city->insee = $request->input('insee');
