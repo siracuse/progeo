@@ -270,7 +270,10 @@ function promoList(res){
     let promos = res.data;
     console.log('promos', promos);
 
+
+
     for(let i = 0; i < promos['promos'].length; i++){
+        rt_promo_avis = rt_promo_avis.replace('value', promos['promos'][i].promo_id)
 
    let ch = ' <ul class="mes-infos-promo">'+
             '<li class="titre-mes-infos">Magasin : ' + promos['promos'][i].store_name + '</li>'+
@@ -285,7 +288,7 @@ function promoList(res){
         '<li class="code-promo">Code : '+ promos['promos'][i].promotionCode +'</li>'+
         '<li><img class="calendar" src="img/calendar.svg"/><div class="date-fin-promo">Du'  + promos['promos'][i].startDate + '</div></li>'+
         '<li class="date-fin-promo">Au ' + promos['promos'][i].endDate +'</li>'+
-        '<div class="bloc-btn-avis"><li><button class="btn-modif btn-avis" onclick="delPromoUser(' + promos['promos'][i].promo_id + ')">Laisser un avis</button></li><li class="btn-mes-promos-retirer"><button class="btn-supp-favoris" onclick="delPromoUser(' + promos['promos'][i].promo_id + ')">Retirer</button>'+
+        '<div class="bloc-btn-avis"><li><a class="btn-modif btn-avis" href="' + rt_promo_avis + '" ">Laisser un avis</a></li><li class="btn-mes-promos-retirer"><button class="btn-supp-favoris" onclick="delPromoUser(' + promos['promos'][i].promo_id + ')">Retirer</button>'+
         '</li>'+
         '</div>'+
 

@@ -33,6 +33,7 @@
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
         var rt_getPromotionCode = '{{route('user_promotion_post')}}';
         var rt_promos = '{{route('print_promos')}}';
+        var rt_promo_avis = '{{route('promo_rating', ['promo_id' => 'value'])}}';
         var rt_delPromoUser = '{{route('del_promo_user')}}';
         var view = 'user/home';
         var token = '{{csrf_token()}}';
@@ -84,8 +85,8 @@
                         <li class="date-fin-promo">Au {{date('d-m-Y', strtotime($promo->endDate))}}</li>
                         <div class="bloc-btn-avis">
                             <li>
-                                <button class="btn-modif btn-avis">
-                                </button>
+                                <a class="btn-modif btn-avis" href="{{url('promo',  ['promo_id' => $promo->promo_id])}}">Laisser un avis
+                                </a>
                             </li>
                             <li class="btn-mes-promos-retirer">
                                 <button class="btn-supp-favoris"
@@ -207,7 +208,7 @@
 
                 function delDivPromo() {
 
-                        document.getElementById('promos').innerHTML = "";
+                    document.getElementById('promos').innerHTML = "";
                 }
 
 
