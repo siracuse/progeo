@@ -59,16 +59,25 @@
                 @foreach($promos as $promo)
 
                     <ul class="mes-infos-promo">
-                        <li class="titre-mes-infos">{{$promo->store_name}}</li>
-                        <li class="name-promo">Nom : {{$promo->promo_name}}</li>
+                        <li class="titre-mes-infos">Magasin : {{$promo->store_name}}</li>
+                        <li class="name-promo">Promotion : {{$promo->promo_name}}</li>
+                        <li class="code-promo"><div class="bloc-note bloc-note2">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                            </div></li>
                         <li class="code-promo">Code : {{$promo->promotionCode}}</li>
                         <li><img class="calendar" src="{{asset('img/calendar.svg')}}"/><div class="date-fin-promo">Du {{date('d-m-Y', strtotime($promo->startDate))}} </div></li>
                         <li class="date-fin-promo">Au {{date('d-m-Y', strtotime($promo->endDate))}}</li>
-                        <li class="btn-mes-promos-retirer"><a class="btn1" href="{{url ('user/codePromo',
+                        <div class="bloc-btn-avis"><li><a class="btn-modif btn-avis" href="">Laisser un avis</a></li><li class="btn-mes-promos-retirer"><a class="btn-supp-favoris" href="{{url ('user/codePromo',
                     ['store_id' => $promo->store_id, 'user_id' => $promo->user_id, 'promo_id' => $promo->promo_id]
                     )}}">
                                 Retirer</a>
                         </li>
+                        </div>
+
                     </ul>
                 @endforeach
             </div>
@@ -76,11 +85,19 @@
                 @foreach($favoris as $favori )
                     <ul class="mes-infos-favoris">
                         <li class="titre-mes-infos">{{$favori->store_name}} <img class="star" src="{{asset('img/star.svg')}}"/></li>
-                        <li class="name-promo">{{$favori->address}}</li>
-                        <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
-                        <li><img src="{{asset('img/store.svg')}}"/> {{$favori->category_name}}</li>
-                        <li><img src="{{asset('img/add.svg')}}"/> {{$favori->subcategory_name}}</li>
-                        <li><a class="btn-inscription" href="{{url ('user\favoris\delete',
+                        <div class="bloc-infos-favoris">
+                            <div>
+                                <li class="name-promo">{{$favori->address}}</li>
+                                <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
+                                <li><img src="{{asset('img/store.svg')}}"/> {{$favori->category_name}}</li>
+                            </div>
+                            <div>
+                                <li><img src="{{asset('img/add.svg')}}"/> {{$favori->subcategory_name}}</li>
+                                <li class="name-promo">{{$favori->address}}</li>
+                                <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
+                            </div>
+                        </div>
+                        <li><a class="btn-supp-favoris" href="{{url ('user\favoris\delete',
 
                                 ['store_id' => $favori->store_id, 'user_id' => Auth::user()->id]
                             )}}">Supprimer</a></li>
@@ -90,7 +107,6 @@
             <div id="avis" class="flex-mes-infos">
                 <ul class="mes-infos-avis">
                     <li class="titre-mes-infos">Test</li>
-                    <li class="name-promo">Promo : PromoTest</li>
                     <li class="code-promo"><div class="bloc-note">
                             <img src="{{asset('img/store/star-full.svg')}}">
                             <img src="{{asset('img/store/star-full.svg')}}">
@@ -98,9 +114,12 @@
                             <img src="{{asset('img/store/star-full.svg')}}">
                             <img src="{{asset('img/store/star-empty.svg')}}">
                         </div></li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus tristique dolor ut interdum. Duis nisl felis, eleifend nec diam ut, mollis pharetra nulla. Donec eu auctor libero. Nullam non sollicitudin odio. Donec dapibus vestibulum orci, facilisis accumsan tellus gravida in. </li>
-                    <li class="btn-mes-avis-modifier"><a class="btn1" href="#">Modifier</a> </li>
-                    <li class="btn-mes-avis-supprimer"><a class="btn1" href="#">Supprimer</a></li>
+                    <li class="name-promo">Promo : PromoTest</li>
+                    <li class="txt-avis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus tristique dolor ut interdum. Duis nisl felis, eleifend nec diam ut, mollis pharetra nulla. Donec eu auctor libero. Nullam non sollicitudin odio. Donec dapibus vestibulum orci, facilisis accumsan tellus gravida in. </li>
+                    <div class="bloc-btn-avis">
+                        <li class="btn-mes-avis-modifier"><a class="btn-modif" href="#">Modifier</a> </li>
+                        <li class="btn-mes-avis-supprimer"><a class="btn-supp" href="#">Supprimer</a></li>
+                    </div>
                 </ul>
             </div>
 
