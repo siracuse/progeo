@@ -32,7 +32,7 @@
                                         <td>{{$user->email}} </td>
                                         <td>{{$user->is_resp}} </td>
                                         <td>
-                                            <a href="{{url ('admin\user\edit', ['user_id' => $user->id])}}">Modifier</a>/
+                                            <a href="{{url ('admin\user\edit', ['user_id' => $user->id])}}">Modifier</a> /
                                             <a href="{{url ('admin\user\delete', ['user_id' => $user->id])}}">Supprimer</a>
                                         </td>
                                     </tr>

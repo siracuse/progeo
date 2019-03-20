@@ -8,7 +8,7 @@
                 <div class=" col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Edition </strong> du sous catégorie {{ $subcategory->name}}
+                            <strong>Modification </strong> de la sous-catégorie {{ $subcategory->name}}
                         </div>
                         <div class="card-body card-block">
                             <form method="post" action="{{ route ('subcategory_edit_post') }}" class="form-horizontal">
@@ -16,7 +16,7 @@
                                 {{ csrf_field() }}
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="name" class=" form-control-label">Nom</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="{{old('name', $subcategory->name)}}"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="{{old('name', $subcategory->name)}}" required></div>
                                 </div>
                                 @if ($errors->has('name'))
                                     <br><span class="help-block">
@@ -38,9 +38,8 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <input type="submit" value="Ajouter" name="submit" class="btn btn-primary btn-sm">
-                                <input type="reset" value="Annuler"  class="btn btn-danger btn-sm">
+                                <a href="../list"><input type="button" value="Annuler"  class="btn btn-danger btn-sm"></a>
 
                             </form>
                         </div>
