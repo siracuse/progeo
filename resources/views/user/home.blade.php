@@ -32,6 +32,7 @@
         var rt_search_categories = '{{ route('categories_search_post') }}';
         var rt_search_subcategories = '{{ route('subcategories_search_post') }}';
         var rt_getPromotionCode = '{{route('user_promotion_post')}}';
+        var rt_promos = '{{route('user_home')}}'
         var view = 'user/home';
 
         var token = '{{csrf_token()}}';
