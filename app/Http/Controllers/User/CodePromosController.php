@@ -59,6 +59,15 @@ class CodePromosController extends Controller
 
     }
 
+    public function deletePromoUser(Request $request){
+        $req = DB::table('codePromo')
+            ->where('promotion_id', '=', $request->input('promo_id'))
+            ->where('user_id', '=', Auth::user()->id)
+            ->delete();
+
+        return ['info_del' => 'ok'];
+    }
+
     public function delete($store_id, $user_id, $promo_id){
         DB::table('store_user')
             ->where('store_id', $store_id)
