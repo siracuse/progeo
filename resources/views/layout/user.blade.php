@@ -44,7 +44,7 @@
                         <li><a href="{{route('user_edit_password')}}">Mdp</a></li>
                         <li>
                             <a class="btn-inscription" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Deconnexion
+                                Déconnexion
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
