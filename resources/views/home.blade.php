@@ -15,6 +15,8 @@
             <select class="select-category" id="category">
                 <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
+
+            <button onclick="geolocalisation()">GEO</button>
             {{--<select id="subCategory">--}}
                 {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}

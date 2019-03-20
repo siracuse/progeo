@@ -299,6 +299,26 @@ function promoList(res){
 
 }
 
+function geolocalisation(){
+    console.log('coucou from geo');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+
+function showPosition(position) {
+
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+
+    console.log('lat', lat);
+    console.log('long', lon);
+
+    centerOnCity(lat, lon);
+}
+
 function error(){
     console.log('ERROR !');
 }

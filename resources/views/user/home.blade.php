@@ -9,13 +9,17 @@
 
         <div class="bloc-search">
             <div id="info_promo"></div>
+
             <input placeholder="Ville.." id="city" list="cities">
+
             <datalist id="cities"></datalist>
 
             <select class="select-category" id="category">
                 <option value="choisir" selected="selected">Catégorie...</option>
-                ;
             </select>
+
+            <button onclick="geolocalisation()">GEO</button>
+
             {{--<select id="subCategory">--}}
             {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
