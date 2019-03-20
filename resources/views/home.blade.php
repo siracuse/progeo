@@ -19,6 +19,7 @@
                 {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
+        <img class="check switch-map" src="{{asset('img/success.svg')}}">
     </div>
 
     <img class="commercant" src="{{asset('img/commercant.png')}}">

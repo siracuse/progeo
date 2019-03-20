@@ -221,7 +221,7 @@ ul li a:hover + .hidden, .hidden:hover {
 }
 
 .container{
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -253,6 +253,55 @@ ul li a:hover + .hidden, .hidden:hover {
     font-size: 25px;
     font-weight: bold;
     color: #5c5c5c;
+}
+
+.switch-map{
+    display: none;
+}
+
+
+@media screen and (max-width: 1350px) {
+
+    .container{
+        width: 100%;
+    }
+
+    .bloc-search {
+        position: initial;
+        margin: 53px auto;
+        padding: 20px 30px;
+        background-color: #64b5f6a8;
+    }
+
+}
+
+
+@media screen and (max-width: 1020px) {
+    .bloc-avantage{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+
+    .photo-avantage {
+        height: auto;
+        width: 100%;
+    }
+
+    .bloc-search {
+       width: 100%;
+       box-sizing: border-box;
+    }
+
+    .select-category {
+        display: block;
+    }
+
+    .switch-map{
+        display: block;
+        position: absolute;
+        bottom: 220px;
+        left: 48%;
+    }
 }
 
 
