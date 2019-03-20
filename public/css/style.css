@@ -756,6 +756,21 @@ tr:nth-child(odd) {background: #FFF}
     margin: 10px 0;
 }
 
+.img-vide{
+    height: 110px;
+}
+
+.bloc-vide{
+    display: flex;
+    align-items: center;
+}
+
+.bloc-vide p{
+    margin-left: 50px;
+    font-weight: 600;
+    color: #3d4c51;
+}
+
 /* USER */
 
 

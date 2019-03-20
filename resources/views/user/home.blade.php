@@ -57,6 +57,12 @@
 
         <div class="content">
             <div id="promos" class="flex-mes-infos">
+                @if(!empty($promos))
+                    <div class="bloc-vide">
+                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                        <p>Vous n'avez toujours pas de promotions ajoutés !</p>
+                    </div>
+                @endif
                 @foreach($promos as $promo)
 
                     <ul class="mes-infos-promo">
@@ -93,6 +99,12 @@
                 @endforeach
             </div>
             <div id="favoris" class="flex-mes-infos">
+                @if(!empty($favoris))
+                    <div class="bloc-vide">
+                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                        <p>Vous n'avez toujours pas de magasins favoris ajoutés !</p>
+                    </div>
+                @endif
                 @foreach($favoris as $favori )
                     <ul class="mes-infos-favoris">
                         <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
@@ -116,6 +128,12 @@
                 @endforeach
             </div>
             <div id="avis" class="flex-mes-infos">
+                @if(!empty($avis))
+                    <div class="bloc-vide">
+                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                        <p>Vous n'avez toujours pas d'avis ajoutés !</p>
+                    </div>
+                @endif
                 <ul class="mes-infos-avis">
                     <li class="titre-mes-infos">Test</li>
                     <li class="code-promo">
