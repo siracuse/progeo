@@ -28,7 +28,7 @@
             <li><a href="{{route('user_home')}}">Accueil</a></li>
             <li><a href="">Nous rejoindre</a></li>
             <li><a href="">FAQ</a></li>
-            <li><a href="">Nous contacter</a></li>
+            <li><a href="{{route('contact')}}">Nous contacter</a></li>
         </ul>
         <ul>
             <!-- Authentication Links -->
@@ -64,7 +64,7 @@
             <li><a href="{{route('home')}}">Accueil</a></li>
             <li><a href="">Nous rejoindre</a></li>
             <li><a href="">FAQ</a></li>
-            <li><a href="">Nous contacter</a></li>
+            <li><a href="{{route('contact')}}">Nous contacter</a></li>
             @guest
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                 <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
