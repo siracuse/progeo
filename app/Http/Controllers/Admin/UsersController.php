@@ -11,7 +11,7 @@ class UsersController extends Controller
 {
     public function getAll () {
         $users = User::with('promotions')->get();
-        return view ('admin.user_list',[ 'users' => $users]);
+        return view ('admin.user_list',['users' => $users]);
     }
 
     public function getNew (Request $request) {
@@ -25,7 +25,7 @@ class UsersController extends Controller
                 $user->firstname = $request->input('firstname');
                 $user->phone = $request->input('phone');
                 $user->email = $request->input('email');
-                $user->password = $request->input('password');
+                $user->password = bcrypt($request->input('password'));
                 $user->is_resp = $request->input('is_resp');
                 $user->save();
                 return redirect()->route('user_list');
@@ -42,6 +42,20 @@ class UsersController extends Controller
     public function postEdit (Request $request) {
         $this->validate($request, ['name' => 'required']);
         $user = User::findOrFail($request->input('user_id'));
+        if ($request->input('password')) {
+            if (($request->input('password')) !== ($request->input('passwordConfirmation'))) {
+                return redirect()->route('user_list')->with('error', 'Les deux mots de passe ne sont pas identiques');
+            } else {
+                $user->name = $request->input('name');
+                $user->firstname = $request->input('firstname');
+                $user->phone = $request->input('phone');
+                $user->email = $request->input('email');
+                $user->password = bcrypt($request->input('password'));
+                $user->is_resp = $request->input('is_resp');
+                $user->save();
+                return redirect()->route('user_list');
+            }
+        }
         $user->name = $request->input('name');
         $user->firstname = $request->input('firstname');
         $user->phone = $request->input('phone');
@@ -50,6 +64,7 @@ class UsersController extends Controller
         $user->save();
         return redirect()->route('user_list');
     }
+
 
     public function getDelete ($user_id) {
         $user = User::findOrFail($user_id);

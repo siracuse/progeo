@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('leaflet/script.js')}}"></script>
     <script src="{{asset('js/bibliAjax.js')}}"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
 </head>
 
 <body>
@@ -44,7 +46,7 @@
                         <li><a href="{{route('user_edit_password')}}">Mdp</a></li>
                         <li>
                             <a class="btn-inscription" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Deconnexion
+                                Déconnexion
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

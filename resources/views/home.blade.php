@@ -15,10 +15,13 @@
             <select class="select-category" id="category">
                 <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
+
+            <button onclick="geolocalisation()">GEO</button>
             {{--<select id="subCategory">--}}
                 {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
+        <img class="check switch-map" src="{{asset('img/success.svg')}}">
     </div>
 
     <img class="commercant" src="{{asset('img/commercant.png')}}">
@@ -71,6 +74,7 @@
             initMap();
             createList();
         };
+
 
     </script>
 @endsection

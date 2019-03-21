@@ -8,8 +8,8 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="name">Nom :</label>
-                <input type="text" class="form-control" id="name" name="name" value="bob">
+                <label for="name">Nom *</label>
+                <input type="text" class="form-control" id="name" required name="name" value="bob">
             </div>
 
             <div class="form-group">
@@ -18,7 +18,7 @@
             </div>
 
             {{--<div class="form-group">--}}
-                <p class="active-promo-texte">Activer directement la promotion ?</p>
+                <p class="active-promo-texte">Activer directement la promotion ? *</p>
             {{--</div>--}}
             <div class="form-group">
                 <div>
@@ -39,6 +39,8 @@
                 Ajouter
             </button>
         </form>
+
+        <i>* Champ obligatoire</i>
     </div>
 
 @endsection

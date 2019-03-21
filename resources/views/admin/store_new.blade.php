@@ -1,70 +1,111 @@
-@extends ('layout.app')
+@extends ('layout.admin')
 
 @section ('content')
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class=" col-lg-12">
 
-    {{--{{$id}}--}}
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Ajout </strong> d'un magasin
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="{{ route('store_new')}}" method="post" class="form-horizontal">
+                                {{ csrf_field() }}
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="name" class=" form-control-label">Nom</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="azed"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="address" class=" form-control-label">Adresse</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="address" name="address" placeholder="Adresse" class="form-control" value="azed"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="city_name" class=" form-control-label">Ville</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="city_name" name="city_name" placeholder="Ville" class="form-control" value="GAP"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="phone" class=" form-control-label">Téléphone</label></div>
+                                    <div class="col-12 col-md-9"><input type="number" id="phone" name="phone" placeholder="Téléphone" class="form-control" value="7628259401"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="email" class=" form-control-label">Email</label></div>
+                                    <div class="col-12 col-md-9"><input type="email" id="email" name="email" placeholder="Email" class="form-control" value="hari@gmail.com"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="siret" class=" form-control-label">SIRET</label></div>
+                                    <div class="col-12 col-md-9"><input type="number" id="siret" name="siret" placeholder="SIRET" class="form-control" value="7628259401"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="photoInside" class=" form-control-label">Photo 1</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="photoInside" name="photoInside" placeholder="Photo 1" class="form-control" value="azed"></div>
+                                </div>
+                                {{--<div class="row form-group">--}}
+                                    {{--<div class="col col-md-3"><label for="file-input" class=" form-control-label">File input</label></div>--}}
+                                    {{--<div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>--}}
+                                {{--</div>--}}
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="photoOutside" class=" form-control-label">Photo 2</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="photoOutside" name="photoOutside" placeholder="Photo 2" class="form-control" value="azed"></div>
+                                </div>
+                                {{--<div class="row form-group">--}}
+                                    {{--<div class="col col-md-3"><label for="file-input" class=" form-control-label">File input</label></div>--}}
+                                    {{--<div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>--}}
+                                {{--</div>--}}
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="latitude" class=" form-control-label">Latitude</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="latitude" name="latitude" placeholder="Latitude" class="form-control" value="6.0796910"></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="longitude" class=" form-control-label">Longitude</label></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="longitude" name="longitude" placeholder="Longitude" class="form-control" value="6.0796910"></div>
+                                </div>
 
-    {{--@foreach($villeID as $villeIDd )--}}
-    {{--<option value={{$villeIDd->id}}>{{$villeIDd->id}}</option>--}}
-    {{--@endforeach--}}
 
-    <a href="{{url ('admin\store\list')}}">Retour</a><br><br>
-    <h2>Ajout d'un Magasin</h2>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="category_id" class=" form-control-label">Catégorie</label></div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="category_id" id="category_id" class="form-control">
+                                            @foreach($categories as $category )
+                                                <option value={{$category->id}}>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-    <form method="post" action="{{ route ('store_new') }}">
-        {{ csrf_field() }}
-        <label for="name">Nom :</label>
-        <input type="text" class="form-control" id="name" name="name" value="bob">
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="subcategory_id" class=" form-control-label">Sous-Catégorie</label></div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="subcategory_id" id="subcategory_id" class="form-control">
+                                            @foreach($subcategories as $subcategory )
+                                                <option value={{$subcategory->id}}>{{$subcategory->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-        <label for="address">Adresse :</label>
-        <input type="text" class="form-control" id="address" name="address" value="bob">
-
-        <label for="phone">Téléphone :</label>
-        <input type="text" class="form-control" id="phone" name="phone" value="0202020202">
-
-        <label for="email">Email :</label>
-        <input type="text" class="form-control" id="email" name="email" value="bob@gmail.com">
-
-        <label for="siret">SIRET :</label>
-        <input type="text" class="form-control" id="siret" name="siret" value="02022">
-
-        <label for="photoInside">Photo 1 :</label>
-        <input type="text" class="form-control" id="photoInside" name="photoInside" value="bob">
-
-        <label for="photoOutside">Photo 2 :</label>
-        <input type="text" class="form-control" id="photoOutside" name="photoOutside" value="bob">
-
-        <label for="latitude">Latitude :</label>
-        <input type="text" class="form-control" id="latitude" name="latitude" value="50">
-
-        <label for="longitude">Longitude :</label>
-        <input type="text" class="form-control" id="longitude" name="longitude" value="50">
-
-        <label for="city_name">Ville :</label>
-        <input type="text" class="form-control" id="city_name" name="city_name">
-
-        <br><label for="category_id">Catégorie :</label><br>
-        <select id="category_id" name="category_id">
-            @foreach($categories as $category )
-                <option value={{$category->id}}>{{$category->name}}</option>
-            @endforeach
-        </select>
-
-        <br><br><label for="subcategory_id">Sous-Catégorie :</label><br>
-        <select id="subcategory_id" name="subcategory_id">
-            @foreach($subcategories as $subcategory )
-                <option value={{$subcategory->id}}>{{$subcategory->name}}</option>
-            @endforeach
-        </select>
-
-
-        <br><br><label for="user_id">Responsable :</label><br>
-        <select id="user_id" name="user_id">
-            @foreach($users as $user )
-                <option value={{$user->id}}>{{$user->name}}</option>
-            @endforeach
-        </select>
-
-        <br><br><input type="submit" value="Ajouter"><br><br><br><br><br><br>
-    </form>
+                                <div class="row form-group">
+                                    <div class="col col-md-3"><label for="user_id" class=" form-control-label">Responsable</label></div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="user_id" id="user_id" class="form-control">
+                                            @foreach($users as $user )
+                                                <option value={{$user->id}}>{{$user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Ajouter
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Annuler
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

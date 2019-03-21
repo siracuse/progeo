@@ -47,11 +47,36 @@ class HomeController extends Controller
             )
             ->get();
 
+        if(count($favoris) > 0){
+            return view('user.home', [
+                'favoris' => $favoris,
+                'promos' => $promos
+            ]);
+        }else{
+            return view('user.home', ['promos' => $promos]);
+        }
 
 
-        return view('user.home', [
-            'favoris' => $favoris,
-            'promos' => $promos
-        ]);
+    }
+
+    public function printPromos(){
+        $promos = DB::table('codepromo')
+            ->join('users', 'users.id', '=', 'codepromo.user_id')
+            ->join('promotions', 'promotions.id', '=', 'codepromo.promotion_id')
+            ->join('stores', 'stores.id', '=', 'promotions.store_id')
+            ->where('codepromo.user_id', '=', Auth::user()->id)
+            ->select(
+                'stores.id as store_id',
+                'stores.name as store_name',
+                'users.id as user_id',
+                'promotions.name as promo_name',
+                'promotions.promotionCode',
+                'promotions.id as promo_id',
+                'promotions.startDate',
+                'promotions.endDate'
+            )
+            ->get();
+
+        return ['promos' => $promos];
     }
 }

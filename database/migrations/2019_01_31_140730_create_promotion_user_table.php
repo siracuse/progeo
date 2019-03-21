@@ -21,6 +21,7 @@ class CreatePromotionUserTable extends Migration
 
             $table->string('rating', 50);
             $table->string('comment', 255);
+            $table->dateTime('date');
         });
     }
 

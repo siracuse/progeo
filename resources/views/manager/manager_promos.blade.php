@@ -18,7 +18,11 @@
             <tr>
                 <td>{{$promo->promo_name}}</td>
                 <td>{{$promo->store_name}}</td>
-                <td>{{$promo->startDate}} -> {{$promo->endDate}}</td>
+                @if(!empty($promo->startDate))
+                    <td>{{date('d-m-y', strtotime($promo->startDate))}} -> {{date('d-m-y', strtotime($promo->endDate))}}</td>
+                @else
+                    <td>nc</td>
+                @endif
                 @if($promo->activated == 0)
                     <td> <a class="btn-add-promo" href="{{url ('manager\refresh_promos', ['promo_id' => $promo->promo_id, 'activated' => 'no'])}}">Réactiver</a></td>
                 @else
