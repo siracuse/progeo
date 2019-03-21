@@ -559,7 +559,7 @@ textarea {
 
 .btn-add-promo{
     background-color: #64b5f6;
-    padding: 10px 0px;
+    padding: 10px 15px;
     color: white;
     font-weight: bold;
     display: flex;
@@ -614,6 +614,20 @@ textarea {
 
 tr:nth-child(even) {background: #f7f7f7}
 tr:nth-child(odd) {background: #FFF}
+
+@media screen and (max-width: 1440px) {
+    .table{
+        display: block;
+        overflow-x: auto;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    .table a{
+        margin: 0 5px;
+    }
+
+}
 
 /* MANAGER  */
 
@@ -913,6 +927,7 @@ tr:nth-child(odd) {background: #FFF}
     border: 1px solid #dfdfdf;
     margin: 10px 0;
     height: 220px;
+    background-color: white;
 }
 
 .form-avis{
