@@ -218,6 +218,7 @@ ul li a:hover + .hidden, .hidden:hover {
     position: absolute;
     width: 150px;
     right: 0;
+    z-index: -2;
 }
 
 .container{
@@ -301,6 +302,10 @@ ul li a:hover + .hidden, .hidden:hover {
         position: absolute;
         bottom: 220px;
         left: 48%;
+    }
+
+    .commercant{
+        opacity: 0.5;
     }
 }
 
@@ -886,6 +891,35 @@ tr:nth-child(odd) {background: #FFF}
 
 .bloc-date-promo p{
     margin: 5px 0;
+}
+
+.message-avis{
+    border: 1px solid #dfdfdf;
+    margin: 10px 0;
+    height: 220px;
+}
+
+.form-avis{
+    justify-content: flex-start;
+}
+
+.form-avis input{
+    background-color: white;
+    width: 40%;
+}
+
+.form-avis button{
+    margin: 40px auto;
+}
+
+.form-avis p{
+    margin: 10px 0;
+    width: 100%;
+}
+
+.form-avis div{
+    width: 20%;
+    justify-content: center;
 }
 
 @media screen and (max-width: 1280px) {

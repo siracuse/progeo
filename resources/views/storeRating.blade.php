@@ -13,16 +13,15 @@
 
 
         <div class="bloc-info-store">
-            <form class="full" method="post" action="{{ route ('rating_new') }}">
+            <form class="full form-avis" method="post" action="{{ route ('rating_new') }}">
                 {{ csrf_field() }}
                 <label class="full" for="code">Code avis</label>
                 <input id="code" name="code" type="number">
 
                 <label class="full" for="comment">Laisser un avis</label>
-                <textarea class="full" id="comment" name="comment"></textarea>
-                <br><br>
+                <textarea class="full message-avis" id="comment" name="comment"></textarea>
                 <input id="promo_id" name="promo_id" type="hidden" value={{$promo_id}}>
-                <p>Sélectionner une note:</p>
+                <p>Sélectionner une note :</p>
 
                 <div>
                     <input type="radio" id="1" name="rating" value="1"
