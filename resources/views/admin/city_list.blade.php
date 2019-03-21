@@ -23,7 +23,7 @@
                                     <tr>
                                         <td>{{$city->name}} </td>
                                         <td>
-                                            <a href="{{url ('admin\city\edit', ['city_id' => $city->id])}}">Modifier</a>
+                                            <a href="{{url ('admin\city\edit', ['city_id' => $city->id])}}">Modifier</a> /
                                             <a href="{{url ('admin\city\delete', ['city_id' => $city->id])}}">Supprimer</a>
                                         </td>
                                     </tr>

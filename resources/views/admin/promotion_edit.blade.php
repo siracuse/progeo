@@ -8,7 +8,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <strong>Edition </strong> d'une promotion
+                            <strong>Modification </strong> d'une promotion
                         </div>
                         <div class="card-body card-block">
                             <form action="{{ route('promotion_edit_post')}}" method="post" class="form-horizontal">
@@ -16,15 +16,15 @@
                                 {{ csrf_field() }}
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="name" class=" form-control-label">Nom</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="{{old('name', $promotion->name)}}"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="{{old('name', $promotion->name)}}" required></div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="dateStart" class=" form-control-label">Date début</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="dateStart" name="dateStart" placeholder="Adresse" class="form-control" value="{{old('name', $promotion->startDate)}}"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="dateStart" name="dateStart" placeholder="Date de début" class="form-control" value="{{old('name', $promotion->startDate)}}" required></div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="dateEnd" class=" form-control-label">Date fin</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="dateEnd" name="dateEnd" placeholder="Ville" class="form-control" value="{{old('name', $promotion->endDate)}}"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="dateEnd" name="dateEnd" placeholder="Date de fin" class="form-control" value="{{old('name', $promotion->endDate)}}" required></div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="photo1" class=" form-control-label">Photo 1</label></div>
@@ -44,7 +44,7 @@
                                 {{--</div>--}}
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="storeName" class=" form-control-label">Nom du magasin</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="storeName" name="storeName" placeholder="Nom du magasin" class="form-control" value="{{old('name', $promotion->store->name)}}"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="storeName" name="storeName" placeholder="Nom du magasin" class="form-control" value="{{old('name', $promotion->store->name)}}" required></div>
                                 </div>
 
                                 <div class="row form-group">
@@ -81,7 +81,7 @@
                                 </div>
 
                                 <input type="submit" value="Modifier" name="submit" class="btn btn-primary btn-sm">
-                                <input type="reset" value="Annuler"  class="btn btn-danger btn-sm">
+                                <a href="../list"><input type="button" value="Annuler"  class="btn btn-danger btn-sm"></a>
                             </form>
                         </div>
                     </div>

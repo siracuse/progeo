@@ -633,7 +633,9 @@ tr:nth-child(odd) {background: #FFF}
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-
+    background-color: #e8e8e8;
+    padding: 30px;
+    border-radius: 4px;
 }
 
 .star {
@@ -642,36 +644,40 @@ tr:nth-child(odd) {background: #FFF}
 
 .mes-infos-avis {
     margin-bottom: 10px;
-    padding: 2px 15px;
+    padding: 3px 34px;
     list-style: none;
-    background: #252525;
+    background: #3f3f3f;
     color: white;
     background-size: cover;
-    width: 30%;
+    width: 100%;
     margin-right: 10px;
+    border-radius: 4px;
 }
 
 .mes-infos-promo {
     margin-bottom: 10px;
-    padding: 2px 15px;
+    padding: 15px;
     list-style: none;
-    background: #252525;
+    background: #3f3f3f;
     color: white;
     background-size: cover;
-    width: 19%;
+    width: 30%;
     margin-right: 10px;
+    border-radius: 4px;
 }
 
 .mes-infos-favoris {
     margin-bottom: 10px;
-    padding: 2px 15px;
+    padding: 9px 15px;
     list-style: none;
-    background: linear-gradient(rgba(0, 99, 178, 0.7), rgba(0, 99, 178, 0.7)), url("../img/epicerie-magasin-fruit-legume-bio.jpg");
+    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/epicerie-magasin-fruit-legume-bio.jpg);
     color: white;
     background-size: cover;
-    width: 19%;
+    width: 100%;
     border: 2px solid #0063B2;
     margin-right: 10px;
+    font-weight: 600;
+    border-radius: 4px;
 }
 
 .flex-mes-infos ul .titre-mes-infos {
@@ -684,7 +690,6 @@ tr:nth-child(odd) {background: #FFF}
 
 .flex-mes-infos ul li{
     padding-bottom: 7px;
-    font-size: small;
 }
 
 .flex-mes-infos ul li img {
@@ -713,6 +718,64 @@ tr:nth-child(odd) {background: #FFF}
 .calendar {
     margin-top: 5px;
     position: absolute;
+}
+
+.btn-supp-favoris{
+    background-color: #fb3b32;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+}
+
+.btn-supp-favoris:hover {
+    background-color: #3d4c51;
+}
+
+.bloc-infos-favoris{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.txt-avis{
+    margin: 15px 100px;
+    text-align: center;
+}
+
+.bloc-btn-avis{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+
+.btn-avis{
+    background-color: #64b5f6;;
+    margin-top: 0px;
+}
+
+.code-promo{
+    margin-bottom: 10px;
+}
+
+.bloc-note2{
+    margin: 10px 0;
+}
+
+.img-vide{
+    height: 110px;
+}
+
+.bloc-vide{
+    display: flex;
+    align-items: center;
+}
+
+.bloc-vide p{
+    margin-left: 50px;
+    font-weight: 600;
+    color: #3d4c51;
 }
 
 /* USER */

@@ -26,6 +26,9 @@ class PromotionsController extends Controller
             while(Promotion::where('activated', '=', '1')->where('promotionCode', '=', $random)->first()) {
                 $random = str_pad(rand(1, 999),  3, "0" , STR_PAD_LEFT);
             }
+                if (!(DB::table('stores')->where('name', '=', $request->input('storeName'))->first())) {
+                    return redirect()->route('promotion_new')->with('error', 'Le nom du magasin est incorrect');
+                }
                 $promotion = new Promotion();
                 $promotion->name = $request->input('name');
                 $promotion->startDate = date('Y-m-d', strtotime($request->input('dateStart')));
@@ -38,7 +41,10 @@ class PromotionsController extends Controller
                 $promotion->opinionCode = str_pad(rand(1, 999),  3, "0" , STR_PAD_LEFT);
 
                 $store = DB::table('stores')->where('name', '=', $request->input('storeName'))->get();
-                foreach($store as $key => $value) {$monId = $value->id;}
+
+                foreach($store as $key => $value) {
+                    $monId = $value->id;
+                }
                 $promotion->store_id = $monId;
 
                 $promotion->save();

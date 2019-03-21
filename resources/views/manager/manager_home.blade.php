@@ -23,7 +23,7 @@
         <tbody>
         @foreach($stores as $store)
             <tr>
-                <td>{{$store->store_name}}</td>
+                <td><a href="{{url ('store', ['store_id' => $store->id])}}">{{$store->store_name}}</a></td>
                 <td>{{$store->cat_name}} / {{$store->subcat_name}}</td>
                 <td>{{$store->postalCode}} - {{$store->city_name}}</td>
                 <td class="action-table">

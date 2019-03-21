@@ -14,17 +14,11 @@
                                 {{ csrf_field() }}
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label for="name" class=" form-control-label">Nom</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" value="azed"></div>
+                                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nom" class="form-control" required></div>
                                 </div>
 
-                                @if ($errors->has('name'))
-                                    <br><span class="help-block">
-                                        <strong>{{$errors->first('name')}}</strong>
-                                    </span>
-                                @endif
-
                                 <input type="submit" value="Ajouter" name="submit" class="btn btn-primary btn-sm">
-                                <input type="reset" value="Annuler"  class="btn btn-danger btn-sm">
+                                <a href="./list"><input type="button" value="Annuler"  class="btn btn-danger btn-sm"></a>
 
                             </form>
                         </div>
