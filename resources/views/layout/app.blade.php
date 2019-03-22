@@ -37,7 +37,7 @@
                     <li><a class="btn1" href="{{ route('login') }}">Connexion</a></li>
                 @else
                     <li>
-                        <a href="{{route('return_home')}}">Retour accueil</a>
+                        <a href="{{route('return_home')}}">Mes infos</a>
                     </li>
                     <li class="dropdown">
                         {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -74,7 +74,7 @@
                     <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
                 @else
                     <li>
-                        <a href="{{route('return_home')}}">Retour accueil</a>
+                        <a href="{{route('return_home')}}">Mes infos</a>
                     </li>
                     <li>
                         <a class="btn-inscription" href="{{ route('logout') }}"
