@@ -24,8 +24,8 @@
     <nav class="nav-desk">
         <ul>
             <li><a href="{{route('manager_home')}}">Accueil</a></li>
-            <li><a href="">Nous rejoindre</a></li>
-            <li><a href="">FAQ</a></li>
+            <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+            <li><a href="{{route('faq')}}">FAQ</a></li>
             <li><a href="{{route('contact')}}">Nous contacter</a></li>
             {{--<li><a href="{{route('user_favoris')}}">Favoris</a></li>
             <li><a href="{{route('user_codePromo')}}">Code Promo</a></li>--}}
@@ -61,9 +61,9 @@
     <nav class="nav-phone">
         <a onclick="afficheMenu()" style="font-size: xx-large; float: right">&#8801;</a>
         <ul class="hidden2" id="hidden2">
-            <li><a href="{{route('home')}}">Accueil</a></li>
-            <li><a href="">Nous rejoindre</a></li>
-            <li><a href="">FAQ</a></li>
+            <li><a href="{{route('manager_home')}}">Accueil</a></li>
+            <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+            <li><a href="{{route('faq')}}">FAQ</a></li>
             <li><a href="{{route('contact')}}">Nous contacter</a></li>
             @guest
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>

@@ -26,8 +26,8 @@
         <nav class="nav-desk">
             <ul>
                 <li><a href="{{route('home')}}">Accueil</a></li>
-                <li><a href="">Nous rejoindre</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+                <li><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="{{route('contact')}}">Nous contacter</a></li>
             </ul>
             <ul>
@@ -36,12 +36,16 @@
                     <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                     <li><a class="btn1" href="{{ route('login') }}">Connexion</a></li>
                 @else
+                    <li>
+                        <a href="{{route('return_home')}}">Mes infos</a>
+                    </li>
                     <li class="dropdown">
                         {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>--}}
 
                         <ul class="dropdown-menu">
+
                             <li>
                                 <a class="btn-inscription" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -62,13 +66,16 @@
             <a onclick="afficheMenu()" style="font-size: xx-large; float: right">&#8801;</a>
             <ul class="hidden2" id="hidden2">
                 <li><a href="{{route('home')}}">Accueil</a></li>
-                <li><a href="">Nous rejoindre</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+                <li><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="{{route('contact')}}">Nous contacter</a></li>
                 @guest
                     <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                     <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
                 @else
+                    <li>
+                        <a href="{{route('return_home')}}">Mes infos</a>
+                    </li>
                     <li>
                         <a class="btn-inscription" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

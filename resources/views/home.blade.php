@@ -26,7 +26,7 @@
 
     <img class="commercant" src="{{asset('img/commercant.png')}}">
 
-    <div class="container">
+    <div class="container" id="nous_rejoindre">
         <h2 class="center title-avantage">Pourquoi devenir hôte chez Progeo ?</h2>
 
         <div class="bloc-avantage">

@@ -705,12 +705,11 @@ tr:nth-child(odd) {background: #FFF}
     margin-bottom: 10px;
     padding: 9px 15px;
     list-style: none;
-    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/epicerie-magasin-fruit-legume-bio.jpg);
+    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/fond-gris-sombre.jpg);
     color: white;
     background-size: cover;
     width: 100%;
     border: 2px solid #0063B2;
-    margin-right: 10px;
     font-weight: 600;
     border-radius: 4px;
 }
@@ -812,6 +811,47 @@ tr:nth-child(odd) {background: #FFF}
     font-weight: 600;
     color: #3d4c51;
 }
+
+@media screen and (max-width: 1350px) {
+    .mes_infos {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mes_infos ul {
+        margin-left: 0;
+    }
+
+    .mes_infos ul li {
+        margin: 0;
+        width: 33%;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+    .mes-infos-promo{
+        width: 49%;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    .flex-mes-infos {
+        padding: 10px;
+    }
+
+    .mes-infos-promo{
+        width: 100%;
+    }
+
+    .txt-avis{
+        margin: 10px;
+    }
+
+}
+
 
 /* USER */
 
@@ -973,8 +1013,21 @@ tr:nth-child(odd) {background: #FFF}
 
 /* STORE */
 
+/*FAQ*/
 
+.reponsefaq {
+    margin: 10px;
+    line-height: 1.5;
+}
 
+.questionfaq {
+    font-weight: bold;
+    margin : 10px
+}
 
+.questionreponsefaq {
+    border-bottom: 1px solid #D3D3D3;
+    margin: 20px;
+}
 
-
+/*FAQ*/
