@@ -493,6 +493,13 @@ textarea {
     margin: 48px auto;
 }
 
+.btn-facebook{
+    display: block;
+    margin: 50px auto;
+    width: 30%;
+    text-align: center;
+}
+
 /* CONNEXION */
 
 
