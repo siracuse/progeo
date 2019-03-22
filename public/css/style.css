@@ -698,7 +698,7 @@ tr:nth-child(odd) {background: #FFF}
     margin-bottom: 10px;
     padding: 9px 15px;
     list-style: none;
-    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/epicerie-magasin-fruit-legume-bio.jpg);
+    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/fond-gris-sombre.jpg);
     color: white;
     background-size: cover;
     width: 100%;
