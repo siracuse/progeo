@@ -26,8 +26,8 @@
         <nav class="nav-desk">
             <ul>
                 <li><a href="{{route('home')}}">Accueil</a></li>
-                <li><a href="">Nous rejoindre</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+                <li><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="{{route('contact')}}">Nous contacter</a></li>
             </ul>
             <ul>

@@ -62,8 +62,8 @@
         <a onclick="afficheMenu()" style="font-size: xx-large; float: right">&#8801;</a>
         <ul class="hidden2" id="hidden2">
             <li><a href="{{route('home')}}">Accueil</a></li>
-            <li><a href="">Nous rejoindre</a></li>
-            <li><a href="">FAQ</a></li>
+            <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+            <li><a href="{{route('faq')}}">FAQ</a></li>
             <li><a href="{{route('contact')}}">Nous contacter</a></li>
             @guest
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>

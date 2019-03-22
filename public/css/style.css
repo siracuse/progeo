@@ -951,8 +951,21 @@ tr:nth-child(odd) {background: #FFF}
 
 /* STORE */
 
+/*FAQ*/
 
+.reponsefaq {
+    margin: 10px;
+    line-height: 1.5;
+}
 
+.questionfaq {
+    font-weight: bold;
+    margin : 10px
+}
 
+.questionreponsefaq {
+    border-bottom: 1px solid #D3D3D3;
+    margin: 20px;
+}
 
-
+/*FAQ*/
