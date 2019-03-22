@@ -104,36 +104,43 @@
                 @endforeach
             </div>
             <div id="favoris" class="flex-mes-infos">
-                @if(!empty($favoris))
+
+                @if(empty($favoris))
+                    <script>
+                      console.log('fzofvzn');
+                    </script>
                     <div class="bloc-vide">
                         <img class="img-vide" src="{{asset('img/image-vide.png')}}">
                         <p>Vous n'avez toujours pas de magasins favoris ajoutés !</p>
                     </div>
-                @endif
-                @foreach($favoris as $favori )
-                    <ul class="mes-infos-favoris">
-                        <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
-                                                                                 src="{{asset('img/star.svg')}}"/></li>
-                        <div class="bloc-infos-favoris">
-                            <div>
-                                <li class="name-promo">{{$favori->address}}</li>
-                                <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
-                                <li><img src="{{asset('img/store.svg')}}"/> {{$favori->category_name}}</li>
+                @else
+                    @foreach($favoris as $favori)
+                        <ul class="mes-infos-favoris">
+                            <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
+                                                                                     src="{{asset('img/star.svg')}}"/></li>
+                            <div class="bloc-infos-favoris">
+                                <div>
+                                    <li class="name-promo">{{$favori->address}}</li>
+                                    <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
+                                    <li><img src="{{asset('img/store.svg')}}"/> {{$favori->category_name}}</li>
+                                </div>
+                                <div>
+                                    <li><img src="{{asset('img/add.svg')}}"/> {{$favori->subcategory_name}}</li>
+                                    <li class="name-promo">{{$favori->address}}</li>
+                                    <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
+                                </div>
                             </div>
-                            <div>
-                                <li><img src="{{asset('img/add.svg')}}"/> {{$favori->subcategory_name}}</li>
-                                <li class="name-promo">{{$favori->address}}</li>
-                                <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
-                            </div>
-                        </div>
-                        <li><a class="btn-supp-favoris" href="{{url ('user\favoris\delete',
+                            <li><a class="btn-supp-favoris" href="{{url ('user\favoris\delete',
                                 ['store_id' => $favori->store_id, 'user_id' => Auth::user()->id]
                             )}}">Supprimer</a></li>
-                    </ul>
-                @endforeach
+                        </ul>
+                    @endforeach
+                @endif
+
+
             </div>
             <div id="avis" class="flex-mes-infos">
-                @if(!empty($avis))
+                @if(!isset($avis))
                     <div class="bloc-vide">
                         <img class="img-vide" src="{{asset('img/image-vide.png')}}">
                         <p>Vous n'avez toujours pas d'avis ajoutés !</p>
