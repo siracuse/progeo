@@ -703,7 +703,6 @@ tr:nth-child(odd) {background: #FFF}
     background-size: cover;
     width: 100%;
     border: 2px solid #0063B2;
-    margin-right: 10px;
     font-weight: 600;
     border-radius: 4px;
 }
@@ -805,6 +804,47 @@ tr:nth-child(odd) {background: #FFF}
     font-weight: 600;
     color: #3d4c51;
 }
+
+@media screen and (max-width: 1350px) {
+    .mes_infos {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mes_infos ul {
+        margin-left: 0;
+    }
+
+    .mes_infos ul li {
+        margin: 0;
+        width: 33%;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+    .mes-infos-promo{
+        width: 49%;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    .flex-mes-infos {
+        padding: 10px;
+    }
+
+    .mes-infos-promo{
+        width: 100%;
+    }
+
+    .txt-avis{
+        margin: 10px;
+    }
+
+}
+
 
 /* USER */
 
