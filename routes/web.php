@@ -41,7 +41,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 | ADMIN INTERFACE
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','admin'])->group(function () {
+//Route::middleware(['auth','admin'])->group(function () {
 
     //Page d'accueil
     Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
@@ -147,7 +147,7 @@ Route::middleware(['auth','admin'])->group(function () {
     //Suppression promotion
     Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsController@getDelete')->name('promotion_delete');
 
-});
+//});
 
 
 
@@ -156,7 +156,7 @@ Route::middleware(['auth','admin'])->group(function () {
 | MANAGER INTERFACE
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','manager'])->group(function () {
+//Route::middleware(['auth','manager'])->group(function () {
     //STORES
     Route::get('/manager/', 'ManagerController@getStores')->name('manager_home');
 
@@ -177,7 +177,7 @@ Route::middleware(['auth','manager'])->group(function () {
     Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');
 
     Route::get('/test/', 'ManagerController@test')->name('test');
-});
+//});
 
 
 
@@ -187,7 +187,7 @@ Route::middleware(['auth','manager'])->group(function () {
 | USER INTERFACE
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','user'])->group(function () {
+//Route::middleware(['auth','user'])->group(function () {
     //Page d'accueil
     Route::get ('/user/', 'User\HomeController@index')->name('user_home');
     Route::post('/user/promos_list', 'User\HomeController@printPromos')->name('print_promos');
@@ -212,7 +212,7 @@ Route::middleware(['auth','user'])->group(function () {
     //User edit password
     Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
     Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
-});
+//});
 
 
 /*
