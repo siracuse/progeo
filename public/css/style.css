@@ -221,6 +221,28 @@ ul li a:hover + .hidden, .hidden:hover {
     background-color: #64b5f6a8;
 }
 
+.bloc-search input{
+    width: 50%;
+}
+
+.bloc-search select{
+    width: 30%;
+}
+
+.bloc-search a{
+    background-color: #fbc632;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.bloc-search h2{
+    background-color: white;
+    padding: 10px 38px;
+    color: #3d4c51;
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .commercant{
     position: absolute;
     width: 150px;
@@ -559,7 +581,7 @@ textarea {
 
 .btn-add-promo{
     background-color: #64b5f6;
-    padding: 10px 0px;
+    padding: 10px 15px;
     color: white;
     font-weight: bold;
     display: flex;
@@ -614,6 +636,20 @@ textarea {
 
 tr:nth-child(even) {background: #f7f7f7}
 tr:nth-child(odd) {background: #FFF}
+
+@media screen and (max-width: 1440px) {
+    .table{
+        display: block;
+        overflow-x: auto;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    .table a{
+        margin: 0 5px;
+    }
+
+}
 
 /* MANAGER  */
 
@@ -684,12 +720,11 @@ tr:nth-child(odd) {background: #FFF}
     margin-bottom: 10px;
     padding: 9px 15px;
     list-style: none;
-    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/epicerie-magasin-fruit-legume-bio.jpg);
+    background: linear-gradient(rgba(63, 63, 63, 0.88), rgba(0, 99, 178, 0.23)), url(../img/fond-gris-sombre.jpg);
     color: white;
     background-size: cover;
     width: 100%;
     border: 2px solid #0063B2;
-    margin-right: 10px;
     font-weight: 600;
     border-radius: 4px;
 }
@@ -791,6 +826,47 @@ tr:nth-child(odd) {background: #FFF}
     font-weight: 600;
     color: #3d4c51;
 }
+
+@media screen and (max-width: 1350px) {
+    .mes_infos {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mes_infos ul {
+        margin-left: 0;
+    }
+
+    .mes_infos ul li {
+        margin: 0;
+        width: 33%;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+    .mes-infos-promo{
+        width: 49%;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    .flex-mes-infos {
+        padding: 10px;
+    }
+
+    .mes-infos-promo{
+        width: 100%;
+    }
+
+    .txt-avis{
+        margin: 10px;
+    }
+
+}
+
 
 /* USER */
 
@@ -913,6 +989,7 @@ tr:nth-child(odd) {background: #FFF}
     border: 1px solid #dfdfdf;
     margin: 10px 0;
     height: 220px;
+    background-color: white;
 }
 
 .form-avis{
@@ -969,3 +1046,22 @@ tr:nth-child(odd) {background: #FFF}
 }
 
 /*FAQ*/
+
+
+
+/* ERROR 404 */
+
+.bloc-404{
+    margin-top: 50px;
+}
+
+.bloc-404 h1{
+    font-size: 350px;
+    color: #64b5f6;
+}
+
+.bloc-404 p{
+    font-size: 50px;
+}
+
+/* ERROR 404 */

@@ -34,6 +34,8 @@ class LoginController extends Controller
     {
         if (Auth::user()->is_resp === 1) {
             return '/manager';
+        } else if (Auth::user()->is_resp === 2) {
+            return '/admin';
         }
         return '/user';
 
