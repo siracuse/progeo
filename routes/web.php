@@ -41,7 +41,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 | ADMIN INTERFACE
 |--------------------------------------------------------------------------
 */
-//Route::middleware(['auth','admin'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
 
     //Page d'accueil
     Route::get ('/admin/', 'Admin\HomeController@index')->name('admin_home');
@@ -60,9 +60,6 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     //Suppression categorie
     Route::get ('/admin/category/delete/{category_id}', 'Admin\CategoriesController@getDelete')->name('category_delete');
 
-    Route::post('/map/categories', 'Admin\CategoriesController@postSearchCategories')->name('categories_search_post');
-
-
     //Liste ville
     Route::get ('/admin/city/list', 'Admin\CitiesController@getAll')->name('city_list');
 
@@ -76,9 +73,6 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 
     //Suppression ville
     Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
-
-    Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
-
 
 
     //Liste subcategorie
@@ -95,10 +89,6 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     //Suppression subcategorie
     Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
 
-    Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
-
-
-
     //Liste store
     Route::get ('/admin/store/list', 'Admin\StoresController@getAll')->name('store_list');
 
@@ -112,10 +102,6 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 
     //Suppression store
     Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete')->name('store_delete');
-
-    Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
-
-
 
     //Liste user
     Route::get ('/admin/user/list', 'Admin\UsersController@getAll')->name('user_list');
@@ -132,7 +118,6 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->name('user_delete');
 
 
-
     //Liste promotions
     Route::get ('/admin/promotion/list', 'Admin\PromotionsController@getAll')->name('promotion_list');
 
@@ -147,7 +132,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     //Suppression promotion
     Route::get ('/admin/promotion/delete/{promotion_id}', 'Admin\PromotionsController@getDelete')->name('promotion_delete');
 
-//});
+});
 
 
 
@@ -156,7 +141,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 | MANAGER INTERFACE
 |--------------------------------------------------------------------------
 */
-//Route::middleware(['auth','manager'])->group(function () {
+Route::middleware(['auth','manager'])->group(function () {
     //STORES
     Route::get('/manager/', 'ManagerController@getStores')->name('manager_home');
 
@@ -177,7 +162,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');
 
     Route::get('/test/', 'ManagerController@test')->name('test');
-//});
+});
 
 
 
@@ -187,7 +172,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 | USER INTERFACE
 |--------------------------------------------------------------------------
 */
-//Route::middleware(['auth','user'])->group(function () {
+Route::middleware(['auth','user'])->group(function () {
     //Page d'accueil
     Route::get ('/user/', 'User\HomeController@index')->name('user_home');
     Route::post('/user/promos_list', 'User\HomeController@printPromos')->name('print_promos');
@@ -212,7 +197,7 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
     //User edit password
     Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
     Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
-//});
+});
 
 
 /*
@@ -224,3 +209,18 @@ Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 Route::get ('store/{store_id}', 'StoreController@getDetails')->name('store_details');
 Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating');
 Route::post ('promo/new', 'PromotionController@getNew')->name('rating_new');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| LES ROUTES DE MILOU
+|--------------------------------------------------------------------------
+*/
+Route::post('/map/categories', 'Admin\CategoriesController@postSearchCategories')->name('categories_search_post');
+
+Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
+
+Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
+
+Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
