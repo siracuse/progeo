@@ -216,19 +216,36 @@
 
             <div class="col-sm-5">
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
-                    </a>
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--<img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">--}}
+                    {{--</a>--}}
 
-                    <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                    {{--<div class="user-menu dropdown-menu">--}}
+                        {{--<a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>--}}
 
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                        {{--<a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>--}}
 
-                        <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                        {{--<a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>--}}
 
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
-                    </div>
+                        {{--<a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>--}}
+                    {{--</div>--}}
+                    <ul>
+                        <!-- Authentication Links -->
+                        @guest
+                            <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
+                            <li><a class="btn1" href="{{ route('login') }}">Connexion</a></li>
+                        @else
+                            <li>
+                                <a class="btn-inscription" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    Déconnexion
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
 
                 <div class="language-select dropdown" id="language-select">
@@ -256,24 +273,24 @@
     </header>
 
 
-    <div class="breadcrumbs">
-        <div class="col-sm-4">
-            <div class="page-header float-left">
-                <div class="page-title">
-                    <h1>Dashboard</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="page-header float-right">
-                <div class="page-title">
-                    <ol class="breadcrumb text-right">
-                        <li class="active">Déconnexion</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="breadcrumbs">--}}
+        {{--<div class="col-sm-4">--}}
+            {{--<div class="page-header float-left">--}}
+                {{--<div class="page-title">--}}
+                    {{--<h1>Dashboard</h1>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-8">--}}
+            {{--<div class="page-header float-right">--}}
+                {{--<div class="page-title">--}}
+                    {{--<ol class="breadcrumb text-right">--}}
+                        {{--<li class="active">Déconnexion</li>--}}
+                    {{--</ol>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 
     @yield('content')
