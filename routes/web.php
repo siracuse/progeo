@@ -33,6 +33,9 @@ Route::post('/contact/send', 'ContactController@send')->name('contact.send');
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+Route::get('/mention_legales', function () {
+    return view('mention_legales');
+})->name('mention_legales');
 Route::get('/return_home', 'HomeController@redirect_home')->name('return_home');
 
 
