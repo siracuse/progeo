@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'hari@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>false
+            'is_resp'=>0
         ]);
 
         DB::table('users')->insert ([
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'quentin@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>false
+            'is_resp'=>0
         ]);
 
         DB::table('users')->insert ([
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'dorian@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>false
+            'is_resp'=>0
         ]);
 
         DB::table('users')->insert ([
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'samuel@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>false
+            'is_resp'=>0
         ]);
 
         DB::table('users')->insert ([
@@ -53,7 +53,16 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'apu@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>true
+            'is_resp'=>0
+        ]);
+
+        DB::table('users')->insert ([
+            'name' => 'admin',
+            'firstname' => 'admin',
+            'phone'=>'0000000000',
+            'email' => 'admin@gmail.com',
+            'password'=> bcrypt('azerty'),
+            'is_resp'=>2
         ]);
 
         factory(App\User::class, 10)->create();
