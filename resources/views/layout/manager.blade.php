@@ -6,6 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>PROGEO</title>
+    <link rel="icon" href="{{asset('img/logo.ico')}}" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -84,6 +85,7 @@
         </ul>
     </nav>
     <script>
+        document.getElementById('hidden2').style.display = "none";
         function afficheMenu(){
             if (document.getElementById('hidden2').style.display === "none") {
                 document.getElementById('hidden2').style.display = "flex";
@@ -106,15 +108,32 @@
 <footer>
     <div class="bloc-footer">
         <ul>
-            <li>Accueil</li>
-            <li>Nous rejoindre</li>
-            <li>FAQ</li>
-            <li>Contact</li>
+            <li><a href="{{route('home')}}">Accueil</a></li>
+            <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
+            <li><a href="{{route('faq')}}">FAQ</a></li>
+            <li><a href="{{route('contact')}}">Nous contacter</a></li>
         </ul>
         <ul>
-            <li>Connexion</li>
-            <li>Inscription</li>
-            <li>Mentions légales</li>
+            @guest
+                <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
+                <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
+            @else
+                <li>
+                    <a href="{{route('return_home')}}">Mes infos</a>
+                </li>
+                <li>
+                    <a class="btn-inscription" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                        Deconnexion
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            @endguest
+            <li><a href="{{route('mention_legales')}}">Mentions légales</a></li>
         </ul>
     </div>
     <p>© Progeo 2019 | Créer par Sahaquedo</p>
