@@ -221,6 +221,28 @@ ul li a:hover + .hidden, .hidden:hover {
     background-color: #64b5f6a8;
 }
 
+.bloc-search input{
+    width: 50%;
+}
+
+.bloc-search select{
+    width: 30%;
+}
+
+.bloc-search a{
+    background-color: #fbc632;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.bloc-search h2{
+    background-color: white;
+    padding: 10px 38px;
+    color: #3d4c51;
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .commercant{
     position: absolute;
     width: 150px;
@@ -1024,3 +1046,22 @@ tr:nth-child(odd) {background: #FFF}
 }
 
 /*FAQ*/
+
+
+
+/* ERROR 404 */
+
+.bloc-404{
+    margin-top: 50px;
+}
+
+.bloc-404 h1{
+    font-size: 350px;
+    color: #64b5f6;
+}
+
+.bloc-404 p{
+    font-size: 50px;
+}
+
+/* ERROR 404 */
