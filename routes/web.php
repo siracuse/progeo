@@ -214,7 +214,6 @@ Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_r
 Route::post ('promo/new', 'PromotionController@getNew')->name('rating_new');
 
 
-
 /*
 |--------------------------------------------------------------------------
 | LES ROUTES DE MILOU
@@ -227,3 +226,12 @@ Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cit
 Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
 
 Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
+
+/*
+|--------------------------------------------------------------------------
+| FACEBOOK
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');

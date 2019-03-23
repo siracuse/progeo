@@ -58,7 +58,11 @@
                                     Mot de passe oublié?
                                 </a>
                             </div>
+
                     </form>
+                    <div>
+                        <a href="{{url('/redirect')}}" class="btn1 btn-form btn-facebook">Login with Facebook</a>
+                    </div>
                 </div>
             </div>
         </div>
