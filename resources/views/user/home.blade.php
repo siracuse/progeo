@@ -8,18 +8,16 @@
         <div id="map"></div>
 
         <div class="bloc-search">
+            <h2>Cherchez des promotions dans toute la france !</h2>
             <div id="info_promo"></div>
-
             <input placeholder="Ville.." id="city" list="cities">
-
             <datalist id="cities"></datalist>
 
             <select class="select-category" id="category">
-                <option value="choisir" selected="selected">Catégorie...</option>
+                <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
 
-            <button onclick="geolocalisation()">GEO</button>
-
+            <a class="btn1" onclick="geolocalisation()">Ma position</a>
             {{--<select id="subCategory">--}}
             {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
