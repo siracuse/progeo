@@ -19,7 +19,9 @@
         <img src="{{asset($img_2)}}">
     </div>
 
+    @if (Auth::user())
     <a class="btn1 btn-favoris" href="{{route('user_favoris_update', ['store_id' => $store->id, 'user_id' => Auth::user()->id]) }}">Favoris</a>
+    @endif
 
     <div class="container-store">
         <h1 class="center">{{$store->name}}</h1>

@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
             'phone'=>'0000000000',
             'email' => 'apu@gmail.com',
             'password'=> bcrypt('azerty'),
-            'is_resp'=>0
+            'is_resp'=>1
         ]);
 
         DB::table('users')->insert ([
