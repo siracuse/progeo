@@ -113,7 +113,7 @@ function centerOnCity(latitude, longitude){
 
 function printStores(stores_){
     let stores = stores_.data
-    console.log(stores);
+
     map.removeLayer(layerGroup);
     for(let i = 0; i < stores['stores'].length ; i++){
 
@@ -210,7 +210,6 @@ function promo(){
 
         setTimeout("document.getElementById('info_promo').removeChild(info)", 5000);
     }else{
-        console.log(document.getElementById('promo').value);
         let values = document.getElementById('promo').value.split('-');
         let promo_id = values[0]; let store_id = values[1];
 
@@ -232,9 +231,6 @@ function promo_res(json){
     document.getElementById('info_promo').innerHTML = "";
     let info = json.data
 
-    console.log(info.info);
-    console.log(document.getElementById('info_promo'));
-
     let info_text = document.createElement('i');
     info_text.setAttribute('id', 'info');
 
@@ -245,8 +241,6 @@ function promo_res(json){
         info_text.textContent = 'Promotion ajoutée avec succès';
         info_text.style.color = 'green';
     }
-
-    console.log('coucou');
 
     axios.post(rt_promos, {
         _token: token,
@@ -263,14 +257,9 @@ function promo_res(json){
 }
 
 function promoList(res){
-    console.log('coucou');
-
     let div = document.getElementById('promos');
 
     let promos = res.data;
-    console.log('promos', promos);
-
-
 
     for(let i = 0; i < promos['promos'].length; i++){
         rt_promo_avis = rt_promo_avis.replace('value', promos['promos'][i].promo_id)
@@ -288,7 +277,7 @@ function promoList(res){
         '<li class="code-promo">Code : '+ promos['promos'][i].promotionCode +'</li>'+
         '<li><img class="calendar" src="img/calendar.svg"/><div class="date-fin-promo">Du'  + promos['promos'][i].startDate + '</div></li>'+
         '<li class="date-fin-promo">Au ' + promos['promos'][i].endDate +'</li>'+
-        '<div class="bloc-btn-avis"><li><a class="btn-modif btn-avis" href="' + rt_promo_avis + '" ">Laisser un avis</a></li><li class="btn-mes-promos-retirer"><button class="btn-supp-favoris" onclick="delPromoUser(' + promos['promos'][i].promo_id + ')">Retirer</button>'+
+        '<div class="bloc-btn-avis"><li><a class="btn-modif btn-avis" href="' + rt_promo_avis + '" ">Laisser un avis</a></li><li class="btn-mes-promos-retirer"><a class="btn-supp-favoris" onclick="delPromoUser(' + promos['promos'][i].promo_id + ')">Retirer</a>'+
         '</li>'+
         '</div>'+
 
@@ -300,8 +289,6 @@ function promoList(res){
 }
 
 function geolocalisation(){
-    console.log('coucou from geo');
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
@@ -312,9 +299,6 @@ function showPosition(position) {
 
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-
-    console.log('lat', lat);
-    console.log('long', lon);
 
     centerOnCity(lat, lon);
 }

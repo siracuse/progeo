@@ -47,14 +47,11 @@ class HomeController extends Controller
             )
             ->get();
 
-        if(count($favoris) > 0){
             return view('user.home', [
                 'favoris' => $favoris,
                 'promos' => $promos
             ]);
-        }else{
-            return view('user.home', ['promos' => $promos]);
-        }
+
 
 
     }

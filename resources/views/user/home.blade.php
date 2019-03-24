@@ -8,18 +8,16 @@
         <div id="map"></div>
 
         <div class="bloc-search">
+            <h2>Cherchez des promotions dans toute la france !</h2>
             <div id="info_promo"></div>
-
             <input placeholder="Ville.." id="city" list="cities">
-
             <datalist id="cities"></datalist>
 
             <select class="select-category" id="category">
-                <option value="choisir" selected="selected">Catégorie...</option>
+                <option value="choisir" selected="selected">Catégorie...</option>;
             </select>
 
-            <button onclick="geolocalisation()">GEO</button>
-
+            <a class="btn1" onclick="geolocalisation()">Ma position</a>
             {{--<select id="subCategory">--}}
             {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
@@ -39,6 +37,7 @@
         var rt_promos = '{{route('print_promos')}}';
         var rt_promo_avis = '{{route('promo_rating', ['promo_id' => 'value'])}}';
         var rt_delPromoUser = '{{route('del_promo_user')}}';
+        var rt_delFavorisUser = '{{route('user_favoris_delete')}}';
         var view = 'user/home';
         var token = '{{csrf_token()}}';
         window.onload = function () {
@@ -62,62 +61,58 @@
 
         <div class="content">
             <div id="promos" class="flex-mes-infos">
-                @if(!empty($promos))
-                    <div class="bloc-vide">
-                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
-                        <p>Vous n'avez toujours pas de promotions ajoutés !</p>
-                    </div>
-                @endif
-                @foreach($promos as $promo)
+                @if(isset($promos) && count($promos) > 0)
+                    @foreach($promos as $promo)
 
-                    <ul class="mes-infos-promo">
-                        <li class="titre-mes-infos">Magasin : {{$promo->store_name}}</li>
-                        <li class="name-promo">Promotion : {{$promo->promo_name}}</li>
-                        <li class="code-promo">
-                            <div class="bloc-note bloc-note2">
-                                <img src="{{asset('img/store/star-full.svg')}}">
-                                <img src="{{asset('img/store/star-full.svg')}}">
-                                <img src="{{asset('img/store/star-full.svg')}}">
-                                <img src="{{asset('img/store/star-full.svg')}}">
-                                <img src="{{asset('img/store/star-empty.svg')}}">
+                        <ul class="mes-infos-promo">
+                            <li class="titre-mes-infos">Magasin : {{$promo->store_name}}</li>
+                            <li class="name-promo">Promotion : {{$promo->promo_name}}</li>
+                            <li class="code-promo">
+                                <div class="bloc-note bloc-note2">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-empty.svg')}}">
+                                </div>
+                            </li>
+                            <li class="code-promo">Code : {{$promo->promotionCode}}</li>
+                            <li><img class="calendar" src="{{asset('img/calendar.svg')}}"/>
+                                <div class="date-fin-promo">Du {{date('d-m-Y', strtotime($promo->startDate))}} </div>
+                            </li>
+                            <li class="date-fin-promo">Au {{date('d-m-Y', strtotime($promo->endDate))}}</li>
+                            <div class="bloc-btn-avis">
+                                <li>
+                                    <a class="btn-modif btn-avis"
+                                       href="{{url('promo',  ['promo_id' => $promo->promo_id])}}">Laisser un avis
+                                    </a>
+                                </li>
+                                <li class="btn-mes-promos-retirer">
+                                    <a class="btn-supp-favoris"
+                                            onclick="delPromoUser({{$promo->promo_id}})">Retirer
+                                    </a>
+
+                                </li>
                             </div>
-                        </li>
-                        <li class="code-promo">Code : {{$promo->promotionCode}}</li>
-                        <li><img class="calendar" src="{{asset('img/calendar.svg')}}"/>
-                            <div class="date-fin-promo">Du {{date('d-m-Y', strtotime($promo->startDate))}} </div>
-                        </li>
-                        <li class="date-fin-promo">Au {{date('d-m-Y', strtotime($promo->endDate))}}</li>
-                        <div class="bloc-btn-avis">
-                            <li>
-                                <a class="btn-modif btn-avis" href="{{url('promo',  ['promo_id' => $promo->promo_id])}}">Laisser un avis
-                                </a>
-                            </li>
-                            <li class="btn-mes-promos-retirer">
-                                <button class="btn-supp-favoris"
-                                        onclick="delPromoUser({{$promo->promo_id}})">Retirer
-                                </button>
 
-                            </li>
+                        </ul>
+                    @endforeach
+
+                    @else
+                    <div class="bloc-vide">
+                            <img class="img-vide" src="img/image-vide.png">
+                            <p>Vous n\'avez toujours pas de promotions ajoutés !</p>
                         </div>
 
-                    </ul>
-                @endforeach
+                @endif
             </div>
             <div id="favoris" class="flex-mes-infos">
-
-                @if(empty($favoris))
-                    <script>
-                      console.log('fzofvzn');
-                    </script>
-                    <div class="bloc-vide">
-                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
-                        <p>Vous n'avez toujours pas de magasins favoris ajoutés !</p>
-                    </div>
-                @else
+                @if(isset($favoris) && count($favoris) > 0)
                     @foreach($favoris as $favori)
                         <ul class="mes-infos-favoris">
                             <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
-                                                                                     src="{{asset('img/star.svg')}}"/></li>
+                                                                                     src="{{asset('img/star.svg')}}"/>
+                            </li>
                             <div class="bloc-infos-favoris">
                                 <div>
                                     <li class="name-promo">{{$favori->address}}</li>
@@ -130,13 +125,18 @@
                                     <li class="code-promo">{{$favori->postalCode}} {{$favori->city_name}}</li>
                                 </div>
                             </div>
-                            <li><a class="btn-supp-favoris" href="{{url ('user\favoris\delete',
-                                ['store_id' => $favori->store_id, 'user_id' => Auth::user()->id]
-                            )}}">Supprimer</a></li>
+                            <li><a class="btn-supp-favoris"
+                                   onclick="delFavorisStore({{$favori->store_id}})">Supprimer</a></li>
                         </ul>
                     @endforeach
-                @endif
 
+                @else
+                    <div class="bloc-vide">
+                        <img class="img-vide" src="img/image-vide.png">
+                        <p>Vous n\'avez toujours pas de magasins favoris !</p>
+                    </div>
+
+                @endif
 
             </div>
             <div id="avis" class="flex-mes-infos">
@@ -205,8 +205,6 @@
                 }
 
                 function delPromoUser(promo_id) {
-                    console.log(promo_id);
-
                     axios.post(rt_delPromoUser, {
                         promo_id: promo_id,
                         _token: token,
@@ -220,6 +218,42 @@
                 function delDivPromo() {
 
                     document.getElementById('promos').innerHTML = "";
+
+                    let div = document.getElementById('promos');
+                    console.log(div);
+                    let ch = '<div class="bloc-vide">' +
+                        '    <img class="img-vide" src="img/image-vide.png">' +
+                        '    <p>Vous n\'avez toujours pas de promotions ajoutés !</p>' +
+                        '</div>';
+
+                    div.innerHTML = ch;
+                }
+
+                function delFavorisStore(store_id) {
+                    console.log(store_id);
+
+                    axios.post(rt_delFavorisUser, {
+                        store_id: store_id,
+                        _token: token,
+                    })
+                        .then(delDivFavoris)
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+
+                function delDivFavoris() {
+
+                    document.getElementById('favoris').innerHTML = "";
+
+                    let div = document.getElementById('favoris');
+                    console.log(div);
+                    let ch = '<div class="bloc-vide">' +
+                        '    <img class="img-vide" src="img/image-vide.png">' +
+                        '    <p>Vous n\'avez toujours pas de magasins favoris !</p>' +
+                        '</div>';
+
+                    div.innerHTML = ch;
                 }
 
 

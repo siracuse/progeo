@@ -185,7 +185,7 @@ Route::middleware(['auth','user'])->group(function () {
 
     //Favoris
     Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
-    Route::get ('/user/favoris/delete/{store_id}/{user_id}', 'User\FavorisController@delete')->name('user_favoris_delete');
+    Route::post ('/user/favoris/delete', 'User\FavorisController@delete')->name('user_favoris_delete');
     Route::get ('/user/favoris/update/{store_id}/{user_id}', 'User\FavorisController@update')->name('user_favoris_update');
 
     //CodePromo

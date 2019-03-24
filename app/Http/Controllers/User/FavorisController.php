@@ -62,11 +62,12 @@ class FavorisController extends Controller
         return redirect()->route('store_details', $store_id);
     }
 
-    public function delete($store_id, $user_id){
+    public function delete(Request $request){
         DB::table('store_user')
-            ->where('store_id', $store_id)
-            ->where('user_id', $user_id)
+            ->where('store_id', '=', $request->input('store_id'))
+            ->where('user_id', '=', Auth::user()->id)
             ->delete();
+
         return redirect()->route('user_home');
     }
 }
