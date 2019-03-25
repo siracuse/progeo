@@ -76,14 +76,18 @@ class PromotionController extends Controller
                             'date' => date("Y-m-d H:i:s"),
                         )
                     );
-                    return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+                    return redirect()
+                        ->route('promo_rating', ['promo_id' => $request->input('promo_id')])
+                        ->with('success', 'Votre avis à bien été enregistré');
                 } //sinon
                 else {
                     //redirection avec erreur !!!
-                    return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+                    return redirect()
+                        ->route('promo_rating', ['promo_id' => $request->input('promo_id')])
+                        ->with('error', 'Le code avis est incorrecte');
                 }
             }
         }
-        return redirect()->route('user_home');
+        return redirect()->route('user_home')->with('error', 'Vous avez déjà laissé un avis pour cette promotion');
     }
 }
