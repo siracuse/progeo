@@ -165,6 +165,14 @@ Route::middleware(['auth','manager'])->group(function () {
     Route::post('/manager/add_promo', 'ManagerController@addPromo')->name('manager_add_promo_post');
 
     Route::get('/test/', 'ManagerController@test')->name('test');
+
+    //Manager edit account
+    Route::get ('/manager/editAccount', 'Manager\AccountController@getEditAccount')->name('manager_edit_account');
+    Route::post ('/manager/editAccount', 'Manager\AccountController@postEditAccount')->name('manager_edit_post_account');
+
+    //Manager edit password
+    Route::get ('/manager/editPassword', 'Manager\AccountController@getPassword')->name('manager_edit_password');
+    Route::post ('/manager/editPassword', 'Manager\AccountController@getPassword')->name('manager_edit_post_password');
 });
 
 
