@@ -179,13 +179,19 @@ ul li a:hover + .hidden, .hidden:hover {
 }
 
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1120px) {
     .nav-desk{
         display: none;
     }
 
     .nav-phone{
         display: block;
+    }
+
+    header img{
+        height: 60px;
+        margin: 3px;
+        margin-left: 32px;
     }
 }
 /* NAV */
