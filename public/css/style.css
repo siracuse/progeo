@@ -1108,4 +1108,12 @@ tr:nth-child(odd) {background: #FFF}
     font-size: 50px;
 }
 
+
+
+@media screen and (max-width: 650px) {
+    .bloc-404 h1 {
+        font-size: 200px;
+    }
+}
+
 /* ERROR 404 */
