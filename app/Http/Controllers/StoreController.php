@@ -19,7 +19,7 @@ class StoreController extends Controller
         $category = Category::findOrFail($store->category_id);
         $subcategory = Subcategory::findOrFail($store->subcategory_id);
         $city = City::findOrFail($store->city_id);
-        $promotions = DB::table('promotions') ->where('store_id', '=', $store->id)->get();
+        $promotions = DB::table('promotions') ->where('store_id', '=', $store->id)->where('activated', '=', '1')->where('endDate',  '>', date('Y-m-d H:i:s'))->get();
         $user = User::findOrFail($store->user_id);
 
         $img_1 = 'Images/stores/'.$user->id . '_' . $user->name.'/'.$store->photoInside;
