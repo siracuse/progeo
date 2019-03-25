@@ -23,8 +23,14 @@
                                     <tr>
                                         <td>{{$category->name}} </td>
                                         <td>
-                                            <a href="{{url ('admin\category\edit', ['category_id' => $category->id])}}">Modifier</a>/
-                                            <a href="{{url ('admin\category\delete', ['category_id' => $category->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\category\edit', ['category_id' => $category->id])}}">Modifier
+                                                </a>
+                                            </button>
+                                                /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\category\delete', ['category_id' => $category->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
