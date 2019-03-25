@@ -22,7 +22,7 @@
                 {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
-        <img class="check switch-map" src="{{asset('img/success.svg')}}">
+        <img id="map-btn" class="check switch-map" src="{{asset('img/success.svg')}}">
     </div>
 
     <img class="commercant" src="{{asset('img/commercant.png')}}">
@@ -75,6 +75,19 @@
             initMap();
             createList();
         };
+
+        document.getElementById("map-btn").onclick = mapNone;
+        document.getElementById("map").style.display = 'block';
+
+        function mapNone() {
+            if (document.getElementById("map").style.display === 'block') {
+                document.getElementById("map").style.display = 'none';
+                console.log('ok');
+            } else {
+                document.getElementById("map").style.display = 'block';
+            }
+
+        }
 
 
     </script>

@@ -307,6 +307,10 @@ ul li a:hover + .hidden, .hidden:hover {
         background-color: #64b5f6a8;
     }
 
+    #map{
+        height: 400px;
+    }
+
 }
 
 
@@ -339,6 +343,10 @@ ul li a:hover + .hidden, .hidden:hover {
 
     .commercant{
         opacity: 0.5;
+    }
+
+    #map{
+        height: 300px;
     }
 }
 

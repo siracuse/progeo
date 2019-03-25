@@ -54,6 +54,26 @@
             </form>
 
             @foreach($ratings as $rating)
+                <ul class="mes-infos-avis">
+                    {{--<li class="titre-mes-infos">{{$rating->date}}</li>--}}
+                    <li class="code-promo">
+                        <div class="bloc-note">
+                            {{$rating->rating}}
+                            <img src="{{asset('img/store/star-full.svg')}}">
+                            <img src="{{asset('img/store/star-full.svg')}}">
+                            <img src="{{asset('img/store/star-full.svg')}}">
+                            <img src="{{asset('img/store/star-full.svg')}}">
+                            <img src="{{asset('img/store/star-empty.svg')}}">
+                        </div>
+                    </li>
+                    <li class="name-promo">Promo : {{$rating->name}}</li>
+                    <li class="txt-avis">
+                        {{$rating->comment}}
+                    </li>
+                </ul>
+            @endforeach
+
+            {{--@foreach($ratings as $rating)
                 <div class="avis">
                     <p>{{$rating->name}}</p>
                     {{$rating->rating}}
@@ -66,7 +86,7 @@
                     </div>
                     <p>{{$rating->comment}}</p>
                 </div><br><br><br>
-            @endforeach
+            @endforeach--}}
         </div>
     </div>
 
