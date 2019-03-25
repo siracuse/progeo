@@ -122,6 +122,12 @@
     {{--<li><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Créer une promotion</a></li>--}}
 </ul>
 
+<script>
+    function myFunction() {
+        if(!confirm("Voulez-vous vraiment supprimer cette item"))
+            event.preventDefault();
+    }
+</script>
 @yield('content')
 
 <footer>
