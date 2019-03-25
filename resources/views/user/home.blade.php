@@ -22,7 +22,7 @@
             {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
-        <img id="map-btn" class="check switch-map" src="{{asset('img/success.svg')}}">
+        <img id="map-btn" class="check switch-map" src="{{asset('img/eye.svg')}}">
     </div>
 
     <script type="text/javascript">
@@ -49,6 +49,7 @@
             initMap();
             createList();
         };
+
     </script>
 
     <div class="container">
@@ -388,7 +389,7 @@
                             .then(document.location.reload(true))
                             .catch(function (error) {
                                 console.log(error);
-                            }); 
+                            });
                     }
 
                     document.getElementById('comment').appendChild(textarea);

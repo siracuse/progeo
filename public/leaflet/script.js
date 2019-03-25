@@ -1,3 +1,13 @@
+var blueIcon = L.icon({
+    iconUrl: 'img/iconBlue.png',
+    iconSize:     [40, 40]
+});
+
+var greyIcon = L.icon({
+    iconUrl: 'img/iconGrey.png',
+    iconSize:     [40, 40]
+});
+
 function initMap() {
     map = L.map('map').setView([lat, lon], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -117,20 +127,24 @@ function printStores(stores_){
     map.removeLayer(layerGroup);
     for(let i = 0; i < stores['stores'].length ; i++){
 
-        marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude],
-            {
-                markerColor: 'red'
-            }).addTo(map);
+        marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude], {icon: blueIcon}).addTo(map);
 
         layerGroup.addLayer(marker);
+
         let value_promo = stores['stores'][i].promotion_id + '-' + stores['stores'][i].store_id;
 
         if(stores['stores'][i].promotion_id) {
+            marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude], {icon: blueIcon}).addTo(map);
+
+            layerGroup.addLayer(marker);
             marker.bindPopup('<a href=store/' + stores['stores'][i].sto_id + '>'+ stores['stores'][i].store_name + '</a>' +
                 "<p>" + stores['stores'][i].promotion_name + "</p>" +
                 "<button id='promo' onclick='promo()' value=" + value_promo + ">Obtenir code promo</button>")
                 .openPopup();
         }else{
+            marker = L.marker([stores['stores'][i].latitude, stores['stores'][i].longitude], {icon: greyIcon}).addTo(map);
+
+            layerGroup.addLayer(marker);
             marker.bindPopup('<a href=store/' + stores['stores'][i].sto_id + '>'+ stores['stores'][i].store_name + '</a>' +
                 "<p> Aucune promotion en ce moment...</p>")
                 .openPopup();
