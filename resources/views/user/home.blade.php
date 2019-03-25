@@ -145,29 +145,34 @@
                         <img class="img-vide" src="{{asset('img/image-vide.png')}}">
                         <p>Vous n'avez toujours pas d'avis ajoutés !</p>
                     </div>
+                @else
+                    @foreach($avis as $avi)
+                        <ul class="mes-infos-avis">
+                            <li class="titre-mes-infos">{{$avi->date}}</li>
+                            <li class="code-promo">
+                                <div class="bloc-note">
+                                    {{$avi->rating}}
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-full.svg')}}">
+                                    <img src="{{asset('img/store/star-empty.svg')}}">
+                                </div>
+                            </li>
+                            <li class="name-promo">Promo : {{$avi->name}}</li>
+                            <li class="txt-avis">
+                                {{$avi->comment}}
+                            </li>
+                            <div class="bloc-btn-avis">
+                                <li class="btn-mes-avis-modifier"><a class="btn-modif" href="#">Modifier</a></li>
+                                <li class="btn-mes-avis-supprimer">
+                                    <a class="btn-supp" href="{{url ('user\avis\delete', ['promo_id' => $avi->promotion_id, 'user_id' => Auth::user()->id])}}">Supprimer</a>
+                                </li>
+                            </div>
+                        </ul>
+                    @endforeach
                 @endif
-                <ul class="mes-infos-avis">
-                    <li class="titre-mes-infos">Test</li>
-                    <li class="code-promo">
-                        <div class="bloc-note">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-empty.svg')}}">
-                        </div>
-                    </li>
-                    <li class="name-promo">Promo : PromoTest</li>
-                    <li class="txt-avis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus
-                        tristique dolor ut interdum. Duis nisl felis, eleifend nec diam ut, mollis pharetra nulla. Donec
-                        eu auctor libero. Nullam non sollicitudin odio. Donec dapibus vestibulum orci, facilisis
-                        accumsan tellus gravida in.
-                    </li>
-                    <div class="bloc-btn-avis">
-                        <li class="btn-mes-avis-modifier"><a class="btn-modif" href="#">Modifier</a></li>
-                        <li class="btn-mes-avis-supprimer"><a class="btn-supp" href="#">Supprimer</a></li>
-                    </div>
-                </ul>
+
             </div>
 
         <!--@yield('mes_infos')-->

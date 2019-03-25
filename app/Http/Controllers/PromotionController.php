@@ -58,24 +58,32 @@ class PromotionController extends Controller
     public function getNew (Request $request) {
         if ($request->input('comment')) {
             $this->validate($request, ['comment' => 'required']);
-            $promo = Promotion::findOrFail($request->input('promo_id'));
-            if ($promo->opinionCode === $request->input('code')) {
-                DB::table('promotion_user')->insert(
-                    array(
-                        'promotion_id' => $request->input('promo_id'),
-                        'user_id' => Auth::user()->id,
-                        'rating' => $request->input('rating'),
-                        'comment' => $request->input('comment'),
-                        'date' => date("Y-m-d H:i:s"),
-                    )
-                );
-                return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
-            }
-            else {
-                //redirection avec erreur !!!
-                return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+            $avis = DB::table('promotion_user')
+                ->where('promotion_user.user_id', '=', Auth::user()->id)
+                ->where('promotion_user.promotion_id', '=', $request->input('promo_id'))
+                ->first();
+            if (!$avis) {
+                $promo = Promotion::findOrFail($request->input('promo_id'));
+
+                if ($promo->opinionCode === $request->input('code')) {
+                    //si le code opinion correspond alors on insère
+                    DB::table('promotion_user')->insert(
+                        array(
+                            'promotion_id' => $request->input('promo_id'),
+                            'user_id' => Auth::user()->id,
+                            'rating' => $request->input('rating'),
+                            'comment' => $request->input('comment'),
+                            'date' => date("Y-m-d H:i:s"),
+                        )
+                    );
+                    return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+                } //sinon
+                else {
+                    //redirection avec erreur !!!
+                    return redirect()->route('promo_rating', ['promo_id' => $request->input('promo_id')]);
+                }
             }
         }
-        return redirect()->route('home');
+        return redirect()->route('user_home');
     }
 }

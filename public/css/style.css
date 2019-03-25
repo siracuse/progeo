@@ -222,17 +222,21 @@ ul li a:hover + .hidden, .hidden:hover {
 }
 
 .bloc-search input{
-    width: 50%;
+    width: 45%;
 }
 
 .bloc-search select{
-    width: 30%;
+    width: 44%;
 }
 
 .bloc-search a{
     background-color: #fbc632;
-    margin-left: 10px;
     cursor: pointer;
+    display: block;
+    text-align: center;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .bloc-search h2{
@@ -322,8 +326,8 @@ ul li a:hover + .hidden, .hidden:hover {
        box-sizing: border-box;
     }
 
-    .select-category {
-        display: block;
+    .bloc-search h2 {
+        font-size: smaller;
     }
 
     .switch-map{

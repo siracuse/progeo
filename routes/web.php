@@ -200,6 +200,9 @@ Route::middleware(['auth','user'])->group(function () {
     //User edit password
     Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
     Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
+
+    //User delete avis
+    Route::get ('/user/avis/delete/{promo_id}/{user_id}', 'User\HomeController@getDeleteAvis')->name('avis_delete');
 });
 
 
@@ -210,7 +213,7 @@ Route::middleware(['auth','user'])->group(function () {
 */
 
 Route::get ('store/{store_id}', 'StoreController@getDetails')->name('store_details');
-Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating');
+Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating')->middleware('auth', 'user');
 Route::post ('promo/new', 'PromotionController@getNew')->name('rating_new');
 
 

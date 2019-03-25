@@ -47,13 +47,31 @@ class HomeController extends Controller
             )
             ->get();
 
+        $avis = DB::table('promotion_user')
+            ->join('promotions', 'promotions.id', '=', 'promotion_user.promotion_id')
+            ->where('promotion_user.user_id', '=', Auth::user()->id)
+            ->select(
+                'promotion_user.rating',
+                'promotion_user.comment',
+                'promotion_user.date',
+                'promotions.name',
+                'promotion_user.promotion_id'
+            )
+            ->get();
+
             return view('user.home', [
                 'favoris' => $favoris,
-                'promos' => $promos
+                'promos' => $promos,
+                'avis' => $avis
             ]);
+    }
 
-
-
+    public function getDeleteAvis ($promo_id, $user_id) {
+        DB::table('promotion_user')
+            ->where('promotion_user.promotion_id', '=', $promo_id)
+            ->where('promotion_user.user_id', '=', $user_id)
+            ->delete();
+        return redirect()->route('user_home');
     }
 
     public function printPromos(){
