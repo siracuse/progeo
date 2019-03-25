@@ -66,10 +66,10 @@ class HomeController extends Controller
             ]);
     }
 
-    public function getDeleteAvis ($promo_id, $user_id) {
+    public function getDeleteAvis (Request $request) {
         DB::table('promotion_user')
-            ->where('promotion_user.promotion_id', '=', $promo_id)
-            ->where('promotion_user.user_id', '=', $user_id)
+            ->where('promotion_user.promotion_id', '=', $request->input('promo_id'))
+            ->where('promotion_user.user_id', '=', Auth::user()->id)
             ->delete();
         return redirect()->route('user_home');
     }
@@ -78,7 +78,7 @@ class HomeController extends Controller
         DB::table('promotion_user')
             ->where('promotion_id', '=', $request->input('promo_id'))
             ->where('user_id', '=', Auth::user()->id)
-            ->update(['comment' => $request->input('comment')]);
+            ->update(['comment' => $request->input('comment'), 'rating' =>$request->input('rating')]);
 
         return redirect()->route('user_home');
     }

@@ -210,7 +210,7 @@ Route::middleware(['auth','user'])->group(function () {
     Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
 
     //User delete avis
-    Route::get ('/user/avis/delete/{promo_id}/{user_id}', 'User\HomeController@getDeleteAvis')->name('avis_delete');
+    Route::post ('/user/avis/delete', 'User\HomeController@getDeleteAvis')->name('avis_delete');
     Route::post ('/user/avis/update', 'User\HomeController@updateAvis')->name('avis_update');
 
 });
