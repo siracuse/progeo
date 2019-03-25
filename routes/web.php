@@ -203,6 +203,8 @@ Route::middleware(['auth','user'])->group(function () {
 
     //User delete avis
     Route::get ('/user/avis/delete/{promo_id}/{user_id}', 'User\HomeController@getDeleteAvis')->name('avis_delete');
+    Route::post ('/user/avis/update', 'User\HomeController@updateAvis')->name('avis_update');
+
 });
 
 

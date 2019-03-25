@@ -74,6 +74,15 @@ class HomeController extends Controller
         return redirect()->route('user_home');
     }
 
+    public function updateAvis(Request $request){
+        DB::table('promotion_user')
+            ->where('promotion_id', '=', $request->input('promo_id'))
+            ->where('user_id', '=', Auth::user()->id)
+            ->update(['comment' => $request->input('comment')]);
+
+        return redirect()->route('user_home');
+    }
+
     public function printPromos(){
         $promos = DB::table('codepromo')
             ->join('users', 'users.id', '=', 'codepromo.user_id')

@@ -38,6 +38,8 @@
         var rt_promo_avis = '{{route('promo_rating', ['promo_id' => 'value'])}}';
         var rt_delPromoUser = '{{route('del_promo_user')}}';
         var rt_delFavorisUser = '{{route('user_favoris_delete')}}';
+        var rt_update_avis = '{{route('avis_update')}}';
+
         var view = 'user/home';
         var token = '{{csrf_token()}}';
         window.onload = function () {
@@ -155,11 +157,14 @@
                                 </div>
                             </li>
                             <li class="name-promo">Promo : {{$avi->name}}</li>
-                            <li class="txt-avis">
-                                {{$avi->comment}}
-                            </li>
+                            <div id="div_comment">
+                                <li class="txt-avis" id="comment">
+                                    {{$avi->comment}}
+                                </li>
+                            </div>
+
                             <div class="bloc-btn-avis">
-                                <li class="btn-mes-avis-modifier"><a class="btn-modif" href="#">Modifier</a></li>
+                                <li class="btn-mes-avis-modifier"><a class="btn-modif" id="modif" onclick="modifAvis({{$avi->promotion_id}})">Modifier</a></li>
                                 <li class="btn-mes-avis-supprimer">
                                     <a class="btn-supp" href="{{url ('user\avis\delete', ['promo_id' => $avi->promotion_id, 'user_id' => Auth::user()->id])}}">Supprimer</a>
                                 </li>
@@ -274,6 +279,34 @@
                     } else {
                         document.getElementById("map").style.display = 'block';
                     }
+
+                }
+
+                function modifAvis(promo_id){
+
+                    document.getElementById('comment').innerHTML = "";
+
+                    let textarea = document.createElement('textarea');
+                    textarea.setAttribute("placeholder", "Saisissez votre nouveau commentaire...");
+
+                    document.getElementById('modif').textContent = "Envoyer";
+
+                    document.getElementById('modif').onclick = () => {
+                        console.log('envoyer');
+                        console.log(textarea.value);
+
+                        axios.post(rt_update_avis, {
+                            promo_id: promo_id,
+                            comment: textarea.value,
+                            _token: token,
+                        })
+                            .then(document.location.reload(true))
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    }
+
+                    document.getElementById('comment').appendChild(textarea);
 
                 }
 
