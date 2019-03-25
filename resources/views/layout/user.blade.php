@@ -130,7 +130,7 @@
             <li><a href="{{route('mention_legales')}}">Mentions légales</a></li>
         </ul>
     </div>
-    <p>© Progeo 2019 | Créer par Sahaquedo</p>
+    <p>© Progeo 2019 | Crée par Sahaquedo</p>
 </footer>
 
 <!-- Scripts -->

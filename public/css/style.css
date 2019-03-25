@@ -1038,6 +1038,17 @@ tr:nth-child(odd) {background: #FFF}
     
 }
 
+@media screen and (max-width: 920px) {
+    .container-store{
+        width: 100%;
+    }
+
+    .promotion{
+        width: 100%;
+    }
+
+}
+
 /* STORE */
 
 /*FAQ*/
