@@ -102,7 +102,7 @@
 <footer>
     <div class="bloc-footer">
         <ul>
-            <li><a href="{{route('home')}}">Accueil</a></li>
+            <li><a href="{{route('user_home')}}">Accueil</a></li>
             <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
             <li><a href="{{route('faq')}}">FAQ</a></li>
             <li><a href="{{route('contact')}}">Nous contacter</a></li>
@@ -112,9 +112,9 @@
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                 <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
             @else
-                <li>
-                    <a href="{{route('return_home')}}">Mes infos</a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="{{route('return_home')}}">Mes infos</a>--}}
+                {{--</li>--}}
                 <li>
                     <a class="btn-inscription" href="{{ route('logout') }}"
                        onclick="event.preventDefault();

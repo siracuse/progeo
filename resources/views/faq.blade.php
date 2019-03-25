@@ -23,6 +23,10 @@
                         <div class="reponsefaq">Augmenter le nombre de client possible, permettre d'attirer des internautes sur
                             des produits qui n'oserait pas acheter, se faire connaitre dans une communauté.</div>
                     </div>
+                    <div class="questionreponsefaq">
+                        <div class="questionfaq">Comment obtenir le code avis d'une promotion ?</div>
+                        <div class="reponsefaq">Lorsque vous profitez d'une promotion, le commerçant vous donnera un code avis.</div>
+                    </div>
                 </div>
             </div>
         </div>
