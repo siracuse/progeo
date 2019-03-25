@@ -690,6 +690,13 @@ tr:nth-child(odd) {background: #FFF}
 
 }
 
+@media screen and (max-width: 1120px) {
+    .nav2-manager {
+        font-size: small;
+        flex-wrap: wrap;
+    }
+}
+
 /* MANAGER  */
 
 /* USER */
