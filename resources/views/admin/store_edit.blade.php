@@ -109,12 +109,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Modifier
-                                </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Annuler
-                                </button>
+                                <input type="submit" value="Modifier" name="submit" class="btn btn-primary btn-sm">
+                                <a href="../list"><input type="button" value="Annuler"  class="btn btn-danger btn-sm"></a>
                             </form>
                         </div>
                     </div>
