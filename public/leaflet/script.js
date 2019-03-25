@@ -1,11 +1,11 @@
 var blueIcon = L.icon({
     iconUrl: 'img/iconBlue.png',
-    iconSize:     [30, 30]
+    iconSize:     [40, 40]
 });
 
 var greyIcon = L.icon({
     iconUrl: 'img/iconGrey.png',
-    iconSize:     [30, 30]
+    iconSize:     [40, 40]
 });
 
 function initMap() {
