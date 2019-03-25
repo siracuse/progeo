@@ -56,7 +56,7 @@
 
             @foreach($ratings as $rating)
                 <ul class="mes-infos-avis">
-                    <li class="titre-mes-infos center date-avis">{{$rating->date}}</li>
+                    <li class="titre-mes-infos center date-avis">{{date('d-m-Y', strtotime($rating->date))}}</li>
                     <li class="name-promo center">{{$rating->name}}</li>
                     <li class="code-promo">
                         <div class="bloc-note marginauto">
@@ -93,7 +93,7 @@
                             @endif
                         </div>
                     </li>
-                    <li class="name-promo">Promo : {{$rating->promo_name}}</li>
+                    {{--<li class="name-promo">Promo : {{$rating->promo_name}}</li>--}}
                     <li class="txt-avis">
                         {{$rating->comment}}
                     </li>
