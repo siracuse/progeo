@@ -98,6 +98,10 @@ h1,h2,h3,h4,h5,h6{
     display: block;
 }
 
+.marginauto{
+    margin: 0 auto;
+}
+
 /* BOITE A OUTILS */
 
 
@@ -507,6 +511,10 @@ textarea {
 .container-form{
     width: 75%;
     margin: 0 auto;
+}
+
+.date-avis{
+    margin: 8px 0;
 }
 
 @media screen and (max-width: 1020px) {

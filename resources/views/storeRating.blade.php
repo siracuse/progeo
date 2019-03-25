@@ -56,10 +56,10 @@
 
             @foreach($ratings as $rating)
                 <ul class="mes-infos-avis">
-                    <li class="titre-mes-infos">{{$rating->date}}</li>
-
+                    <li class="titre-mes-infos center date-avis">{{$rating->date}}</li>
+                    <li class="name-promo center">{{$rating->name}}</li>
                     <li class="code-promo">
-                        <div class="bloc-note">
+                        <div class="bloc-note marginauto">
                             @if($rating->rating == 1)
                                 <img src="{{asset('img/store/star-full.svg')}}">
                                 <img src="{{asset('img/store/star-empty.svg')}}">
