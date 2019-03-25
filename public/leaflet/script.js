@@ -278,7 +278,7 @@ function promoList(res){
     for(let i = 0; i < promos['promos'].length; i++){
         rt_promo_avis = rt_promo_avis.replace('value', promos['promos'][i].promo_id)
 
-   let ch = ' <ul class="mes-infos-promo">'+
+   let ch = '<ul class="mes-infos-promo" id="etmerceee'+promos['promos'][i].promo_id + '">'+
             '<li class="titre-mes-infos">Magasin : ' + promos['promos'][i].store_name + '</li>'+
         '<li class="name-promo">Promotion : ' + promos['promos'][i].promo_name + '</li>'+
         '<li class="code-promo"><div class="bloc-note bloc-note2">'+
@@ -297,7 +297,8 @@ function promoList(res){
 
         '</ul>';
 
-    div.innerHTML = ch;
+        if(!document.getElementById('etmerceee'+promos['promos'][i].promo_id))
+            div.innerHTML += ch;
     }
 
 }

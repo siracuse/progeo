@@ -128,6 +128,7 @@
             event.preventDefault();
     }
 </script>
+@include('flash-message')
 @yield('content')
 
 <footer>
