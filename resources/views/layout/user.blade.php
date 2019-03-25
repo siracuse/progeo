@@ -102,7 +102,7 @@
 <footer>
     <div class="bloc-footer">
         <ul>
-            <li><a href="{{route('home')}}">Accueil</a></li>
+            <li><a href="{{route('user_home')}}">Accueil</a></li>
             <li><a href="{{route('home')}}#nous_rejoindre">Nous rejoindre</a></li>
             <li><a href="{{route('faq')}}">FAQ</a></li>
             <li><a href="{{route('contact')}}">Nous contacter</a></li>
