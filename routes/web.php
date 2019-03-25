@@ -63,9 +63,6 @@ Route::middleware(['auth','admin'])->group(function () {
     //Suppression categorie
     Route::get ('/admin/category/delete/{category_id}', 'Admin\CategoriesController@getDelete')->name('category_delete');
 
-    Route::post('/map/categories', 'Admin\CategoriesController@postSearchCategories')->name('categories_search_post');
-
-
     //Liste ville
     Route::get ('/admin/city/list', 'Admin\CitiesController@getAll')->name('city_list');
 
@@ -79,9 +76,6 @@ Route::middleware(['auth','admin'])->group(function () {
 
     //Suppression ville
     Route::get ('/admin/city/delete/{city_id}', 'Admin\CitiesController@getDelete')->name('city_delete');
-
-    Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
-
 
 
     //Liste subcategorie
@@ -98,10 +92,6 @@ Route::middleware(['auth','admin'])->group(function () {
     //Suppression subcategorie
     Route::get ('/admin/subcategory/delete/{category_id}', 'Admin\SubcategoriesController@getDelete')->name('subcategory_delete');
 
-    Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
-
-
-
     //Liste store
     Route::get ('/admin/store/list', 'Admin\StoresController@getAll')->name('store_list');
 
@@ -116,10 +106,6 @@ Route::middleware(['auth','admin'])->group(function () {
     //Suppression store
     Route::get ('/admin/store/delete/{store_id}', 'Admin\StoresController@getDelete')->name('store_delete');
 
-    Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
-
-
-
     //Liste user
     Route::get ('/admin/user/list', 'Admin\UsersController@getAll')->name('user_list');
 
@@ -133,7 +119,6 @@ Route::middleware(['auth','admin'])->group(function () {
 
     //Suppression user
     Route::get ('/admin/user/delete/{user_id}', 'Admin\UsersController@getDelete')->name('user_delete');
-
 
 
     //Liste promotions
@@ -200,7 +185,7 @@ Route::middleware(['auth','user'])->group(function () {
 
     //Favoris
     Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');
-    Route::get ('/user/favoris/delete/{store_id}/{user_id}', 'User\FavorisController@delete')->name('user_favoris_delete');
+    Route::post ('/user/favoris/delete', 'User\FavorisController@delete')->name('user_favoris_delete');
     Route::get ('/user/favoris/update/{store_id}/{user_id}', 'User\FavorisController@update')->name('user_favoris_update');
 
     //CodePromo
@@ -215,6 +200,9 @@ Route::middleware(['auth','user'])->group(function () {
     //User edit password
     Route::get ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_password');
     Route::post ('/user/editPassword', 'User\AccountController@getPassword')->name('user_edit_post_password');
+
+    //User delete avis
+    Route::get ('/user/avis/delete/{promo_id}/{user_id}', 'User\HomeController@getDeleteAvis')->name('avis_delete');
 });
 
 
@@ -225,5 +213,20 @@ Route::middleware(['auth','user'])->group(function () {
 */
 
 Route::get ('store/{store_id}', 'StoreController@getDetails')->name('store_details');
-Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating');
+Route::get ('promo/{promo_id}', 'PromotionController@formRating')->name('promo_rating')->middleware('auth', 'user');
 Route::post ('promo/new', 'PromotionController@getNew')->name('rating_new');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| LES ROUTES DE MILOU
+|--------------------------------------------------------------------------
+*/
+Route::post('/map/categories', 'Admin\CategoriesController@postSearchCategories')->name('categories_search_post');
+
+Route::post('/map/cities', 'Admin\CitiesController@postSearchCities')->name('cities_search_post');
+
+Route::post('/map/subcategories', 'Admin\SubCategoriesController@postSearchSubCategories')->name('subcategories_search_post');
+
+Route::post('/map/stores', 'Admin\StoresController@postSearchStores')->name('stores_search_post');
