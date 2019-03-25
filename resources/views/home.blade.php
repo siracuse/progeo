@@ -35,23 +35,15 @@
             <div class="full">
                 <div class="avantage">
                     <img class="check" src="{{asset('img/success.svg')}}">
-                    <p>Attirez des clients par milliers et vendez plus !</p>
+                    <p>Attirez des nouveaux clients et vendez plus !</p>
                 </div>
                 <div class="avantage">
                     <img class="check" src="{{asset('img/success.svg')}}">
-                    <p>Attirez des clients par milliers et vendez plus !</p>
+                    <p>Faire découvrir de nouveaux produits aux clients !</p>
                 </div>
                 <div class="avantage">
                     <img class="check" src="{{asset('img/success.svg')}}">
-                    <p>Attirez des clients par milliers et vendez plus !</p>
-                </div>
-                <div class="avantage">
-                    <img class="check" src="{{asset('img/success.svg')}}">
-                    <p>Attirez des clients par milliers et vendez plus !</p>
-                </div>
-                <div class="avantage">
-                    <img class="check" src="{{asset('img/success.svg')}}">
-                    <p>Attirez des clients par milliers et vendez plus !</p>
+                    <p>Liquider les stocks en faisant profiter les internautes grâce aux promos !</p>
                 </div>
             </div>
         </div>
