@@ -177,18 +177,7 @@
 
         <!--@yield('mes_infos')-->
             <script>
-                document.getElementById("map-btn").onclick = mapNone;
-                document.getElementById("map").style.display = 'block';
 
-                function mapNone() {
-                    if (document.getElementById("map").style.display === 'block') {
-                        document.getElementById("map").style.display = 'none';
-                        console.log('ok');
-                    } else {
-                        document.getElementById("map").style.display = 'block';
-                    }
-
-                }
 
 
                 document.getElementById("promos").style.display = "none";
@@ -273,6 +262,19 @@
                         '</div>';
 
                     div.innerHTML = ch;
+                }
+
+                document.getElementById("map-btn").onclick = mapNone;
+                document.getElementById("map").style.display = 'block';
+
+                function mapNone() {
+                    if (document.getElementById("map").style.display === 'block') {
+                        document.getElementById("map").style.display = 'none';
+                        console.log('ok');
+                    } else {
+                        document.getElementById("map").style.display = 'block';
+                    }
+
                 }
 
 
