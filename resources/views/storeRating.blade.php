@@ -9,6 +9,7 @@
     <a class="btn1 btn-favoris" href="">Favoris</a>
 
     <div class="container-store">
+        <a class="" href="{{route('store_details', ['store_id' => $store->id])}}"><-- Retour</a>
         <h1 class="center">{{$store->name}}</h1>
 
 
