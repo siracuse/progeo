@@ -32,8 +32,13 @@
                                         <td>{{$store->phone}} </td>
                                         <td>{{$store->email}} </td>
                                         <td>
-                                            <a href="{{url ('admin\store\edit', ['store_id' => $store->id])}}">Modifier</a> /
-                                            <a href="{{url ('admin\store\delete', ['store_id' => $store->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\store\edit', ['store_id' => $store->id])}}">Modifier</a>
+                                            </button>
+                                            /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\store\delete', ['store_id' => $store->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

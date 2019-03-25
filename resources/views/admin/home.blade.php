@@ -8,7 +8,7 @@
     {{--<a href="{{url ('admin\subcategory\list')}}">Sous catégorie</a><br>--}}
     {{--<a href="{{url ('admin\promotion\list')}}">Promotion</a><br><br><br><br><br>--}}
 
-    <h2>Statistiques</h2><br>
+    <h2 class="titleStat">Statistiques</h2><br>
 
     <div class="col-sm-12 mb-4">
         <div class="card-group">

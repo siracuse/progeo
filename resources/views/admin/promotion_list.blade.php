@@ -37,8 +37,13 @@
                                         <td>{{$promotion->promotionCode}} </td>
                                         <td>{{$promotion->opinionCode}} </td>
                                         <td>
-                                            <a href="{{url ('admin\promotion\edit', ['promotion_id' => $promotion->id])}}">Modifier</a>/
-                                            <a href="{{url ('admin\promotion\delete', ['promotion_id' => $promotion->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\promotion\edit', ['promotion_id' => $promotion->id])}}">Modifier</a>
+                                            </button>
+                                            /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\promotion\delete', ['promotion_id' => $promotion->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
