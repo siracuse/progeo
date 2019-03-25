@@ -1,3 +1,13 @@
+var blueIcon = L.icon({
+    iconUrl: 'img/iconBlue.png',
+    iconSize:     [30, 30]
+});
+
+var greyIcon = L.icon({
+    iconUrl: 'img/iconGrey.png',
+    iconSize:     [30, 30]
+});
+
 function initMap() {
     map = L.map('map').setView([lat, lon], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
