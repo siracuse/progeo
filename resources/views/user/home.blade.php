@@ -140,12 +140,7 @@
 
             </div>
             <div id="avis" class="flex-mes-infos">
-                @if(!isset($avis))
-                    <div class="bloc-vide">
-                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
-                        <p>Vous n'avez toujours pas d'avis ajoutés !</p>
-                    </div>
-                @else
+                @if(isset($avis) && count($avis) > 0)
                     @foreach($avis as $avi)
                         <ul class="mes-infos-avis">
                             <li class="titre-mes-infos">{{$avi->date}}</li>
@@ -171,6 +166,11 @@
                             </div>
                         </ul>
                     @endforeach
+                @else
+                    <div class="bloc-vide">
+                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                        <p>Vous n'avez toujours pas d'avis ajoutés !</p>
+                    </div>
                 @endif
 
             </div>
