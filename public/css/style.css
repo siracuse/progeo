@@ -270,9 +270,10 @@ ul li a:hover + .hidden, .hidden:hover {
 .avantage{
     display: flex;
     width: 100%;
-    justify-content: center;
     align-items: center;
     margin: 13px 0;
+    padding-left: 67px;
+    box-sizing: border-box;
 }
 
 .photo-avantage{
