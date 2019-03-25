@@ -67,9 +67,9 @@
         <div class="content">
             <div id="promos" class="flex-mes-infos">
                 @if(isset($promos) && count($promos) > 0)
-                    @foreach($promos as $promo)
 
-                        <ul class="mes-infos-promo">
+                    @foreach($promos as $promo)
+                        <ul class="mes-infos-promo" id="etmerceee{{$promo->promo_id}}">
                             <li class="titre-mes-infos">Magasin : {{$promo->store_name}}</li>
                             <li class="name-promo">Promotion : {{$promo->promo_name}}</li>
                             <li class="code-promo">
@@ -101,6 +101,8 @@
                             </div>
 
                         </ul>
+
+
                     @endforeach
 
                     @else
@@ -114,7 +116,7 @@
             <div id="favoris" class="flex-mes-infos">
                 @if(isset($favoris) && count($favoris) > 0)
                     @foreach($favoris as $favori)
-                        <ul class="mes-infos-favoris">
+                        <ul class="mes-infos-favoris" id="etmercee{{$favori->store_id}}">
                             <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
                                                                                      src="{{asset('img/star.svg')}}"/>
                             </li>
@@ -147,7 +149,7 @@
             <div id="avis" class="flex-mes-infos">
                 @if(isset($avis) && count($avis) > 0)
                     @foreach($avis as $avi)
-                        <ul class="mes-infos-avis">
+                        <ul class="mes-infos-avis" id="etmerce{{$avi->promotion_id}}">
                             <li class="titre-mes-infos">{{$avi->date}}</li>
                             <li class="code-promo">
                                 <div class="bloc-note">
@@ -247,6 +249,7 @@
                 }
 
                 function delPromoUser(promo_id) {
+                    tmp1 = promo_id;
                     axios.post(rt_delPromoUser, {
                         promo_id: promo_id,
                         _token: token,
@@ -259,20 +262,28 @@
 
                 function delDivPromo() {
 
-                    document.getElementById('promos').innerHTML = "";
 
-                    let div = document.getElementById('promos');
-                    console.log(div);
-                    let ch = '<div class="bloc-vide">' +
-                        '    <img class="img-vide" src="img/image-vide.png">' +
-                        '    <p>Vous n\'avez toujours pas de promotions ajoutés !</p>' +
-                        '</div>';
+                    console.log(document.getElementById('etmerceee'+tmp1));
 
-                    div.innerHTML = ch;
+                    document.getElementById('etmerceee'+tmp1).remove();
+                    console.log(document.getElementsByClassName('mes-infos-promo'));
+
+                    if(document.getElementsByClassName('mes-infos-promo').length == 0){
+                        console.log('ya pas de ul');
+
+                        let ch = '<div class="bloc-vide">' +
+                            '    <img class="img-vide" src="img/image-vide.png">' +
+                            '    <p>Vous n\'avez toujours pas de promotions ajoutés !</p>' +
+                            '</div>';
+
+                        document.getElementById("promos").innerHTML = ch;
+                    }
+
                 }
 
                 function delFavorisStore(store_id) {
                     console.log(store_id);
+                    tmp2 = store_id;
 
                     axios.post(rt_delFavorisUser, {
                         store_id: store_id,
@@ -286,16 +297,21 @@
 
                 function delDivFavoris() {
 
-                    document.getElementById('favoris').innerHTML = "";
+                    console.log(document.getElementById('etmercee'+tmp2));
 
-                    let div = document.getElementById('favoris');
-                    console.log(div);
-                    let ch = '<div class="bloc-vide">' +
-                        '    <img class="img-vide" src="img/image-vide.png">' +
-                        '    <p>Vous n\'avez toujours pas de magasins favoris !</p>' +
-                        '</div>';
+                    document.getElementById('etmercee'+tmp2).remove();
+                    console.log(document.getElementsByClassName('mes-infos-favoris'));
 
-                    div.innerHTML = ch;
+                    if(document.getElementsByClassName('mes-infos-favoris').length == 0){
+                        console.log('ya pas de ul');
+
+                        let ch = '<div class="bloc-vide">' +
+                            '    <img class="img-vide" src="img/image-vide.png">' +
+                            '    <p>Vous n\'avez toujours pas de magasins favoris !</p>' +
+                            '</div>';
+
+                        document.getElementById("favoris").innerHTML = ch;
+                    }
                 }
 
                 document.getElementById("map-btn").onclick = mapNone;
@@ -312,6 +328,9 @@
                 }
 
                 function delAvisPromo(promo_id) {
+                    tmp3 = promo_id;
+
+                    delDivAvis();
                     axios.post(rt_delavispromo, {
                         promo_id: promo_id,
                         _token: token,
@@ -319,20 +338,26 @@
                         .then(delDivAvis)
                         .catch(function (error) {
                             console.log(error);
-                        });
+                        }); 
                 }
 
                 function delDivAvis() {
 
-                    document.getElementById('avis').innerHTML = "";
+                    console.log(document.getElementById('etmerce'+tmp3));
 
-                    let div = document.getElementById('avis');
-                    let ch = '<div class="bloc-vide">' +
-                        '    <img class="img-vide" src="img/image-vide.png">' +
-                        '    <p>Vous n\'avez toujours pas laissé d\'avis !</p>' +
-                        '</div>';
+                    document.getElementById('etmerce'+tmp3).remove();
+                    console.log(document.getElementsByClassName('mes-infos-avis'));
 
-                    div.innerHTML = ch;
+                    if(document.getElementsByClassName('mes-infos-avis').length == 0){
+                        console.log('ya pas de ul');
+
+                        let ch = '<div class="bloc-vide">' +
+                            '    <img class="img-vide" src="img/image-vide.png">' +
+                            '    <p>Vous n\'avez toujours pas laissé d\'avis !</p>' +
+                            '</div>';
+
+                        document.getElementById("avis").innerHTML = ch;
+                    }
                 }
 
                 document.getElementById("map-btn").onclick = mapNone;
