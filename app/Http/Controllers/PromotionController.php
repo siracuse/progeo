@@ -21,7 +21,9 @@ class PromotionController extends Controller
             ->select(
                 'promotion_user.rating',
                 'promotion_user.comment',
+                'promotion_user.date',
                 'promotions.store_id',
+                'promotions.name as promo_name',
                 'users.name'
             )
             ->orderBy('date', 'desc')
