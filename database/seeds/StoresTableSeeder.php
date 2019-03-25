@@ -19,14 +19,14 @@ class StoresTableSeeder extends Seeder
             'phone' => '0974563773',
             'email' => 'roza@kebab.com',
             'siret' => '1111',
-            'photoInside' => 'aaa',
-            'photoOutside' => 'aaa',
+            'photoInside' => 'RozaKebabInside377.jpg',
+            'photoOutside' => 'RozaKebabOutside708.jpg',
             'latitude' => '44.561461',
             'longitude' => '6.079691',
             'city_id' => '1819',
             'category_id' => '1',
             'subcategory_id' => '3',
-            'user_id' => '1'
+            'user_id' => '5'
         ]);
 
         DB::table('stores')->insert ([
