@@ -23,8 +23,13 @@
                                     <tr>
                                         <td>{{$city->name}} </td>
                                         <td>
-                                            <a href="{{url ('admin\city\edit', ['city_id' => $city->id])}}">Modifier</a> /
-                                            <a href="{{url ('admin\city\delete', ['city_id' => $city->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\city\edit', ['city_id' => $city->id])}}">Modifier</a>
+                                            </button>
+                                            /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\city\delete', ['city_id' => $city->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -32,8 +32,13 @@
                                         <td>{{$user->email}} </td>
                                         <td>{{$user->is_resp}} </td>
                                         <td>
-                                            <a href="{{url ('admin\user\edit', ['user_id' => $user->id])}}">Modifier</a> /
-                                            <a href="{{url ('admin\user\delete', ['user_id' => $user->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\user\edit', ['user_id' => $user->id])}}">Modifier</a>
+                                            </button>
+                                            /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\user\delete', ['user_id' => $user->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

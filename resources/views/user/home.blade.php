@@ -22,6 +22,7 @@
             {{--<option value="choisir" selected="selected">Sous catégorie...</option>;--}}
             {{--</select>--}}
         </div>
+        <img id="map-btn" class="check switch-map" src="{{asset('img/success.svg')}}">
     </div>
 
     <script type="text/javascript">
@@ -38,6 +39,9 @@
         var rt_promo_avis = '{{route('promo_rating', ['promo_id' => 'value'])}}';
         var rt_delPromoUser = '{{route('del_promo_user')}}';
         var rt_delFavorisUser = '{{route('user_favoris_delete')}}';
+        var rt_update_avis = '{{route('avis_update')}}';
+        var rt_delavispromo = '{{route('avis_delete')}}';
+
         var view = 'user/home';
         var token = '{{csrf_token()}}';
         window.onload = function () {
@@ -146,22 +150,51 @@
                             <li class="titre-mes-infos">{{$avi->date}}</li>
                             <li class="code-promo">
                                 <div class="bloc-note">
-                                    {{$avi->rating}}
-                                    <img src="{{asset('img/store/star-full.svg')}}">
-                                    <img src="{{asset('img/store/star-full.svg')}}">
-                                    <img src="{{asset('img/store/star-full.svg')}}">
-                                    <img src="{{asset('img/store/star-full.svg')}}">
-                                    <img src="{{asset('img/store/star-empty.svg')}}">
+                                    @if($avi->rating == 1)
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                    @elseif($avi->rating == 2)
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                    @elseif($avi->rating == 3)
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                    @elseif($avi->rating == 4)
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-empty.svg')}}">
+                                    @elseif($avi->rating == 5)
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                        <img src="{{asset('img/store/star-full.svg')}}">
+                                    @endif
+
                                 </div>
                             </li>
                             <li class="name-promo">Promo : {{$avi->name}}</li>
-                            <li class="txt-avis">
-                                {{$avi->comment}}
-                            </li>
+                            <div id="div_comment">
+                                <li class="txt-avis" id="comment">
+                                    {{$avi->comment}}
+                                </li>
+                            </div>
+
                             <div class="bloc-btn-avis">
-                                <li class="btn-mes-avis-modifier"><a class="btn-modif" href="#">Modifier</a></li>
+                                <li class="btn-mes-avis-modifier"><a class="btn-modif" id="modif" onclick="modifAvis({{$avi->promotion_id}})">Modifier</a></li>
                                 <li class="btn-mes-avis-supprimer">
-                                    <a class="btn-supp" href="{{url ('user\avis\delete', ['promo_id' => $avi->promotion_id, 'user_id' => Auth::user()->id])}}">Supprimer</a>
+                                   <a class="btn-supp" onclick="delAvisPromo({{$avi->promotion_id}})">Supprimer</a></li>
                                 </li>
                             </div>
                         </ul>
@@ -276,6 +309,93 @@
                     }
 
                 }
+
+                function delAvisPromo(promo_id) {
+                    axios.post(rt_delavispromo, {
+                        promo_id: promo_id,
+                        _token: token,
+                    })
+                        .then(delDivAvis)
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+
+                function delDivAvis() {
+
+                    document.getElementById('avis').innerHTML = "";
+
+                    let div = document.getElementById('avis');
+                    let ch = '<div class="bloc-vide">' +
+                        '    <img class="img-vide" src="img/image-vide.png">' +
+                        '    <p>Vous n\'avez toujours pas laissé d\'avis !</p>' +
+                        '</div>';
+
+                    div.innerHTML = ch;
+                }
+
+                document.getElementById("map-btn").onclick = mapNone;
+                document.getElementById("map").style.display = 'block';
+
+                function mapNone() {
+                    if (document.getElementById("map").style.display === 'block') {
+                        document.getElementById("map").style.display = 'none';
+                        console.log('ok');
+                    } else {
+                        document.getElementById("map").style.display = 'block';
+                    }
+
+                }
+
+                function modifAvis(promo_id){
+
+                    document.getElementById('comment').innerHTML = "";
+
+                    let textarea = document.createElement('textarea');
+                    textarea.setAttribute("placeholder", "Saisissez votre nouveau commentaire...");
+
+                    let rating_arr = [1, 2, 3, 4, 5];
+
+                    let select = document.createElement('select');
+                    select.style.marginLeft = "100px";
+
+
+                    let default_option = document.createElement('option');
+                    default_option.textContent = 'Veuillez choisir une note';
+
+                    select.appendChild(default_option);
+
+
+                    for(let i in rating_arr){
+                        let option = document.createElement('option');
+                        option.textContent = rating_arr[i];
+                        option.setAttribute('value', rating_arr[i]);
+                        select.appendChild(option);
+
+                    }
+
+
+                    document.getElementById('modif').textContent = "Envoyer";
+
+                    document.getElementById('modif').onclick = () => {
+
+                        axios.post(rt_update_avis, {
+                            promo_id: promo_id,
+                            comment: textarea.value,
+                            rating: select.value,
+                            _token: token,
+                        })
+                            .then(document.location.reload(true))
+                            .catch(function (error) {
+                                console.log(error);
+                            }); 
+                    }
+
+                    document.getElementById('comment').appendChild(textarea);
+                    document.getElementById('comment').appendChild(select);
+                }
+
+
 
 
             </script>

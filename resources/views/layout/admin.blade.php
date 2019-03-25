@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PROGEO | Admin</title>
+    <link rel="icon" href="{{asset('img/logo.ico')}}" />
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,7 +27,12 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
+    <style>
+        .myBt {color:white;}
+        .myBt:hover {color:black;}
+        .titleStat {margin-left:20px;margin-top:20px;}
+        .myBtDeco {list-style-type:none;}
+    </style>
 </head>
 <body>
 
@@ -39,8 +45,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="{{url ('admin')}}"><img src="{{asset('pic/logo.png')}}" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="{{url ('admin')}}"><img src="{{asset('pic/logo2.png')}}" alt="Logo"></a>
+            <a class="navbar-brand" href="{{url ('admin')}}"><img src="{{asset('img/logoptut.png')}}" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="{{url ('admin')}}"><img src="{{asset('img/logo.ico')}}" alt="Logo"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -235,7 +241,7 @@
                             <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                             <li><a class="btn1" href="{{ route('login') }}">Connexion</a></li>
                         @else
-                            <li>
+                            <li class="myBtDeco">
                                 <a class="btn-inscription" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     Déconnexion
                                 </a>
@@ -292,7 +298,12 @@
         {{--</div>--}}
     {{--</div>--}}
 
-
+    <script>
+        function myFunction() {
+            if(!confirm("Voulez-vous vraiment supprimer cette item"))
+                event.preventDefault();
+        }
+    </script>
     @yield('content')
 
 </div>
