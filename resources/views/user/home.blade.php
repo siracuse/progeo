@@ -48,6 +48,17 @@
             initMap();
             createList();
         };
+
+        var blueIcon = L.icon({
+            iconUrl: 'img/iconBlue.png',
+            iconSize:     [30, 30]
+        });
+
+        var greyIcon = L.icon({
+            iconUrl: 'img/iconGrey.png',
+            iconSize:     [30, 30]
+        });
+
     </script>
 
     <div class="container">
@@ -387,7 +398,7 @@
                             .then(document.location.reload(true))
                             .catch(function (error) {
                                 console.log(error);
-                            }); 
+                            });
                     }
 
                     document.getElementById('comment').appendChild(textarea);
