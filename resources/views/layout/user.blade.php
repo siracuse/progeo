@@ -112,9 +112,9 @@
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                 <li><a class="btn-inscription" href="{{ route('login') }}">Connexion</a></li>
             @else
-                <li>
-                    <a href="{{route('return_home')}}">Mes infos</a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="{{route('return_home')}}">Mes infos</a>--}}
+                {{--</li>--}}
                 <li>
                     <a class="btn-inscription" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
