@@ -25,8 +25,13 @@
                                         <td>{{$subcategory->name}} </td>
                                         <td>{{$subcategory->category->name}} </td>
                                         <td>
-                                            <a href="{{url ('admin\subcategory\edit', ['subcategory_id' => $subcategory->id])}}">Modifier</a> /
-                                            <a href="{{url ('admin\subcategory\delete', ['subcategory_id' => $subcategory->id])}}">Supprimer</a>
+                                            <button type="button" class="btn btn-warning" disabled>
+                                                <a class="myBt" href="{{url ('admin\subcategory\edit', ['subcategory_id' => $subcategory->id])}}">Modifier</a>
+                                            </button>
+                                            /
+                                            <button type="button" class="btn btn-danger" disabled>
+                                                <a onclick="return myFunction();" class="myBt" href="{{url ('admin\subcategory\delete', ['subcategory_id' => $subcategory->id])}}">Supprimer</a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

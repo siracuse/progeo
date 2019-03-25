@@ -37,16 +37,35 @@
                 <li><a class="btn-inscription" href="{{ route('register') }}">Inscription</a></li>
                 <li><a class="btn1" href="{{ route('login') }}">Connexion</a></li>
             @else
-                <li class="dropdown">
+                {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>--}}
+                        {{--{{ Auth::user()->name }} <span class="caret"></span>--}}
+                    {{--</a>--}}
+
+                    {{--<ul class="dropdown-menu">--}}
+                        {{--<li>--}}
+                            {{--<a class="btn-inscription" href="{{ route('logout') }}"--}}
+                               {{--onclick="event.preventDefault();--}}
+                                                     {{--document.getElementById('logout-form').submit();">--}}
+                                {{--Déconnexion--}}
+                            {{--</a>--}}
+
+                            {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                                {{--{{ csrf_field() }}--}}
+                            {{--</form>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                <li><a href="#">Gestion de compte</a>
                     {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>--}}
 
-                    <ul class="dropdown-menu">
+                    <ul class="hidden">
+                        <li><a href="{{route('manager_edit_account')}}">Mon Compte</a></li>
+                        <li><a href="{{route('manager_edit_password')}}">Mdp</a></li>
                         <li>
-                            <a class="btn-inscription" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                            <a class="btn-inscription" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Déconnexion
                             </a>
 
@@ -103,6 +122,12 @@
     {{--<li><a href="{{url ('manager\add_promo', ['store_id' => $store->id])}}">Créer une promotion</a></li>--}}
 </ul>
 
+<script>
+    function myFunction() {
+        if(!confirm("Voulez-vous vraiment supprimer cette item"))
+            event.preventDefault();
+    }
+</script>
 @yield('content')
 
 <footer>

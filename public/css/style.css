@@ -214,11 +214,12 @@ ul li a:hover + .hidden, .hidden:hover {
 .bloc-search{
     position: absolute;
     z-index: 400;
-    bottom: 0;
+    bottom: -2px;
     left: 20%;
     width: 50%;
+    border-radius: 5px;
     padding: 20px 30px;
-    background-color: #64b5f6a8;
+    background-color: #ffffff;
 }
 
 .bloc-search input{
@@ -304,7 +305,6 @@ ul li a:hover + .hidden, .hidden:hover {
         position: initial;
         margin: 53px auto;
         padding: 20px 30px;
-        background-color: #64b5f6a8;
     }
 
     #map{
@@ -323,6 +323,7 @@ ul li a:hover + .hidden, .hidden:hover {
     .photo-avantage {
         height: auto;
         width: 100%;
+        margin-top: 50px;
     }
 
     .bloc-search {
@@ -337,8 +338,16 @@ ul li a:hover + .hidden, .hidden:hover {
     .switch-map{
         display: block;
         position: absolute;
-        bottom: 220px;
-        left: 48%;
+        bottom: 160px;
+        left: 46%;
+        cursor: pointer;
+        background-color: #367bba;
+        border-radius: 100px;
+        padding: 7px;
+    }
+
+    .switch-map:hover{
+        height: 35px;
     }
 
     .commercant{
@@ -347,6 +356,17 @@ ul li a:hover + .hidden, .hidden:hover {
 
     #map{
         height: 300px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .title-avantage{
+        margin: 0 20px;
+    }
+
+    .avantage{
+        padding: 13px 27px;
+        box-sizing: border-box;
     }
 }
 
@@ -1043,6 +1063,17 @@ tr:nth-child(odd) {background: #FFF}
         width: 90%;
     }
     
+}
+
+@media screen and (max-width: 920px) {
+    .container-store{
+        width: 100%;
+    }
+
+    .promotion{
+        width: 100%;
+    }
+
 }
 
 /* STORE */
