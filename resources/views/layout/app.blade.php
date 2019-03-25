@@ -103,7 +103,7 @@
             }
         </script>
     </header>
-
+    @include('flash-message')
     @yield('content')
 
     <footer>
