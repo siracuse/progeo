@@ -100,8 +100,8 @@
 
                     @else
                     <div class="bloc-vide">
-                            <img class="img-vide" src="img/image-vide.png">
-                            <p>Vous n\'avez toujours pas de promotions ajoutés !</p>
+                            <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                            <p>Vous n'avez toujours pas de promotions ajoutés !</p>
                         </div>
 
                 @endif
@@ -132,8 +132,8 @@
 
                 @else
                     <div class="bloc-vide">
-                        <img class="img-vide" src="img/image-vide.png">
-                        <p>Vous n\'avez toujours pas de magasins favoris !</p>
+                        <img class="img-vide" src="{{asset('img/image-vide.png')}}">
+                        <p>Vous n'avez toujours pas de magasins favoris !</p>
                     </div>
 
                 @endif
