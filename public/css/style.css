@@ -338,8 +338,16 @@ ul li a:hover + .hidden, .hidden:hover {
     .switch-map{
         display: block;
         position: absolute;
-        bottom: 220px;
-        left: 48%;
+        bottom: 160px;
+        left: 46%;
+        cursor: pointer;
+        background-color: #367bba;
+        border-radius: 100px;
+        padding: 7px;
+    }
+
+    .switch-map:hover{
+        height: 35px;
     }
 
     .commercant{
