@@ -70,5 +70,14 @@ class CategoriesANDSubcategoriesSeeder extends Seeder
             'category_id' => $catHotel,
             'name' => 'Haute gamme'
         ]);
+
+        $catBar = DB::table('categories')->insertGetId ([
+            'name' => 'Bar',
+        ]);
+        DB::table('subcategories')->insert ([
+            'category_id' => $catBar,
+            'name' => 'Bar à bière'
+        ]);
+
     }
 }
