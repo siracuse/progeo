@@ -68,7 +68,7 @@
                         <img src="{{asset('img/store/star-empty.svg')}}">
                     </div>
                     <div class="bloc-btn">
-                        <a class="btn1" href="">Obtenir code</a>
+                        <a class="btn1" href="{{route('user_promotion_get', ['promo_id' => $promotion->id])}}">Obtenir code</a>
                         <a class="btn1" href="{{ route('promo_rating', ['promo_id' => $promotion->id]) }}">Laisser un avis</a>
                     </div>
                 </div>

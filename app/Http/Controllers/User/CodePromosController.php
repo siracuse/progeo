@@ -59,6 +59,38 @@ class CodePromosController extends Controller
 
     }
 
+    public function userGetPromoGet($promo_id){
+
+        $check_promo = DB::table('codepromo')
+            ->where('user_id', '=', Auth::user()->id)
+//            ->where('store_id', '=', $request->input('store_id'))
+            ->where('promotion_id', '=', $promo_id)
+            ->get();
+
+        $store_id = DB::table('promotions')
+            ->where('promotions.id', '=', $promo_id)
+            ->select('store_id')
+            ->first();
+
+        if(count($check_promo) > 0){
+            return redirect()
+                ->route('store_details', ['store_id' => $store_id->store_id])
+                ->with('error', 'Vous avez déjà récupéré le code promo');
+        }else{
+            DB::table('codepromo')
+                ->insert(
+                [
+                    'promotion_id' => $promo_id,
+                    'user_id' => Auth::user()->id
+                ]
+            );
+            return redirect()
+                ->route('store_details', ['store_id' => $store_id->store_id])
+                ->with('success', 'Votre code promotion à bien été enregistré');
+        }
+
+    }
+
     public function deletePromoUser(Request $request){
         $req = DB::table('codePromo')
             ->where('promotion_id', '=', $request->input('promo_id'))

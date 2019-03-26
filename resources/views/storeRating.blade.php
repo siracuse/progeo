@@ -9,6 +9,7 @@
     <a class="btn1 btn-favoris" href="">Favoris</a>
 
     <div class="container-store">
+        <a class="btn1" href="{{route('store_details', ['store_id' => $store->id])}}"><-- Retour</a>
         <h1 class="center">{{$store->name}}</h1>
 
 
@@ -55,18 +56,44 @@
 
             @foreach($ratings as $rating)
                 <ul class="mes-infos-avis">
-                    {{--<li class="titre-mes-infos">{{$rating->date}}</li>--}}
+                    <li class="titre-mes-infos center date-avis">{{date('d-m-Y', strtotime($rating->date))}}</li>
+                    <li class="name-promo center">{{$rating->name}}</li>
                     <li class="code-promo">
-                        <div class="bloc-note">
-                            {{$rating->rating}}
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-full.svg')}}">
-                            <img src="{{asset('img/store/star-empty.svg')}}">
+                        <div class="bloc-note marginauto">
+                            @if($rating->rating == 1)
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                            @elseif($rating->rating == 2)
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                            @elseif($rating->rating == 3)
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                            @elseif($rating->rating == 4)
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-empty.svg')}}">
+                            @elseif($rating->rating == 5)
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                                <img src="{{asset('img/store/star-full.svg')}}">
+                            @endif
                         </div>
                     </li>
-                    <li class="name-promo">Promo : {{$rating->name}}</li>
+                    {{--<li class="name-promo">Promo : {{$rating->promo_name}}</li>--}}
                     <li class="txt-avis">
                         {{$rating->comment}}
                     </li>

@@ -117,7 +117,7 @@
                 @if(isset($favoris) && count($favoris) > 0)
                     @foreach($favoris as $favori)
                         <ul class="mes-infos-favoris" id="etmercee{{$favori->store_id}}">
-                            <li class="titre-mes-infos">{{$favori->store_name}} <img class="star"
+                            <li class="titre-mes-infos"><a href="{{route('store_details', $favori->store_id)}}">{{$favori->store_name}}</a>  <img class="star"
                                                                                      src="{{asset('img/star.svg')}}"/>
                             </li>
                             <div class="bloc-infos-favoris">
@@ -338,7 +338,7 @@
                         .then(delDivAvis)
                         .catch(function (error) {
                             console.log(error);
-                        }); 
+                        });
                 }
 
                 function delDivAvis() {

@@ -17,6 +17,6 @@ $factory->define(App\Store::class, function (Faker $faker) {
         'city_id' => rand(1, 36700),
         'category_id' => rand(1, 4),
         'subcategory_id' => rand(1, 11),
-        'user_id' => User::where('is_resp', true)->inRandomOrder()->first()->id
+        'user_id' => User::where('is_resp', '=', '1')->inRandomOrder()->first()->id
     ];
 });

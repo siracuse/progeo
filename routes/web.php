@@ -190,6 +190,7 @@ Route::middleware(['auth','user'])->group(function () {
 
     //User->GetPromo
     Route::post('/user/promo', 'User\CodePromosController@userGetPromo')->name('user_promotion_post');
+    Route::get('/user/promo/{promo_id}', 'User\CodePromosController@userGetPromoGet')->name('user_promotion_get');
 
     //Favoris
     Route::get ('/user/favoris', 'User\FavorisController@getAll')->name('user_favoris');

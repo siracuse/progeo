@@ -49,7 +49,7 @@ class FavorisController extends Controller
                 ->where('store_id','=' ,$store_id)
                 ->where('user_id','=' ,$user_id)
                 ->update(['favoris' => 0]);
-            return redirect()->route('store_details', $store_id);
+            return redirect()->route('store_details', $store_id)->with('success', 'Ce magasin a été retiré de vos favoris');
         }
 
         DB::table('store_user')
@@ -59,7 +59,7 @@ class FavorisController extends Controller
                     'favoris' => 1,
                 ]
             );
-        return redirect()->route('store_details', $store_id);
+        return redirect()->route('store_details', $store_id)->with('success', 'Ce magasin a été ajouté en favoris');
     }
 
     public function delete(Request $request){
