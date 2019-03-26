@@ -26,7 +26,7 @@ class CitiesController extends Controller
             $city->latitude = $request->input('latitude');
             $city->longitude = $request->input('longitude');
             $city->save();
-            return redirect()->route('city_list');
+            return redirect()->route('city_list')->with('success', 'Votre ville à bien été enregistré');
         }
         return view('admin.city_new');
     }
@@ -41,7 +41,7 @@ class CitiesController extends Controller
         $city = City::findOrFail($request->input('city_id'));
         $city->name = $request->input('name');
         $city->save();
-        return redirect()->route('city_list');
+        return redirect()->route('city_list')->with('success', 'Votre ville à bien été modifié');
     }
 
     public function getDelete ($city_id) {

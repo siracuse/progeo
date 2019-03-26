@@ -28,7 +28,7 @@ class UsersController extends Controller
                 $user->password = bcrypt($request->input('password'));
                 $user->is_resp = $request->input('is_resp');
                 $user->save();
-                return redirect()->route('user_list');
+                return redirect()->route('user_list')->with('success', 'Votre utilisateur à bien été modifié');
             }
         }
         return view('admin.user_new');
@@ -53,7 +53,7 @@ class UsersController extends Controller
                 $user->password = bcrypt($request->input('password'));
                 $user->is_resp = $request->input('is_resp');
                 $user->save();
-                return redirect()->route('user_list');
+                return redirect()->route('user_list')->with('success', 'Votre utilisateur à bien été modifié');
             }
         }
         $user->name = $request->input('name');
@@ -62,7 +62,7 @@ class UsersController extends Controller
         $user->email = $request->input('email');
         $user->is_resp = $request->input('is_resp');
         $user->save();
-        return redirect()->route('user_list');
+        return redirect()->route('user_list')->with('success', 'Votre utilisateur à bien été modifié');
     }
 
 

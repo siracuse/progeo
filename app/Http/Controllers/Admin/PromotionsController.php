@@ -80,7 +80,7 @@ class PromotionsController extends Controller
         $promotion->store_id = $monId;
 
         $promotion->save();
-        return redirect()->route('promotion_list');
+        return redirect()->route('promotion_list')->with('success', 'Votre promotion à bien été modifié');
     }
 
     public function getDelete ($promotion_id) {

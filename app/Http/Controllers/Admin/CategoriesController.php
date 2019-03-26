@@ -21,7 +21,7 @@ class CategoriesController extends Controller
             $category->save();
             return redirect()->route('category_list');
         }
-        return view('admin.category_new');
+        return view('admin.category_new')->with('success', 'Votre catégorie à bien été enregistré');
     }
 
     public function getEdit ($category_id) {
@@ -34,7 +34,7 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($request->input('category_id'));
         $category->name = $request->input('name');
         $category->save();
-        return redirect()->route('category_list');
+        return redirect()->route('category_list')->with('success', 'Votre catégorie à bien été modifié');
     }
 
     public function getDelete ($category_id) {

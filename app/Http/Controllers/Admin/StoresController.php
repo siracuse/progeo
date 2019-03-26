@@ -44,7 +44,7 @@ class StoresController extends Controller
             $store->user_id = $request->input('user_id');
 
             $store->save();
-            return redirect()->route('store_list');
+            return redirect()->route('store_list')->with('success', 'Votre magasins à bien été enregistré');
         }
         $categories = Category::get();
         $subcategories = Subcategory::get();
@@ -100,7 +100,7 @@ class StoresController extends Controller
         $store->user_id = $request->input('user_id');
 
         $store->save();
-        return redirect()->route('store_list');
+        return redirect()->route('store_list')->with('success', 'Votre magasin à bien été modifié');
     }
 
     public function getDelete ($store_id) {

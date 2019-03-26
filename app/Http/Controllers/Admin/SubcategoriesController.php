@@ -22,7 +22,7 @@ class SubcategoriesController extends Controller
             $subcategory->name = $request->input('name');
             $subcategory->category_id = $request->input('categorie');
             $subcategory->save();
-            return redirect()->route('subcategory_list');
+            return redirect()->route('subcategory_list')->with('success', 'Votre sous-catégorie à bien été enregistré');
         }
         $categories = Category::get(['id', 'name']);
         return view('admin.subcategory_new',['categories' => $categories]);
@@ -41,7 +41,7 @@ class SubcategoriesController extends Controller
         $subcategory->name = $request->input('name');
         $subcategory->category_id = $request->input('categorie');
         $subcategory->save();
-        return redirect()->route('subcategory_list');
+        return redirect()->route('subcategory_list')->with('success', 'Votre sous-catégorie à bien été modifié');
     }
 
     public function getDelete ($subcategory_id) {
