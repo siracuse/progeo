@@ -1,4 +1,4 @@
-# Site web Laravel
+# PROGEO - Site web Laravel
 
 Projet tuteuré réalisé pendant ma licence professionnelle MIW.
 
